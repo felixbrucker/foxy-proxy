@@ -114,7 +114,7 @@ async function handleSubmitNonce(ctx, upstream) {
   const bestDLForAcc = upstream.deadlines[minerRound.accountId];
 
   // Do not submit worse DLs than already submitted
-  if (bestDLForAcc && bestDLForAcc <= minerRound.deadline) {
+  if (bestDLForAcc && bestDLForAcc <= adjustedDL) {
     ctx.body = {
       result: 'success',
       deadline: adjustedDL,
