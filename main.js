@@ -153,6 +153,8 @@ async function handleSubmitNonce(ctx, upstream) {
     result = JSON.parse(result);
     if (result.result === 'success') {
       console.log(`${new Date().toISOString()} | ${upstream.name} | ${minerId} submitted DL ${adjustedDL}`);
+    } else {
+      console.error(`${new Date().toISOString()} | ${upstream.name} | ${minerId} tried submitting DL ${adjustedDL}, failed`);
     }
 
     ctx.body = result;
