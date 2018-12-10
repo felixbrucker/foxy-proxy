@@ -100,16 +100,20 @@ async function handleSubmitNonce(ctx, upstream) {
     return;
   }
 
-  const queryParams = {
-    requestType: 'submitNonce',
-    accountId: minerRound.accountId,
-    nonce: minerRound.nonce,
-    blockheight: minerRound.height,
-  };
+  const adjustedDL = Math.floor(minerRound.deadline / upstream.miningInfo.baseTarget);
+
+  // DL too high to submit
+  if (adjustedDL > upstream.targetDL) {
+    ctx.body = {
+      result: 'success',
+      deadline: adjustedDL,
+    };
+    return;
+  }
 
   const bestDLForAcc = upstream.deadlines[minerRound.accountId];
-  const adjustedDL = Math.floor(minerRound.deadline / upstream.miningInfo.baseTarget);
-  // Do not submit higher DLs
+
+  // Do not submit worse DLs than already submitted
   if (bestDLForAcc && bestDLForAcc <= minerRound.deadline) {
     ctx.body = {
       result: 'success',
@@ -118,6 +122,12 @@ async function handleSubmitNonce(ctx, upstream) {
     return;
   }
 
+  const queryParams = {
+    requestType: 'submitNonce',
+    accountId: minerRound.accountId,
+    nonce: minerRound.nonce,
+    blockheight: minerRound.height,
+  };
   if (upstream.mode === 'pool') {
     queryParams.deadline = minerRound.deadline;
   } else {
@@ -140,6 +150,7 @@ async function handleSubmitNonce(ctx, upstream) {
     result = JSON.parse(result);
     if (result.result === 'success') {
       upstream.deadlines[minerRound.accountId] = adjustedDL;
+      console.log(`${new Date().toISOString()} | ${upstream.name} | Submitted DL ${adjustedDL}`);
       eventBus.emit('stats/new');
     }
 
@@ -205,7 +216,7 @@ async function init() {
     //   console.log();
     // });
 
-    console.log(`proxy for upstream ${upstream.name} configured and reachable via http://${config.listenAddr}/${upstream.name.toLowerCase()}`);
+    console.log(`${new Date().toISOString()} | proxy for upstream ${upstream.name} configured and reachable via http://${config.listenAddr}/${upstream.name.toLowerCase()}`);
   });
 
   app.use(router.routes());
