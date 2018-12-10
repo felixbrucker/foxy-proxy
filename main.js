@@ -114,6 +114,7 @@ async function handleSubmitNonce(ctx, upstream) {
   }
 
   upstream.deadlines[minerRound.accountId] = adjustedDL;
+  eventBus.emit('stats/new');
 
   // DL too high to submit
   if (adjustedDL > upstream.targetDL) {
@@ -152,7 +153,6 @@ async function handleSubmitNonce(ctx, upstream) {
     result = JSON.parse(result);
     if (result.result === 'success') {
       console.log(`${new Date().toISOString()} | ${upstream.name} | ${minerId} submitted DL ${adjustedDL}`);
-      eventBus.emit('stats/new');
     }
 
     ctx.body = result;
