@@ -102,8 +102,10 @@ async function handleSubmitNonce(ctx, upstream) {
 
   const adjustedDL = Math.floor(minerRound.deadline / upstream.miningInfo.baseTarget);
 
-  // DL too high to submit
-  if (adjustedDL > upstream.targetDL) {
+  const bestDLForAcc = upstream.deadlines[minerRound.accountId];
+
+  // Do not submit worse DLs than already submitted
+  if (bestDLForAcc && bestDLForAcc <= adjustedDL) {
     ctx.body = {
       result: 'success',
       deadline: adjustedDL,
@@ -111,10 +113,10 @@ async function handleSubmitNonce(ctx, upstream) {
     return;
   }
 
-  const bestDLForAcc = upstream.deadlines[minerRound.accountId];
+  upstream.deadlines[minerRound.accountId] = adjustedDL;
 
-  // Do not submit worse DLs than already submitted
-  if (bestDLForAcc && bestDLForAcc <= adjustedDL) {
+  // DL too high to submit
+  if (adjustedDL > upstream.targetDL) {
     ctx.body = {
       result: 'success',
       deadline: adjustedDL,
@@ -149,7 +151,6 @@ async function handleSubmitNonce(ctx, upstream) {
     let {text: result} = await superagent.post(`${upstream.url}/burst`).query(queryParams).unset('User-Agent').retry(2);
     result = JSON.parse(result);
     if (result.result === 'success') {
-      upstream.deadlines[minerRound.accountId] = adjustedDL;
       console.log(`${new Date().toISOString()} | ${upstream.name} | ${minerId} submitted DL ${adjustedDL}`);
       eventBus.emit('stats/new');
     }
@@ -237,8 +238,9 @@ async function init() {
 
 function getStats() {
   return upstreams.map(upstream => {
-    const totalCapacity = Object.keys(upstream.miners).reduce((acc, minerKey) => {
-      return acc + upstream.miners[minerKey].capacity;
+    const miners = Object.keys(upstream.miners).map(key => upstream.miners[key]);
+    const totalCapacity = miners.reduce((acc, miner) => {
+      return acc + miner.capacity;
     }, 0);
     const bestDL = Object.keys(upstream.deadlines).reduce((acc, accountId) => {
       const dl = upstream.deadlines[accountId];
@@ -258,6 +260,7 @@ function getStats() {
       netDiff: upstream.miningInfo.netDiff,
       roundStart: upstream.roundStart,
       bestDL,
+      miner: upstream.miners,
       totalCapacity,
     };
   });
