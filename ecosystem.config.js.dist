@@ -1,0 +1,13 @@
+module.exports = {
+  apps: [
+    {
+      name: 'burst-proxy',
+      script: './main.js',
+      watch: true,
+      ignore_watch: ['node_modules', '.git'],
+      env: {
+        DATABASE_URL: 'sqlite:database.sqlite',
+      },
+    }
+  ]
+};
