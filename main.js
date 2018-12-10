@@ -255,6 +255,7 @@ function getStats() {
     return {
       name: upstream.name,
       blockNumber: upstream.miningInfo.height,
+      netDiff: upstream.miningInfo.netDiff,
       roundStart: upstream.roundStart,
       bestDL,
       totalCapacity,
