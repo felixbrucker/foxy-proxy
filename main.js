@@ -40,7 +40,7 @@ async function updateMiningInfos() {
         upstream.roundStart = new Date();
         upstream.miningInfo = miningInfo;
         upstream.deadlines = {};
-        let newBlockLine = `${upstream.name}: new block ${miningInfo.height}, baseTarget ${miningInfo.baseTarget}, netDiff ${miningInfo.netDiff.toFixed(0)} TB`;
+        let newBlockLine = `${upstream.name} | New block ${miningInfo.height}, baseTarget ${miningInfo.baseTarget}, netDiff ${miningInfo.netDiff.toFixed(0)} TB`;
         if (miningInfo.targetDeadline) {
           newBlockLine += `, targetDeadline: ${miningInfo.targetDeadline}`;
         }
@@ -150,7 +150,7 @@ async function handleSubmitNonce(ctx, upstream) {
     result = JSON.parse(result);
     if (result.result === 'success') {
       upstream.deadlines[minerRound.accountId] = adjustedDL;
-      console.log(`${new Date().toISOString()} | ${upstream.name} | Submitted DL ${adjustedDL}`);
+      console.log(`${new Date().toISOString()} | ${upstream.name} | ${minerId} submitted DL ${adjustedDL}`);
       eventBus.emit('stats/new');
     }
 
