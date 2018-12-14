@@ -64,6 +64,9 @@ async function init() {
         case 'submitNonce':
           await upstream.handleSubmitNonce(ctx);
           break;
+        case 'scanProgress':
+          await upstream.handleScanProgress(ctx);
+          break;
         default:
           console.log(ctx.request);
           ctx.status = 400;
