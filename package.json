@@ -2,17 +2,19 @@
   "name": "burst-proxy",
   "version": "1.0.0",
   "dependencies": {
+    "bignumber.js": "^8.0.1",
+    "bytes": "^3.0.0",
+    "json-bigint": "^0.3.0",
     "koa": "^2.6.1",
+    "koa-bodyparser": "^4.2.1",
     "koa-json": "^2.0.2",
     "koa-router": "^7.4.0",
-    "koa-bodyparser": "^4.2.1",
-    "superagent": "^4.0.0-beta.5",
-    "bytes": "^3.0.0",
-    "socket.io": "^2.2.0",
-    "json-bigint": "^0.3.0",
-    "sequelize": "^4.41.2",
-    "sqlite3": "^4.0.4",
     "pg": "^7.7.1",
-    "bignumber.js": "^8.0.1"
+    "reconnecting-websocket": "^4.1.10",
+    "sequelize": "^4.41.2",
+    "socket.io": "^2.2.0",
+    "sqlite3": "^4.0.4",
+    "superagent": "^4.0.0-beta.5",
+    "ws": "^6.1.2"
   }
 }

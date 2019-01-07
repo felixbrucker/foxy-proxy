@@ -6,7 +6,7 @@ const http = require('http');
 const IO = require('socket.io');
 const database = require('./models');
 const Config = require('./lib/config');
-const Upstream = require('./lib/upstream');
+const Proxy = require('./lib/proxy');
 const eventBus = require('./lib/event-bus');
 
 const config = new Config('config.json');
@@ -34,15 +34,15 @@ async function init() {
   app.use(json());
   app.use(bodyParser());
 
-  const upstreams = await Promise.all(upstreamConfigs.map(async (upstreamConfig, index) => {
-    const upstream = new Upstream(upstreamConfig);
-    await upstream.init();
+  const proxies = await Promise.all(upstreamConfigs.map(async (upstreamConfig, index) => {
+    const proxy = new Proxy(upstreamConfig);
+    await proxy.init();
 
     function handleGet(ctx) {
       const requestType = ctx.query.requestType;
       switch (requestType) {
         case 'getMiningInfo':
-          ctx.body = upstream.getMiningInfo();
+          ctx.body = proxy.getMiningInfo();
           break;
         default:
           console.log(ctx.request);
@@ -60,13 +60,13 @@ async function init() {
       const requestType = ctx.query.requestType;
       switch (requestType) {
         case 'getMiningInfo':
-          ctx.body = upstream.getMiningInfo();
+          ctx.body = proxy.getMiningInfo();
           break;
         case 'submitNonce':
-          await upstream.handleSubmitNonce(ctx);
+          await proxy.handleSubmitNonce(ctx);
           break;
         case 'scanProgress':
-          await upstream.handleScanProgress(ctx);
+          await proxy.handleScanProgress(ctx);
           break;
         default:
           console.log(ctx.request);
@@ -81,7 +81,7 @@ async function init() {
     }
 
     const result = {
-      upstream,
+      proxy,
     };
 
     let endpoint;
@@ -107,7 +107,7 @@ async function init() {
       router.post(`${endpoint}/burst`, handlePost);
     }
 
-    console.log(`${new Date().toISOString()} | ${upstreamConfig.name} | ${upstream.isBHD ? 'BHD' : 'Burst'} proxy in ${upstream.upstream.mode} mode configured and reachable via http://${listenAddr}${endpoint}`);
+    console.log(`${new Date().toISOString()} | ${upstreamConfig.name} | ${proxy.upstream.isBHD ? 'BHD' : 'Burst'} proxy in ${upstreamConfig.mode} mode configured and reachable via http://${listenAddr}${endpoint}`);
 
     return result;
   }));
@@ -120,12 +120,12 @@ async function init() {
   server.listen(config.listenPort, config.listenHost);
 
   io.on('connection', async client => {
-    const stats = await Promise.all(upstreams.map(({upstream}) => upstream.getStats()));
+    const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
     client.emit('stats', stats);
   });
 
   eventBus.subscribe('stats/new', async () => {
-    const stats = await Promise.all(upstreams.map(({upstream}) => upstream.getStats()));
+    const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
     io.emit('stats', stats);
   });
 }
