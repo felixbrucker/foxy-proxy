@@ -15,11 +15,14 @@ module.exports = (sequelize, DataTypes) => sequelize.define('round', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  bestDL: {
+  netDiff: {
     type: DataTypes.INTEGER,
   },
+  bestDL: {
+    type: DataTypes.STRING,
+  },
   bestDLSubmitted: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   },
   roundWon: {
     type: DataTypes.BOOLEAN,
