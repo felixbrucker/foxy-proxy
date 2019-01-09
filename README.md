@@ -48,8 +48,13 @@ The config file currently consists of these config options:
   - `type`: Only used for hdpool as of now, set it to `'hdpool'` if the upstream is hdpool.
   - `capacity`: Hard-set the specified capacity (in GB) in submitNonce requests instead of calculating it based on submissions.
   - `accountIdToUrl`: accountId -> upstream url, override the default upstream url based on the accountId
+  - `historicalRoundsToKeep`: By default keep 720 rounds of historical stats, overwrite here
 - `listenAddr`: a string representation of the address and port the proxy should listen on (**required**)
 - `useMultiplePorts`: set this to `true` when using blago as blago doesn't support regular urls but only an address and a port
+
+## Stats
+
+Currently stats are only available via a socket.io endpoint on the `listenAddr` address and port. An embedded web ui might be added in the future.
 
 ## License
 
