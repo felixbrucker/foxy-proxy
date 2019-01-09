@@ -8,6 +8,7 @@ const database = require('./models');
 const Config = require('./lib/config');
 const Proxy = require('./lib/proxy');
 const eventBus = require('./lib/event-bus');
+const version = require('./lib/version');
 
 const config = new Config('config.json');
 
@@ -22,12 +23,10 @@ const upstreamConfigs = config.upstreams.map(upstream => {
 });
 
 async function init() {
-  if (process.env.DATABASE_URL) {
-    // sync() creates missing tables
-    await database().sequelize.sync({
-      force: false, // Do not drop tables
-    });
-  }
+  // sync() creates missing tables
+  await database().sequelize.sync({
+    force: false, // Do not drop tables
+  });
 
   const app = new Koa();
   const router = new Router();
@@ -128,6 +127,8 @@ async function init() {
     const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
     io.emit('stats', stats);
   });
+
+  console.log(`${new Date().toISOString()} | BHD-Burst-Proxy ${version} initialized`);
 }
 
 init();

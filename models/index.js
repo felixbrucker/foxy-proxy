@@ -9,7 +9,7 @@ const db = {};
 let isInitialized = false;
 
 function init() {
-  const databaseUrl = process.env.DATABASE_URL;
+  const databaseUrl = process.env.DATABASE_URL || 'sqlite:db/db.sqlite';
   const isPostgres = databaseUrl.indexOf('postgres') !== -1;
   let sequelizeConfig = {
     dialect: 'postgres',
@@ -27,7 +27,7 @@ function init() {
       operatorsAliases: false, // Do not use deprecated operator aliases ($gte etc), disable warning here
     };
   }
-  const sequelize = new Sequelize(process.env.DATABASE_URL, sequelizeConfig);
+  const sequelize = new Sequelize(databaseUrl, sequelizeConfig);
 
   // Load all models
   fs.readdirSync(__dirname)

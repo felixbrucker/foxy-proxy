@@ -1,12 +1,12 @@
 module.exports = {
   apps: [
     {
-      name: 'burst-proxy',
+      name: 'bhd-burst-proxy',
       script: './main.js',
       watch: true,
       ignore_watch: ['db', 'node_modules', '.git'],
       env: {
-        DATABASE_URL: 'sqlite:db/database.sqlite',
+        DATABASE_URL: 'sqlite:db/db.sqlite',
       },
     }
   ]
