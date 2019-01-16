@@ -46,7 +46,6 @@ The config file currently consists of these config options:
   - `updateMiningInfoInterval`: Change the default 1msec update interval, value is in ms
   - `accountKey`: Add the supplied account key to miningInfo and nonceSubmission requests (**required** for bhd pools)
   - `type`: Only used for hdpool as of now, set it to `'hdpool'` if the upstream is hdpool.
-  - `capacity`: Hard-set the specified capacity (in GB) in submitNonce requests instead of calculating it based on submissions.
   - `accountIdToUrl`: accountId -> upstream url, override the default upstream url based on the accountId
   - `historicalRoundsToKeep`: By default keep 720 rounds of historical stats, overwrite here
   - `minerName`: Set a custom miner name
