@@ -1,4 +1,4 @@
-workflow "Pipeline" {
+workflow "Build and Audit" {
   on = "push"
   resolves = ["Audit"]
 }
