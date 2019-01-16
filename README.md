@@ -30,6 +30,14 @@ To startup pm2 on boot use `pm2 save` to save the current running config and `pm
 When installed as a git repository just `git pull`.
 If the changes have new dependencies required one needs to execute `npm i` again as well before starting the proxy.
 
+## BHD wallet bugs and quirks to be aware of
+
+| Issue                                                               | resolved?                        | workaround                  |
+|---------------------------------------------------------------------|----------------------------------|------------------|
+| `getMiningInfo` does not support GET | :heavy_check_mark: (since v1.2.0.4) | - |
+| RPC error with User-Agent set | :x: | `-rpcallowua` |
+| RPC error for non-burst API requests when no rpc user / pass is set | :x: | configure a rpc user / pass |
+
 ## Config options
 
 The config file currently consists of these config options:
