@@ -12,7 +12,7 @@ BHD-Burst-Proxy
 ```bash
 git clone https://github.com/felixbrucker/bhd-burst-proxy
 cd bhd-burst-proxy
-npm i
+npm ci
 npm start
 ```
 This will download the proxy, install its dependencies and setup the default config with some example upstream configs.
@@ -28,7 +28,7 @@ To startup pm2 on boot use `pm2 save` to save the current running config and `pm
 ## Updating the proxy
 
 When installed as a git repository just `git pull`.
-If the changes have new dependencies required one needs to execute `npm i` again as well before starting the proxy.
+If the changes have new dependencies required one needs to execute `npm ci` again as well before starting the proxy.
 
 ## BHD wallet bugs and quirks to be aware of
 
