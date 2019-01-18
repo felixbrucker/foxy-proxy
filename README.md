@@ -50,6 +50,7 @@ To solo mine BHD with this proxy you'll need to configure your wallet first:
     ``` 
 - if your wallet is located on another machine you'll need to add `rpcallowip` lines for the ip or subnet as well
 - restart your wallet
+- add the rpc user/pass combo in to the wallet url in the proxy config like so: `http://someuser:somepass@localhost:8732`
 
 ## Config options
 
