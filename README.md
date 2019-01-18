@@ -38,6 +38,19 @@ If the changes have new dependencies required one needs to execute `npm i` again
 | RPC error with User-Agent set | :x: | `-rpcallowua` |
 | RPC error for non-burst API requests when no rpc user / pass is set | :x: | configure a rpc user / pass |
 
+## Solo mine BHD with the proxy
+
+To solo mine BHD with this proxy you'll need to configure your wallet first:
+- create a `btchd.conf` config file in the wallets data dir with at least the following lines:
+    ```
+    rpcuser=someuser
+    rpcpassword=somepass
+    server=1
+    rpcallowua=1
+    ``` 
+- if your wallet is located on another machine you'll need to add `rpcallowip` lines for the ip or subnet as well
+- restart your wallet
+
 ## Config options
 
 The config file currently consists of these config options:
@@ -51,7 +64,7 @@ The config file currently consists of these config options:
   - `passphrases`: accountId -> passphrase mapping for solo mining (**required** for solo)
   - `passphrase`: Use a singular passphrase for all accountIds (pool emulation)
   - `targetDL`: Deadlines below this value will not be sent to the upstream (**required**)
-  - `updateMiningInfoInterval`: Change the default 1msec update interval, value is in ms
+  - `updateMiningInfoInterval`: Change the default 1000 msec update interval, value is in ms
   - `accountKey`: Add the supplied account key to miningInfo and nonceSubmission requests (**required** for bhd pools)
   - `type`: Only used for hdpool as of now, set it to `'hdpool'` if the upstream is hdpool.
   - `accountIdToUrl`: accountId -> upstream url, override the default upstream url based on the accountId
