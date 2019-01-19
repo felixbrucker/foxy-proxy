@@ -13,6 +13,7 @@
   "dependencies": {
     "bignumber.js": "^8.0.1",
     "bytes": "^3.0.0",
+    "js-yaml": "^3.12.1",
     "json-bigint": "^0.3.0",
     "koa": "^2.6.1",
     "koa-bodyparser": "^4.2.1",

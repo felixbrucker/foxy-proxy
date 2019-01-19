@@ -10,7 +10,7 @@ const Proxy = require('./lib/proxy');
 const eventBus = require('./lib/event-bus');
 const version = require('./lib/version');
 
-const config = new Config('config.json');
+const config = new Config('config.yaml');
 
 const upstreamConfigs = config.upstreams.map(upstream => {
   const copy = JSON.parse(JSON.stringify(upstream));

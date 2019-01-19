@@ -16,8 +16,8 @@ npm ci
 npm start
 ```
 This will download the proxy, install its dependencies and setup the default config with some example upstream configs.
-Edit the created `config.json` file so that your desired upstream(s) are configured. More on the valid config options below.
-Make sure you do not break the json format or the file can not be read correctly.
+Edit the created `config.yaml` file so that your desired upstream(s) are configured. More on the valid config options below.
+Make sure you do not break the yaml format or the file can not be read correctly.
 
 ## Running the proxy in production
 
