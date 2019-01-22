@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => sequelize.define('round', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  baseTarget: {
+    type: DataTypes.INTEGER,
+  },
   netDiff: {
     type: DataTypes.INTEGER,
   },

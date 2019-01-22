@@ -128,6 +128,10 @@ async function init() {
   });
 
   eventBus.subscribe('stats/new', async () => {
+    const connections = Object.keys(io.sockets.connected).length;
+    if (connections === 0) {
+      return;
+    }
     const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
     io.emit('stats', stats);
   });
