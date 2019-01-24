@@ -83,28 +83,10 @@ async function init() {
       proxy,
     };
 
-    let endpoint;
-    let listenAddr = config.listenAddr;
-    if (config.useMultiplePorts) {
-      const localApp = new Koa();
-      const localRouter = new Router();
-      localApp.use(json());
-      localApp.use(bodyParser());
-      endpoint = '';
-      localRouter.get('/burst', handleGet);
-      localRouter.post('/burst', handlePost);
-      localApp.use(localRouter.routes());
-      localApp.use(localRouter.allowedMethods());
-      const localServer = http.createServer(localApp.callback());
-      const listenPort = config.listenPort + index + 1;
-      listenAddr = `${config.listenHost}:${listenPort}`;
-      localServer.listen(listenPort, config.listenHost);
-      result.server = localServer;
-    } else {
-      endpoint = `/${encodeURIComponent(upstreamConfig.name.toLowerCase().replace(' ', '-'))}`;
-      router.get(`${endpoint}/burst`, handleGet);
-      router.post(`${endpoint}/burst`, handlePost);
-    }
+    const listenAddr = config.listenAddr;
+    const endpoint = `/${encodeURIComponent(upstreamConfig.name.toLowerCase().replace(' ', '-'))}`;
+    router.get(`${endpoint}/burst`, handleGet);
+    router.post(`${endpoint}/burst`, handlePost);
 
     console.log(`${new Date().toISOString()} | ${upstreamConfig.name} | ${proxy.upstream.isBHD ? 'BHD' : 'Burst'} proxy in ${upstreamConfig.mode} mode configured and reachable via http://${listenAddr}${endpoint}`);
 

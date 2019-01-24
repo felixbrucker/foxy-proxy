@@ -6,6 +6,7 @@ BHD-Burst-Proxy
 ## Prerequisites
 
 - nodejs >= 10
+- only scavenger is supported
 
 ## Setup
 
@@ -73,7 +74,6 @@ The config file currently consists of these config options:
   - `minerName`: Set a custom miner name
   - `sendTargetDL`: Set a custom targetDL to send to the miners
 - `listenAddr`: a string representation of the address and port the proxy should listen on (**required**)
-- `useMultiplePorts`: set this to `true` when using blago as blago doesn't support regular urls but only an address and a port
 
 ## Stats
 
