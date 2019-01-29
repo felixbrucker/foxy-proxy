@@ -79,6 +79,11 @@ The config file currently consists of these config options:
 
 Currently stats are only available via a socket.io endpoint on the `listenAddr` address and port. An embedded web ui might be added in the future.
 
+## Donate
+
+- Burst: BURST-N5P2-3ETU-7LXK-DTU3X
+- BHD: 382huZpCbisipKsLWTyQoPeWcpeeBRVdFF
+
 ## License
 
 GNU GPLv3 (see LICENSE)
