@@ -6,7 +6,7 @@ BHD-Burst-Proxy
 ## Prerequisites
 
 - nodejs >= 10
-- only scavenger is supported
+- only scavenger is tested/supported, blago is not supported
 
 ## Setup
 

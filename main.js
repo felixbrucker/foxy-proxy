@@ -12,15 +12,7 @@ const version = require('./lib/version');
 
 const config = new Config('config.yaml');
 
-const upstreamConfigs = config.upstreams.map(upstream => {
-  const copy = JSON.parse(JSON.stringify(upstream));
-  copy.roundStart = new Date();
-  copy.miningInfo = {height: 0};
-  copy.deadlines = {};
-  copy.miners = {};
-
-  return copy;
-});
+const proxyConfigs = config.proxies.map(proxyConfig => JSON.parse(JSON.stringify(proxyConfig)));
 
 async function init() {
   // sync() creates missing tables
@@ -33,8 +25,8 @@ async function init() {
   app.use(json());
   app.use(bodyParser());
 
-  const proxies = await Promise.all(upstreamConfigs.map(async (upstreamConfig, index) => {
-    const proxy = new Proxy(upstreamConfig);
+  const proxies = await Promise.all(proxyConfigs.map(async proxyConfig => {
+    const proxy = new Proxy(proxyConfig);
     await proxy.init();
 
     function handleGet(ctx) {
@@ -64,9 +56,6 @@ async function init() {
         case 'submitNonce':
           await proxy.handleSubmitNonce(ctx);
           break;
-        case 'scanProgress':
-          await proxy.handleScanProgress(ctx);
-          break;
         default:
           console.log(ctx.request);
           ctx.status = 400;
@@ -84,11 +73,11 @@ async function init() {
     };
 
     const listenAddr = config.listenAddr;
-    const endpoint = `/${encodeURIComponent(upstreamConfig.name.toLowerCase().replace(' ', '-'))}`;
+    const endpoint = `/${encodeURIComponent(proxyConfig.name.toLowerCase().replace(' ', '-'))}`;
     router.get(`${endpoint}/burst`, handleGet);
     router.post(`${endpoint}/burst`, handlePost);
 
-    console.log(`${new Date().toISOString()} | ${upstreamConfig.name} | ${proxy.upstream.isBHD ? 'BHD' : 'Burst'} proxy in ${upstreamConfig.mode} mode configured and reachable via http://${listenAddr}${endpoint}`);
+    console.log(`${new Date().toISOString()} | ${proxyConfig.name} | proxy configured and reachable via http://${listenAddr}${endpoint}`);
 
     return result;
   }));
