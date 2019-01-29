@@ -6,7 +6,6 @@ BHD-Burst-Proxy
 ## Prerequisites
 
 - nodejs >= 10
-- only scavenger is tested/supported, blago is not supported
 
 ## Setup
 
@@ -75,6 +74,7 @@ The config file currently consists of these config options:
       - `historicalRoundsToKeep`: By default keep 720 rounds of historical stats, overwrite here
       - `minerName`: Set a custom miner name
       - `sendTargetDL`: Set a custom targetDL to send to the miners
+      - `maxScanTime`: The maximum amount of seconds each round takes to scan completely.
 - `listenAddr`: a string representation of the address and port the proxy should listen on (**required**)
 
 ## Stats

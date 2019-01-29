@@ -25,7 +25,7 @@ async function init() {
   app.use(json());
   app.use(bodyParser());
 
-  const proxies = await Promise.all(proxyConfigs.map(async proxyConfig => {
+  const proxies = await Promise.all(proxyConfigs.map(async (proxyConfig, index) => {
     const proxy = new Proxy(proxyConfig);
     await proxy.init();
 
@@ -72,12 +72,30 @@ async function init() {
       proxy,
     };
 
-    const listenAddr = config.listenAddr;
-    const endpoint = `/${encodeURIComponent(proxyConfig.name.toLowerCase().replace(' ', '-'))}`;
-    router.get(`${endpoint}/burst`, handleGet);
-    router.post(`${endpoint}/burst`, handlePost);
+    let endpoint;
+    let listenAddr = config.listenAddr;
+    if (config.useMultiplePorts) {
+      const localApp = new Koa();
+      const localRouter = new Router();
+      localApp.use(json());
+      localApp.use(bodyParser());
+      endpoint = '';
+      localRouter.get('/burst', handleGet);
+      localRouter.post('/burst', handlePost);
+      localApp.use(localRouter.routes());
+      localApp.use(localRouter.allowedMethods());
+      const localServer = http.createServer(localApp.callback());
+      const listenPort = config.listenPort + index + 1;
+      listenAddr = `${config.listenHost}:${listenPort}`;
+      localServer.listen(listenPort, config.listenHost);
+      result.server = localServer;
+    } else {
+      endpoint = `/${encodeURIComponent(proxyConfig.name.toLowerCase().replace(' ', '-'))}`;
+      router.get(`${endpoint}/burst`, handleGet);
+      router.post(`${endpoint}/burst`, handlePost);
+    }
 
-    console.log(`${new Date().toISOString()} | ${proxyConfig.name} | proxy configured and reachable via http://${listenAddr}${endpoint}`);
+    console.log(`${new Date().toISOString()} | ${proxyConfig.name} | Proxy configured and reachable via http://${listenAddr}${endpoint}`);
 
     return result;
   }));
