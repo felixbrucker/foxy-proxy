@@ -30,10 +30,11 @@ async function init() {
     await proxy.init();
 
     function handleGet(ctx) {
+      const maxScanTime = ctx.params.maxScanTime && parseInt(ctx.params.maxScanTime, 10) || null;
       const requestType = ctx.query.requestType;
       switch (requestType) {
         case 'getMiningInfo':
-          ctx.body = proxy.getMiningInfo();
+          ctx.body = proxy.getMiningInfo(maxScanTime);
           break;
         default:
           console.log(ctx.request);
@@ -48,10 +49,11 @@ async function init() {
     }
 
     async function handlePost(ctx) {
+      const maxScanTime = ctx.params.maxScanTime && parseInt(ctx.params.maxScanTime, 10) || null;
       const requestType = ctx.query.requestType;
       switch (requestType) {
         case 'getMiningInfo':
-          ctx.body = proxy.getMiningInfo();
+          ctx.body = proxy.getMiningInfo(maxScanTime);
           break;
         case 'submitNonce':
           await proxy.handleSubmitNonce(ctx);
@@ -91,8 +93,11 @@ async function init() {
       result.server = localServer;
     } else {
       endpoint = `/${encodeURIComponent(proxyConfig.name.toLowerCase().replace(' ', '-'))}`;
+      const endpointWithScanTime = `${endpoint}/:maxScanTime`;
       router.get(`${endpoint}/burst`, handleGet);
       router.post(`${endpoint}/burst`, handlePost);
+      router.get(`${endpointWithScanTime}/burst`, handleGet);
+      router.post(`${endpointWithScanTime}/burst`, handlePost);
     }
 
     console.log(`${new Date().toISOString()} | ${proxyConfig.name} | Proxy configured and reachable via http://${listenAddr}${endpoint}`);
