@@ -78,6 +78,11 @@ The config file currently consists of these config options:
       - `prio`: defines which upstream should have the higher priority when two blocks appear within the same max scan time. Defaults to 10.
 - `listenAddr`: a string representation of the address and port the proxy should listen on (**required**)
 
+## Per miner maxScanTime
+
+To allow fine granular control each miner which supports urls instead of simple ip:port can subscribe to their own maxScanTime. This was tested with scavenger only.  
+To do so, just append the preferred maxScanTime in seconds to the url, like so: `http://localhost:12345/burst-bhd/25`. That would result in that miner setting its maxScanTime to 25 seconds.
+
 ## Stats
 
 Currently stats are only available via a socket.io endpoint on the `listenAddr` address and port. An embedded web ui might be added in the future.

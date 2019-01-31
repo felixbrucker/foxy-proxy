@@ -82,8 +82,11 @@ async function init() {
       localApp.use(json());
       localApp.use(bodyParser());
       endpoint = '';
-      localRouter.get('/burst', handleGet);
-      localRouter.post('/burst', handlePost);
+      const endpointWithScanTime = '/:maxScanTime';
+      localRouter.get(`${endpoint}/burst`, handleGet);
+      localRouter.post(`${endpoint}/burst`, handlePost);
+      localRouter.get(`${endpointWithScanTime}/burst`, handleGet);
+      localRouter.post(`${endpointWithScanTime}/burst`, handlePost);
       localApp.use(localRouter.routes());
       localApp.use(localRouter.allowedMethods());
       const localServer = http.createServer(localApp.callback());
