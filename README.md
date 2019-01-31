@@ -71,13 +71,13 @@ The config file currently consists of these config options:
       - `updateMiningInfoInterval`: Change the default 1000 msec update interval, value is in ms
       - `accountKey`: Add the supplied account key to miningInfo and nonceSubmission requests (**required** for bhd pools)
       - `type`: Only used for hdpool as of now, set it to `'hdpool'` if the upstream is hdpool.
-      - `accountIdToUrl`: accountId -> upstream url (array), override the default upstream url based on the accountId
+      - `accountIdToUrl`: accountId -> upstream url (object), override the default upstream url based on the accountId
       - `historicalRoundsToKeep`: By default keep 720 rounds of historical stats, overwrite here
       - `minerName`: Set a custom miner name
       - `sendTargetDL`: Set a custom targetDL to send to the miners
       - `prio`: defines which upstream should have the higher priority when two blocks appear within the same max scan time. Defaults to 10.
       - `sendMiningSoftwareName`: When set to true send the mining software name as well on submit nonce requests.
-      - `accountIdToTargetDL`: accountId -> targetDL (array), override the upstream-wide configured targetDL for specific account ids.
+      - `accountIdToTargetDL`: accountId -> targetDL (object), override the upstream-wide configured targetDL for specific account ids.
 - `listenAddr`: a string representation of the address and port the proxy should listen on (**required**)
 
 ## Per miner maxScanTime
