@@ -76,6 +76,7 @@ The config file currently consists of these config options:
       - `minerName`: Set a custom miner name
       - `sendTargetDL`: Set a custom targetDL to send to the miners
       - `prio`: defines which upstream should have the higher priority when two blocks appear within the same max scan time. Defaults to 10.
+      - `sendMiningSoftwareName`: When set to true send the mining software name as well on submit nonce requests.
 - `listenAddr`: a string representation of the address and port the proxy should listen on (**required**)
 
 ## Per miner maxScanTime
