@@ -58,6 +58,7 @@ The config file currently consists of these config options:
 
 - `proxies`: Array of proxy config objects, see below (**required**)
     - `name`: The name of the proxy, must be unique (**required**)
+    - `maxScanTime`: The maximum amount of seconds each round takes to scan completely. Defaults to 30 seconds.
     - `upstreams`: Array of upstream config objects, see below (**required**)
       - `name`: The name of the upstream, must be unique (**required**)
       - `url`: The upstream url, **required** for everything except hdpool
@@ -74,7 +75,6 @@ The config file currently consists of these config options:
       - `historicalRoundsToKeep`: By default keep 720 rounds of historical stats, overwrite here
       - `minerName`: Set a custom miner name
       - `sendTargetDL`: Set a custom targetDL to send to the miners
-      - `maxScanTime`: The maximum amount of seconds each round takes to scan completely. Defaults to 30 seconds.
       - `prio`: defines which upstream should have the higher priority when two blocks appear within the same max scan time. Defaults to 10.
 - `listenAddr`: a string representation of the address and port the proxy should listen on (**required**)
 
