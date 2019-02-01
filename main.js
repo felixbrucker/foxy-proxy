@@ -95,7 +95,7 @@ async function init() {
       localServer.listen(listenPort, config.listenHost);
       result.server = localServer;
     } else {
-      endpoint = `/${encodeURIComponent(proxyConfig.name.toLowerCase().replace(' ', '-'))}`;
+      endpoint = `/${encodeURIComponent(proxyConfig.name.toLowerCase().replace(/ /g, '-'))}`;
       const endpointWithScanTime = `${endpoint}/:maxScanTime`;
       router.get(`${endpoint}/burst`, handleGet);
       router.post(`${endpoint}/burst`, handlePost);
