@@ -4,6 +4,7 @@ const bodyParser = require('koa-bodyparser');
 const Router = require('koa-router');
 const http = require('http');
 const IO = require('socket.io');
+const moment = require('moment');
 const database = require('./models');
 const Config = require('./lib/config');
 const Proxy = require('./lib/proxy');
@@ -12,15 +13,7 @@ const version = require('./lib/version');
 
 const config = new Config('config.yaml');
 
-const upstreamConfigs = config.upstreams.map(upstream => {
-  const copy = JSON.parse(JSON.stringify(upstream));
-  copy.roundStart = new Date();
-  copy.miningInfo = {height: 0};
-  copy.deadlines = {};
-  copy.miners = {};
-
-  return copy;
-});
+const proxyConfigs = config.proxies.map(proxyConfig => JSON.parse(JSON.stringify(proxyConfig)));
 
 async function init() {
   // sync() creates missing tables
@@ -33,15 +26,16 @@ async function init() {
   app.use(json());
   app.use(bodyParser());
 
-  const proxies = await Promise.all(upstreamConfigs.map(async (upstreamConfig, index) => {
-    const proxy = new Proxy(upstreamConfig);
+  const proxies = await Promise.all(proxyConfigs.map(async (proxyConfig, index) => {
+    const proxy = new Proxy(proxyConfig);
     await proxy.init();
 
     function handleGet(ctx) {
+      const maxScanTime = ctx.params.maxScanTime && parseInt(ctx.params.maxScanTime, 10) || null;
       const requestType = ctx.query.requestType;
       switch (requestType) {
         case 'getMiningInfo':
-          ctx.body = proxy.getMiningInfo();
+          ctx.body = proxy.getMiningInfo(maxScanTime);
           break;
         default:
           console.log(ctx.request);
@@ -56,16 +50,14 @@ async function init() {
     }
 
     async function handlePost(ctx) {
+      const maxScanTime = ctx.params.maxScanTime && parseInt(ctx.params.maxScanTime, 10) || null;
       const requestType = ctx.query.requestType;
       switch (requestType) {
         case 'getMiningInfo':
-          ctx.body = proxy.getMiningInfo();
+          ctx.body = proxy.getMiningInfo(maxScanTime);
           break;
         case 'submitNonce':
           await proxy.handleSubmitNonce(ctx);
-          break;
-        case 'scanProgress':
-          await proxy.handleScanProgress(ctx);
           break;
         default:
           console.log(ctx.request);
@@ -91,8 +83,11 @@ async function init() {
       localApp.use(json());
       localApp.use(bodyParser());
       endpoint = '';
-      localRouter.get('/burst', handleGet);
-      localRouter.post('/burst', handlePost);
+      const endpointWithScanTime = '/:maxScanTime';
+      localRouter.get(`${endpoint}/burst`, handleGet);
+      localRouter.post(`${endpoint}/burst`, handlePost);
+      localRouter.get(`${endpointWithScanTime}/burst`, handleGet);
+      localRouter.post(`${endpointWithScanTime}/burst`, handlePost);
       localApp.use(localRouter.routes());
       localApp.use(localRouter.allowedMethods());
       const localServer = http.createServer(localApp.callback());
@@ -101,12 +96,15 @@ async function init() {
       localServer.listen(listenPort, config.listenHost);
       result.server = localServer;
     } else {
-      endpoint = `/${encodeURIComponent(upstreamConfig.name.toLowerCase().replace(' ', '-'))}`;
+      endpoint = `/${encodeURIComponent(proxyConfig.name.toLowerCase().replace(/ /g, '-'))}`;
+      const endpointWithScanTime = `${endpoint}/:maxScanTime`;
       router.get(`${endpoint}/burst`, handleGet);
       router.post(`${endpoint}/burst`, handlePost);
+      router.get(`${endpointWithScanTime}/burst`, handleGet);
+      router.post(`${endpointWithScanTime}/burst`, handlePost);
     }
 
-    console.log(`${new Date().toISOString()} | ${upstreamConfig.name} | ${proxy.upstream.isBHD ? 'BHD' : 'Burst'} proxy in ${upstreamConfig.mode} mode configured and reachable via http://${listenAddr}${endpoint}`);
+    console.log(`${moment().format('YYYY-MM-DD HH:mm:ss.SSS')} | ${proxyConfig.name} | Proxy configured and reachable via http://${listenAddr}${endpoint}`);
 
     return result;
   }));
@@ -136,7 +134,7 @@ async function init() {
     io.emit('stats', stats);
   });
 
-  console.log(`${new Date().toISOString()} | BHD-Burst-Proxy ${version} initialized`);
+  console.log(`${moment().format('YYYY-MM-DD HH:mm:ss.SSS')} | BHD-Burst-Proxy ${version} initialized`);
 }
 
 init();
