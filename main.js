@@ -4,6 +4,7 @@ const bodyParser = require('koa-bodyparser');
 const Router = require('koa-router');
 const http = require('http');
 const IO = require('socket.io');
+const moment = require('moment');
 const database = require('./models');
 const Config = require('./lib/config');
 const Proxy = require('./lib/proxy');
@@ -103,7 +104,7 @@ async function init() {
       router.post(`${endpointWithScanTime}/burst`, handlePost);
     }
 
-    console.log(`${new Date().toISOString()} | ${proxyConfig.name} | Proxy configured and reachable via http://${listenAddr}${endpoint}`);
+    console.log(`${moment().format('YYYY-MM-DD HH:mm:ss.SSS')} | ${proxyConfig.name} | Proxy configured and reachable via http://${listenAddr}${endpoint}`);
 
     return result;
   }));
@@ -133,7 +134,7 @@ async function init() {
     io.emit('stats', stats);
   });
 
-  console.log(`${new Date().toISOString()} | BHD-Burst-Proxy ${version} initialized`);
+  console.log(`${moment().format('YYYY-MM-DD HH:mm:ss.SSS')} | BHD-Burst-Proxy ${version} initialized`);
 }
 
 init();
