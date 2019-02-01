@@ -12,6 +12,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@grpc/proto-loader": "^0.4.0",
+    "big-integer": "^1.6.41",
     "bignumber.js": "^8.0.1",
     "bytes": "^3.0.0",
     "grpc": "^1.18.0",
