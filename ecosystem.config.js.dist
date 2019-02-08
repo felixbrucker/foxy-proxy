@@ -4,7 +4,7 @@ module.exports = {
       name: 'bhd-burst-proxy',
       script: './main.js',
       watch: true,
-      ignore_watch: ['db.sqlite', 'node_modules', '.git'],
+      ignore_watch: ['db.sqlite', 'db.sqlite-journal', 'node_modules', '.git'],
     }
   ]
 };
