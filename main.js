@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const Koa = require('koa');
 const json = require('koa-json');
 const bodyParser = require('koa-bodyparser');
@@ -11,7 +13,7 @@ const Proxy = require('./lib/proxy');
 const eventBus = require('./lib/event-bus');
 const version = require('./lib/version');
 
-const config = new Config('config.yaml');
+const config = new Config();
 
 const proxyConfigs = config.proxies.map(proxyConfig => JSON.parse(JSON.stringify(proxyConfig)));
 
