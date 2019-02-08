@@ -9,12 +9,24 @@ BHD-Burst-Proxy
 
 ## Setup
 
+### With git
+
 ```bash
 git clone https://github.com/felixbrucker/bhd-burst-proxy
 cd bhd-burst-proxy
 npm ci
 npm start
 ```
+
+### With npm
+
+```bash
+npm i -g bhd-burst-proxy
+bhd-burst-proxy
+```
+
+----
+
 This will download the proxy, install its dependencies and setup the default config with some example upstream configs.
 Edit the created `config.yaml` file so that your desired proxy/proxies and upstream(s) are configured. More on the valid config options below.
 Make sure you do not break the yaml format or the file can not be read correctly.
@@ -24,11 +36,14 @@ Make sure you do not break the yaml format or the file can not be read correctly
 I personally use pm2 to manage my nodejs based apps. An example ecosystem.config.js has been included. Just `cp ecosystem.config.js.dist ecosystem.config.js`.
 Then just use `pm2 start ecosystem.config.js`.
 To startup pm2 on boot use `pm2 save` to save the current running config and `pm2 startup` to startup pm2 on boot.
+This will only work when installed via git.
 
 ## Updating the proxy
 
 When installed as a git repository just `git pull`.
 If the changes have new dependencies required one needs to execute `npm ci` again as well before starting the proxy.
+
+When installed via npm just run `npm update -g bhd-burst-proxy`
 
 ## BHD wallet bugs and quirks to be aware of
 
