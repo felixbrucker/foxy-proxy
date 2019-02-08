@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+const Config = require('../lib/config');
 
 const useSSL = process.env.NODE_ENV === 'production';
 const basename = path.basename(module.filename);
@@ -9,7 +10,9 @@ const db = {};
 let isInitialized = false;
 
 function init() {
-  const databaseUrl = process.env.DATABASE_URL || 'sqlite:db/db.sqlite';
+  const sqliteFilePath = Config.detectFilePath('db.sqlite');
+  migrateDbPath(sqliteFilePath);
+  const databaseUrl = process.env.DATABASE_URL || `sqlite:${sqliteFilePath}`;
   const isPostgres = databaseUrl.indexOf('postgres') !== -1;
   let sequelizeConfig = {
     dialect: 'postgres',
@@ -23,6 +26,7 @@ function init() {
   if (!isPostgres) {
     sequelizeConfig = {
       dialect: 'sqlite',
+      storage: sqliteFilePath,
       logging: false,
       operatorsAliases: false, // Do not use deprecated operator aliases ($gte etc), disable warning here
     };
@@ -44,6 +48,16 @@ function init() {
   });
 
   db.sequelize = sequelize;
+}
+
+function migrateDbPath(newPath) {
+  const oldPath = 'db/db.sqlite';
+  if (!fs.existsSync(oldPath)) {
+    return;
+  }
+
+  fs.renameSync(oldPath, newPath);
+  fs.rmdirSync('db');
 }
 
 db.Sequelize = Sequelize;
