@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const Config = require('../lib/config');
+const util = require('../lib/util');
 
 const useSSL = process.env.NODE_ENV === 'production';
 const basename = path.basename(module.filename);
@@ -56,6 +57,7 @@ function migrateDbPath(newPath) {
     return;
   }
 
+  util.ensureFilePathExists(newPath);
   fs.renameSync(oldPath, newPath);
   fs.rmdirSync('db');
 }
