@@ -29,7 +29,7 @@
     "sequelize": "^4.41.2",
     "socket.io": "^2.2.0",
     "sqlite3": "^4.0.4",
-    "superagent": "^4.0.0-beta.5",
+    "superagent": "^4.1.0",
     "ws": "^6.1.2"
   },
   "bin": {
