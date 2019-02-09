@@ -3,6 +3,7 @@ BHD-Burst-Proxy
 
 [![Software License](https://img.shields.io/badge/license-GPL--3.0-brightgreen.svg?style=flat-square)](LICENSE)
 [![npm](https://img.shields.io/npm/v/bhd-burst-proxy.svg?style=flat-square)](https://www.npmjs.com/package/bhd-burst-proxy)
+[![docker](https://img.shields.io/docker/pulls/felixbrucker/bhd-burst-proxy.svg?style=flat-square)](https://hub.docker.com/r/felixbrucker/bhd-burst-proxy)
 
 ## Prerequisites
 
@@ -25,6 +26,37 @@ npm start
 npm i -g bhd-burst-proxy
 bhd-burst-proxy
 ```
+
+### With docker
+
+A docker image based on alpine linux is built automatically on every commit to master as well as on tags.
+
+```bash
+latest : Latest master build of the proxy
+1.3.0, 1.3, 1 : Version 1.3.0 of the proxy
+```
+
+To run the proxy on the fly use:
+
+```bash
+docker run --volume /path/to/conf/dir:/conf -p 12345:12345 --name bhd-burst-proxy --rm felixbrucker/bhd-burst-proxy
+```
+
+Or set it up via compose as a service:
+
+```bash
+version: '2'
+services:
+  app:
+    image: felixbrucker/bhd-burst-proxy
+    restart: always
+    volumes:
+      - /path/to/conf/dir:/conf
+    ports:
+      - "12345:12345"
+```
+
+Be sure to edit the `config.yaml` to listen on `0.0.0.0` for docker.
 
 ----
 
@@ -51,12 +83,20 @@ Then just use `pm2 start ecosystem.config.js`.
 To startup pm2 on boot use `pm2 save` to save the current running config and `pm2 startup` to startup pm2 on boot.
 This will only work when installed via git.
 
+Alternatively docker (tag) based deployments with automatic updates through [watchtower](https://github.com/v2tec/watchtower) can be used as well.
+
 ## Updating the proxy
 
+### Git
 When installed as a git repository just `git pull`.
 If the changes have new dependencies required one needs to execute `npm ci` again as well before starting the proxy.
 
+### NPM
 When installed via npm just run `npm update -g bhd-burst-proxy`
+
+### Docker
+When using docker just pull the latest image or tag you want to update to and replace the running container.
+This can be automated via [watchtower](https://github.com/v2tec/watchtower).
 
 ## BHD wallet bugs and quirks to be aware of
 
