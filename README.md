@@ -166,6 +166,10 @@ Currently stats are only available via a socket.io endpoint on the `listenAddr` 
 - Burst: BURST-N5P2-3ETU-7LXK-DTU3X
 - BHD: 382huZpCbisipKsLWTyQoPeWcpeeBRVdFF
 
+## Changelog
+
+A Changelog can be found here: https://github.com/felixbrucker/bhd-burst-proxy/blob/master/History.md
+
 ## License
 
 GNU GPLv3 (see LICENSE)
