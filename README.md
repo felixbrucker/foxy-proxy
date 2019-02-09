@@ -32,6 +32,18 @@ This will download the proxy, install its dependencies and setup the default con
 Edit the created `config.yaml` file so that your desired proxy/proxies and upstream(s) are configured. More on the valid config options below.
 Make sure you do not break the yaml format or the file can not be read correctly.
 
+## CLI parameters
+
+The proxy can be setup with a custom config and db file path, see `--help` for more info:
+
+```bash
+Options:
+  -V, --version           output the version number
+  --config <config.yaml>  The custom config.yaml file path
+  --db <db.sqlite>        The custom db.sqlite file path
+  -h, --help              output usage information
+```
+
 ## Running the proxy in production
 
 I personally use pm2 to manage my nodejs based apps. An example ecosystem.config.js has been included. Just `cp ecosystem.config.js.dist ecosystem.config.js`.
