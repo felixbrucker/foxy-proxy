@@ -5,7 +5,6 @@ const http = require('http');
 const IO = require('socket.io');
 const json = require('koa-json');
 const Koa = require('koa');
-const moment = require('moment');
 const program = require('commander');
 const Router = require('koa-router');
 const Config = require('./lib/config');
@@ -14,11 +13,14 @@ const eventBus = require('./lib/event-bus');
 const Proxy = require('./lib/proxy');
 const store = require('./lib/store');
 const version = require('./lib/version');
+const Dashboard = require('./lib/cli-dashboard');
+const logger = require('./lib/logger');
 
 program
   .version(version)
   .option('--config <config.yaml>', 'The custom config.yaml file path')
   .option('--db <db.sqlite>', 'The custom db.sqlite file path')
+  .option('--live', 'Show a live dashboard with stats')
   .parse(process.argv);
 
 if (program.config) {
@@ -26,6 +28,11 @@ if (program.config) {
 }
 if (program.db) {
   store.setDbFilePath(program.db);
+}
+if (program.live) {
+  store.setUseLiveDashboard(true);
+  const dashboard = new Dashboard();
+  dashboard.start();
 }
 
 const config = new Config();
@@ -55,7 +62,7 @@ async function init() {
           ctx.body = proxy.getMiningInfo(maxScanTime);
           break;
         default:
-          console.log(ctx.request);
+          eventBus.publish('log/info', `${proxyConfig.name} | unknown requestType ${requestType} with data: ${JSON.stringify(ctx.params)}. Please message this info to the creator of this software.`);
           ctx.status = 400;
           ctx.body = {
             error: {
@@ -77,7 +84,7 @@ async function init() {
           await proxy.handleSubmitNonce(ctx);
           break;
         default:
-          console.log(ctx.request);
+          eventBus.publish('log/info', `${proxyConfig.name} | unknown requestType ${requestType} with data: ${JSON.stringify(ctx.params)}. Please message this info to the creator of this software.`);
           ctx.status = 400;
           ctx.body = {
             error: {
@@ -121,7 +128,7 @@ async function init() {
       router.post(`${endpointWithScanTime}/burst`, handlePost);
     }
 
-    console.log(`${moment().format('YYYY-MM-DD HH:mm:ss.SSS')} | ${proxyConfig.name} | Proxy configured and reachable via http://${listenAddr}${endpoint}`);
+    eventBus.publish('log/info', `${proxyConfig.name} | Proxy configured and reachable via http://${listenAddr}${endpoint}`);
 
     return result;
   }));
@@ -151,7 +158,10 @@ async function init() {
     io.emit('stats', stats);
   });
 
-  console.log(`${moment().format('YYYY-MM-DD HH:mm:ss.SSS')} | BHD-Burst-Proxy ${version} initialized`);
+  store.setProxies(proxies);
+
+  eventBus.publish('log/info', `BHD-Burst-Proxy ${version} initialized`);
+  eventBus.publish('stats/new');
 }
 
 init();
