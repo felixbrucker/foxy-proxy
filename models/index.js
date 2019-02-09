@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const Config = require('../lib/config');
+const store = require('../lib/store');
 const util = require('../lib/util');
 
 const useSSL = process.env.NODE_ENV === 'production';
@@ -11,7 +11,7 @@ const db = {};
 let isInitialized = false;
 
 function init() {
-  const sqliteFilePath = Config.detectFilePath('db.sqlite');
+  const sqliteFilePath = store.getDbFilePath();
   migrateDbPath(sqliteFilePath);
   const databaseUrl = process.env.DATABASE_URL || `sqlite:${sqliteFilePath}`;
   const isPostgres = databaseUrl.indexOf('postgres') !== -1;

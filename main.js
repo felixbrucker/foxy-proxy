@@ -1,17 +1,32 @@
 #!/usr/bin/env node
 
-const Koa = require('koa');
-const json = require('koa-json');
 const bodyParser = require('koa-bodyparser');
-const Router = require('koa-router');
 const http = require('http');
 const IO = require('socket.io');
+const json = require('koa-json');
+const Koa = require('koa');
 const moment = require('moment');
-const database = require('./models');
+const program = require('commander');
+const Router = require('koa-router');
 const Config = require('./lib/config');
-const Proxy = require('./lib/proxy');
+const database = require('./models');
 const eventBus = require('./lib/event-bus');
+const Proxy = require('./lib/proxy');
+const store = require('./lib/store');
 const version = require('./lib/version');
+
+program
+  .version(version)
+  .option('--config <config.yaml>', 'The custom config.yaml file path')
+  .option('--db <db.sqlite>', 'The custom db.sqlite file path')
+  .parse(process.argv);
+
+if (program.config) {
+  store.setConfigFilePath(program.config);
+}
+if (program.db) {
+  store.setDbFilePath(program.db);
+}
 
 const config = new Config();
 
