@@ -73,6 +73,7 @@ Options:
   -V, --version           output the version number
   --config <config.yaml>  The custom config.yaml file path
   --db <db.sqlite>        The custom db.sqlite file path
+  --live                  Show a live dashboard with stats
   -h, --help              output usage information
 ```
 
