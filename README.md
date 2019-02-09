@@ -76,6 +76,10 @@ Options:
   -h, --help              output usage information
 ```
 
+## Config examples
+
+Some config examples can be found here: https://github.com/felixbrucker/bhd-burst-proxy/wiki
+
 ## Running the proxy in production
 
 I personally use pm2 to manage my nodejs based apps. An example ecosystem.config.js has been included. Just `cp ecosystem.config.js.dist ecosystem.config.js`.
