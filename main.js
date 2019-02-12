@@ -145,7 +145,7 @@ async function init() {
     client.emit('stats', stats);
     client.on('stats/get', async () => {
       const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
-      client.emit('stats', stats);
+      client.emit('stats/init', stats);
     });
   });
 
@@ -156,6 +156,18 @@ async function init() {
     }
     const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
     io.emit('stats', stats);
+  });
+
+  eventBus.subscribe('stats/proxy', (proxyName, proxyStats) => {
+    io.emit('stats/proxy', proxyName, proxyStats);
+  });
+
+  eventBus.subscribe('stats/current-round', (upstreamName, currentRoundStats) => {
+    io.emit('stats/current-round', upstreamName, currentRoundStats);
+  });
+
+  eventBus.subscribe('stats/historical', (upstreamName, historicalStats) => {
+    io.emit('stats/historical', upstreamName, historicalStats);
   });
 
   store.setProxies(proxies);
