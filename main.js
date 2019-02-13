@@ -141,12 +141,12 @@ async function init() {
   server.listen(config.listenPort, config.listenHost);
 
   io.on('connection', async client => {
-    const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
-    client.emit('stats', stats);
     client.on('stats/get', async () => {
       const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
       client.emit('stats/init', stats);
     });
+    const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
+    client.emit('stats', stats);
   });
 
   eventBus.subscribe('stats/new', async () => {
