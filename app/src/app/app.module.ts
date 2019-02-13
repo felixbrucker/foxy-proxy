@@ -9,7 +9,7 @@ import {
   MatButtonModule,
   MatCardModule,
   MatIconModule,
-  MatProgressBarModule, MatToolbarModule
+  MatProgressBarModule, MatTabsModule, MatToolbarModule
 } from '@angular/material';
 import { NetDiffChartComponent } from './net-diff-chart/net-diff-chart.component';
 import { CurrentRoundInfoComponent } from './current-round-info/current-round-info.component';
@@ -43,6 +43,7 @@ import { ProxyInfoComponent } from './proxy-info/proxy-info.component';
     MatIconModule,
     MatProgressBarModule,
     MatToolbarModule,
+    MatTabsModule,
     FlexLayoutModule,
   ],
   providers: [],

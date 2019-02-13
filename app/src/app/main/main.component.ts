@@ -9,11 +9,15 @@ import {StatsService} from '../stats.service';
 export class MainComponent implements OnInit {
 
   private stats = [];
+  private currentProxy: any;
 
   constructor(private statsService: StatsService) { }
 
   ngOnInit() {
     this.statsService.getStatsObservable().subscribe((stats => {
+      if (this.stats.length === 0 && stats.length !== 0) {
+        this.setCurrentProxy(stats[0]);
+      }
       this.stats = stats;
     }));
     this.statsService.init();
@@ -21,5 +25,13 @@ export class MainComponent implements OnInit {
 
   getStats() {
     return this.stats;
+  }
+
+  getCurrentProxy() {
+    return this.currentProxy;
+  }
+
+  setCurrentProxy(currentProxy) {
+    this.currentProxy = currentProxy;
   }
 }
