@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import * as moment from 'moment';
+import {Observable, Subscription} from 'rxjs';
+import {Duration} from 'moment';
 
 @Component({
   selector: 'app-proxy-info',
@@ -12,9 +14,15 @@ export class ProxyInfoComponent implements OnInit {
   @Input() maxScanTime: number;
   @Input() miners: any;
 
+  private scanProgress = 100;
+  private counter: Observable<any>;
+  private subscription: Subscription;
+
   constructor() { }
 
   ngOnInit() {
+    this.counter = Observable.interval(1000);
+    this.subscription = this.counter.subscribe(() => this.scanProgress = this.getScanProgress());
   }
 
   getScanProgress() {
