@@ -12,6 +12,7 @@
     <span style="float: right;">
       <span style="display: flex">
         <mat-progress-bar
+          [ngClass]="{'green': scanProgress === 100}"
           style="width: 120px; height: 10px; border-radius: 8px; margin-top: 3px"
           [color]="primary"
           [mode]="determinate"
