@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import * as bytes from 'bytes';
 import * as moment from 'moment';
-import {Observable, Subscription} from 'rxjs/Rx';
+import {Component, Input, OnInit} from '@angular/core';
 import {Duration} from 'moment';
+import {Observable, Subscription} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-current-round-info',
@@ -13,6 +14,7 @@ export class CurrentRoundInfoComponent implements OnInit {
   @Input() currentBlock: number;
   @Input() roundStart: string;
   @Input() netDiff: number;
+  @Input() estimatedCapacityInTB: number;
   @Input() bestDL: string;
 
   private counter: Observable<Duration>;
@@ -44,5 +46,9 @@ export class CurrentRoundInfoComponent implements OnInit {
     }
 
     return `${duration.hours().toString().padStart(2, '0')}:${duration.minutes().toString().padStart(2, '0')}:${duration.seconds().toString().padStart(2, '0')}`;
+  }
+
+  getEstimatedCapacity() {
+    return bytes(this.estimatedCapacityInTB * Math.pow(1024, 4));
   }
 }
