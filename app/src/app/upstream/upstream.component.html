@@ -1,11 +1,15 @@
 <div class="flex-container-row">
   <div style="margin-right: 10px">
-    <app-upstream-info [name]="upstream.name" style="margin-right: 10px"></app-upstream-info>
+    <app-upstream-info
+      [name]="upstream.name"
+      [estimatedCapacityInTB]="upstream.estimatedCapacityInTB"
+      [historicalRounds]="upstream.historicalRounds"
+      style="margin-right: 10px">
+    </app-upstream-info>
     <app-current-round-info [bestDL]="upstream.bestDL"
                             [currentBlock]="upstream.blockNumber"
                             [netDiff]="upstream.netDiff"
-                            [roundStart]="upstream.roundStart"
-                            [estimatedCapacityInTB]="upstream.estimatedCapacityInTB">
+                            [roundStart]="upstream.roundStart">
     </app-current-round-info>
   </div>
   <app-net-diff-chart
