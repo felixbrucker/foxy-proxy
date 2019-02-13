@@ -11,6 +11,7 @@ export class ProxyInfoComponent implements OnInit {
 
   @Input() name: string;
   @Input() maxScanTime: number;
+  @Input() totalCapacity: number;
   @Input() miners: any;
 
   private scanProgress = 100;
@@ -29,13 +30,20 @@ export class ProxyInfoComponent implements OnInit {
     const scanProgress = miners.map(miner => {
       const maxScanTime = miner.maxScanTime || this.maxScanTime;
       if (!miner.startedAt) {
-        return 1;
+        return 1  / miners.length;
       }
       const elapsed = moment().diff(miner.startedAt, 'seconds');
 
-      return Math.min(1, elapsed/maxScanTime);
-    }).reduce((acc, curr) => acc + curr, 0) / miners.length;
+      const progress = Math.min(1, elapsed/maxScanTime);
+      if (!miner.capacity) {
+        return progress  / miners.length;
+      }
+      const capacityShare = miner.capacity / this.totalCapacity;
+      const weightedProgress = capacityShare * progress;
 
-    return Math.round(scanProgress * 100);
+      return weightedProgress;
+    }).reduce((acc, curr) => acc + curr, 0);
+
+    return Math.min(Math.round(scanProgress * 100), 100);
   }
 }
