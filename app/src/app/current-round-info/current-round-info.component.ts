@@ -45,4 +45,8 @@ export class CurrentRoundInfoComponent implements OnInit {
 
     return `${duration.hours().toString().padStart(2, '0')}:${duration.minutes().toString().padStart(2, '0')}:${duration.seconds().toString().padStart(2, '0')}`;
   }
+
+  getElapsedSinceStart() {
+    return this.elapsedSinceStart;
+  }
 }

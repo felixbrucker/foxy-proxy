@@ -24,6 +24,8 @@
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-json": "^2.0.2",
+    "koa-send": "^5.0.0",
+    "koa-static": "^5.0.0",
     "koa-router": "^7.4.0",
     "log-update": "^2.3.0",
     "mkdirp": "^0.5.1",
@@ -41,7 +43,8 @@
   },
   "main": "main.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "node main.js",
+    "build": "cd app && ng build --optimization=true --prod=true --sourceMap=false"
   },
   "engines": {
     "node": "^10.0.0"

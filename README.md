@@ -110,7 +110,7 @@ To do so, just append the preferred maxScanTime in seconds to the url, like so: 
 
 ## Stats
 
-Currently stats are only available via a socket.io endpoint on the `listenAddr` address and port and via the `--live` cli parameter. An embedded web ui might be added in the future.
+An embedded web ui is available on the `listenAddr` address and port. Alternatively some basic live stats are available via the `--live` cli parameter.
 
 ## Donate
 

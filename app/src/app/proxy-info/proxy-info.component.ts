@@ -14,7 +14,7 @@ export class ProxyInfoComponent implements OnInit {
   @Input() totalCapacity: number;
   @Input() miners: any;
 
-  private scanProgress = 100;
+  public scanProgress = 100;
   private counter: Observable<any>;
   private subscription: Subscription;
 

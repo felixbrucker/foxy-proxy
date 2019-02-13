@@ -5,8 +5,10 @@ const http = require('http');
 const IO = require('socket.io');
 const json = require('koa-json');
 const Koa = require('koa');
+const koaStatic = require('koa-static');
 const program = require('commander');
 const Router = require('koa-router');
+const send = require('koa-send');
 const Config = require('./lib/config');
 const database = require('./models');
 const eventBus = require('./lib/event-bus');
@@ -46,6 +48,7 @@ async function init() {
   });
 
   const app = new Koa();
+  app.use(koaStatic(`${__dirname}/app/dist`));
   const router = new Router();
   app.use(json());
   app.use(bodyParser());
@@ -136,6 +139,11 @@ async function init() {
   app.use(router.routes());
   app.use(router.allowedMethods());
 
+  // redirect everything else to index.html
+  app.use(async ctx => {
+    await send(ctx, 'app/dist/index.html');
+  });
+
   const server = http.createServer(app.callback());
   const io = IO(server);
   server.listen(config.listenPort, config.listenHost);
@@ -172,7 +180,7 @@ async function init() {
 
   store.setProxies(proxies);
 
-  eventBus.publish('log/info', `BHD-Burst-Proxy ${version} initialized`);
+  eventBus.publish('log/info', `BHD-Burst-Proxy ${version} initialized. The WebUI is reachable on http://${config.listenAddr}`);
   eventBus.publish('stats/new');
 }
 
