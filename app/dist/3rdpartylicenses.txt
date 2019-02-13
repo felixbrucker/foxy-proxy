@@ -1171,6 +1171,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+@angular/material/toolbar
+
+@angular/material/icon
+
 zone.js
 MIT
 The MIT License

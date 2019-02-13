@@ -1,4 +1,10 @@
-<div>navbar here maybe</div>
+<mat-toolbar color="primary" style="margin-bottom: 10px">
+  <mat-toolbar-row>
+    <span>BHD-Burst-Proxy</span>
+    <span style="flex: 1 1 auto;"></span>
+    <mat-icon class="example-icon">favorite</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
 <div class="flex-container">
   <app-proxy *ngFor="let proxy of getStats()" [proxy]="proxy"></app-proxy>
 </div>
