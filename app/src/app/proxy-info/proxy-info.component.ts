@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import {Observable, Subscription} from 'rxjs';
-import {Duration} from 'moment';
 
 @Component({
   selector: 'app-proxy-info',
