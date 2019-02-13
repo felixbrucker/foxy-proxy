@@ -8,8 +8,21 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <span style="float: left;">Max scan time</span>
-    <span style="float: right;">{{maxScanTime}}</span>
+    <span style="float: left;">Scan progress</span>
+    <span style="float: right;">
+      <span style="display: flex">
+        <mat-progress-bar
+          style="width: 120px; height: 10px; border-radius: 8px; margin-top: 3px"
+          [color]="primary"
+          [mode]="determinate"
+          [value]="getScanProgress()">
+      </mat-progress-bar>
+      &nbsp;{{getScanProgress()}}%
+      </span>
+    </span>
+    <div style="clear: both;"></div>
+    <span style="float: left;">Default max scan time</span>
+    <span style="float: right;">{{maxScanTime}} sec</span>
     <div style="clear: both;"></div>
   </mat-card-content>
 </mat-card>

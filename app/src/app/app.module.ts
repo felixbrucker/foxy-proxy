@@ -5,7 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatListModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatProgressBarModule
+} from '@angular/material';
 import { NetDiffChartComponent } from './net-diff-chart/net-diff-chart.component';
 import { CurrentRoundInfoComponent } from './current-round-info/current-round-info.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -36,8 +41,7 @@ import { ProxyInfoComponent } from './proxy-info/proxy-info.component';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatListModule,
-    MatGridListModule,
+    MatProgressBarModule,
     FlexLayoutModule,
   ],
   providers: [],
