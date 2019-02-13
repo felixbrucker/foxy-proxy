@@ -1,4 +1,4 @@
 <div>navbar here maybe</div>
-<div>
-  <app-proxy *ngFor="let proxy of stats" [proxy]="proxy"></app-proxy>
+<div class="flex-container">
+  <app-proxy *ngFor="let proxy of getStats()" [proxy]="proxy"></app-proxy>
 </div>

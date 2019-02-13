@@ -18,4 +18,8 @@ export class MainComponent implements OnInit {
     }));
     this.statsService.init();
   }
+
+  getStats() {
+    return this.stats;
+  }
 }

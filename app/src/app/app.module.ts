@@ -14,6 +14,7 @@ import { MinerStatsComponent } from './miner-stats/miner-stats.component';
 import { ProxyComponent } from './proxy/proxy.component';
 import { UpstreamComponent } from './upstream/upstream.component';
 import { UpstreamInfoComponent } from './upstream-info/upstream-info.component';
+import { ProxyInfoComponent } from './proxy-info/proxy-info.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UpstreamInfoComponent } from './upstream-info/upstream-info.component';
     MinerStatsComponent,
     ProxyComponent,
     UpstreamComponent,
-    UpstreamInfoComponent
+    UpstreamInfoComponent,
+    ProxyInfoComponent
   ],
   imports: [
     BrowserModule,

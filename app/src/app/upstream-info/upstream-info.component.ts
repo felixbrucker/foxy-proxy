@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class UpstreamInfoComponent implements OnInit {
 
-  @Input() upstream: any;
+  @Input() name: string;
 
   constructor() { }
 
