@@ -1,0 +1,21 @@
+<div>
+  <mat-grid-list cols="12" rowHeight="380px">
+    <mat-grid-tile [colspan]="1" [rowspan]="proxy.upstreamStats.length">
+      Proxy: {{proxy.name}}
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="9"
+                   [rowspan]="1">
+      <app-upstream [upstream]="proxy.upstreamStats[0]"></app-upstream>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="proxy.upstreamStats.length" style="margin-left: -40px">
+      <app-miner-stats [miner]="proxy.miner"
+                       [totalCapacity]="proxy.totalCapacity">
+      </app-miner-stats>
+    </mat-grid-tile>
+    <mat-grid-tile *ngFor="let upstream of proxy.upstreamStats.slice(1)"
+                   [colspan]="9"
+                   [rowspan]="1">
+      <app-upstream [upstream]="upstream"></app-upstream>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

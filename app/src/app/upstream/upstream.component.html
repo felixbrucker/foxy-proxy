@@ -1,0 +1,17 @@
+<div>
+  <div style="display: inline-block; margin-right: 10px;">
+    <app-upstream-info [upstream]="upstream" style="margin-right: 10px"></app-upstream-info>
+    <app-current-round-info [bestDL]="upstream.bestDL"
+                            [currentBlock]="upstream.blockNumber"
+                            [netDiff]="upstream.netDiff"
+                            [roundStart]="upstream.roundStart">
+    </app-current-round-info>
+  </div>
+  <app-net-diff-chart [historicalRounds]="upstream.historicalRounds.reverse()" style="display: inline-block; margin-right: 10px">
+  </app-net-diff-chart>
+  <app-round-stats [totalRounds]="upstream.totalRounds"
+                   [roundsWithDLs]="upstream.roundsWithDLs"
+                   [roundsSubmitted]="upstream.roundsSubmitted"
+                   [roundsWon]="upstream.roundsWon" style="display: inline-block; margin-right: 10px">
+  </app-round-stats>
+</div>
