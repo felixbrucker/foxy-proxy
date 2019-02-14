@@ -26,7 +26,14 @@
       &nbsp;
     </div>
     <div *ngFor="let miner of getMiner()">
-      <span style="float: left;">{{miner.id}}</span>
+      <span style="float: left;">
+        <span class="dot"
+          [attr.positive]="getState(miner) === 2 ? true: null"
+          [attr.intermediary]="getState(miner) === 1 ? true: null"
+          [attr.negative]="getState(miner) === 0 ? true: null">
+        </span>
+        {{miner.id}}
+      </span>
       <span style="float: right;">
         <span style="display: flex">
           <mat-progress-bar

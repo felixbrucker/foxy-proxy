@@ -1,3 +1,20 @@
 .green ::ng-deep .mat-progress-bar-fill::after {
   background-color: rgba(33, 224, 132, 0.5);
 }
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+span[positive] {
+  background-color: rgb(75, 210, 143);
+}
+span[intermediary] {
+  background-color: rgb(255, 170, 0);
+}
+span[negative] {
+  background-color: rgb(255, 77, 77);
+}

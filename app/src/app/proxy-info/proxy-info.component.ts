@@ -14,6 +14,7 @@ export class ProxyInfoComponent implements OnInit {
   @Input() maxScanTime: number;
   @Input() totalCapacity: number;
   @Input() miners: any;
+  @Input() currentBlockHeights: any;
 
   public scanProgress = 100;
   private counter: Observable<any>;
@@ -63,5 +64,23 @@ export class ProxyInfoComponent implements OnInit {
     const elapsed = moment().diff(miner.startedAt, 'seconds');
 
     return Math.min(1, elapsed/maxScanTime) * 100;
+  }
+
+  getState(miner) {
+    const lastActiveDiffMin = moment().diff(miner.lastTimeActive, 'minutes');
+    const lastActiveError = this.currentBlockHeights.every(height => Math.abs(miner.lastBlockActive - height) > 5);
+    if (lastActiveDiffMin >= 10 && lastActiveError) {
+      return 0;
+    }
+    const lastActiveWarn = this.currentBlockHeights.some(height => {
+      const diff = Math.abs(miner.lastBlockActive - height);
+
+      return diff >= 3 && diff < 5;
+    });
+    if (lastActiveDiffMin >= 10 && lastActiveWarn) {
+      return 1;
+    }
+
+    return 2;
   }
 }

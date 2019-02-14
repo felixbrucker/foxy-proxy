@@ -14,4 +14,7 @@ export class ProxyComponent implements OnInit {
   ngOnInit() {
   }
 
+  getCurrentBlockHeights() {
+    return this.proxy.upstreamStats.map(upstream => upstream.blockNumber);
+  }
 }
