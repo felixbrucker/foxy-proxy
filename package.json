@@ -44,7 +44,8 @@
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
-    "build": "cd app && ng build --optimization=true --prod=true --sourceMap=false"
+    "build": "cd app && ng build --optimization=true --prod=true --sourceMap=false",
+    "audit-web": "cd app && npm audit"
   },
   "engines": {
     "node": "^10.0.0"
