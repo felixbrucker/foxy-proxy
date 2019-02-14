@@ -35,6 +35,7 @@ action "Publish" {
 
 action "Build Web UI" {
   uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
+  needs = ["Install Web UI"]
   args = "run build"
 }
 
@@ -42,4 +43,9 @@ action "Audit Web UI" {
   uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
   needs = ["Build Web UI"]
   args = "run audit-web"
+}
+
+action "Install Web UI" {
+  uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
+  args = "run install-web"
 }
