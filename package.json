@@ -45,7 +45,7 @@
   "scripts": {
     "start": "node main.js",
     "install-web": "cd app && npm install",
-    "build": "cd app && ng build --optimization=true --prod=true --sourceMap=false",
+    "build": "cd app && npm run build-prod",
     "audit-web": "cd app && npm audit"
   },
   "engines": {
