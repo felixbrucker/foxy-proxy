@@ -9,13 +9,12 @@ import {
   MatButtonModule,
   MatCardModule,
   MatIconModule,
-  MatProgressBarModule, MatTabsModule, MatToolbarModule
+  MatProgressBarModule, MatProgressSpinnerModule, MatTabsModule, MatToolbarModule
 } from '@angular/material';
 import { NetDiffChartComponent } from './net-diff-chart/net-diff-chart.component';
 import { CurrentRoundInfoComponent } from './current-round-info/current-round-info.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { RoundStatsComponent } from './round-stats/round-stats.component';
-import { MinerStatsComponent } from './miner-stats/miner-stats.component';
 import { ProxyComponent } from './proxy/proxy.component';
 import { UpstreamComponent } from './upstream/upstream.component';
 import { UpstreamInfoComponent } from './upstream-info/upstream-info.component';
@@ -28,7 +27,6 @@ import { ProxyInfoComponent } from './proxy-info/proxy-info.component';
     NetDiffChartComponent,
     CurrentRoundInfoComponent,
     RoundStatsComponent,
-    MinerStatsComponent,
     ProxyComponent,
     UpstreamComponent,
     UpstreamInfoComponent,
@@ -44,6 +42,7 @@ import { ProxyInfoComponent } from './proxy-info/proxy-info.component';
     MatProgressBarModule,
     MatToolbarModule,
     MatTabsModule,
+    MatProgressSpinnerModule,
     FlexLayoutModule,
   ],
   providers: [],

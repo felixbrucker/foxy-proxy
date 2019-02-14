@@ -43,23 +43,16 @@ export class ProxyInfoComponent implements OnInit {
   getScanProgress() {
     const miners = Object.keys(this.miners).map(key => this.miners[key]);
     const scanProgress = miners.map(miner => {
-      const maxScanTime = miner.maxScanTime || this.maxScanTime;
-      if (!miner.startedAt) {
-        return 1  / miners.length;
-      }
-      const elapsed = moment().diff(miner.startedAt, 'seconds');
-
-      const progress = Math.min(1, elapsed/maxScanTime);
+      const progress = this.getProgressForMiner(miner);
       if (!miner.capacity) {
-        return progress  / miners.length;
+        return progress / miners.length;
       }
       const capacityShare = miner.capacity / this.totalCapacity;
-      const weightedProgress = capacityShare * progress;
 
-      return weightedProgress;
+      return capacityShare * progress;
     }).reduce((acc, curr) => acc + curr, 0);
 
-    return Math.min(Math.round(scanProgress * 100), 100);
+    return Math.min(Math.round(scanProgress), 100);
   }
 
   getProgressForMiner(miner) {

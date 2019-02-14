@@ -1,5 +1,5 @@
 <div class="flex-container-row">
-  <div style="margin-right: 10px; margin-bottom: 10px">
+  <div style="margin: 5px;">
     <app-current-round-info [bestDL]="upstream.bestDL"
                             [currentBlock]="upstream.blockNumber"
                             [netDiff]="upstream.netDiff"
@@ -14,11 +14,12 @@
   </div>
   <app-net-diff-chart
     [historicalRounds]="upstream.historicalRounds.reverse()"
-    style="margin-right: 10px; ; margin-bottom: 10px">
+    style="margin: 5px;">
   </app-net-diff-chart>
   <app-round-stats [totalRounds]="upstream.totalRounds"
                    [roundsWithDLs]="upstream.roundsWithDLs"
                    [roundsSubmitted]="upstream.roundsSubmitted"
-                   [roundsWon]="upstream.roundsWon">
+                   [roundsWon]="upstream.roundsWon"
+                   style="margin: 5px;">
   </app-round-stats>
 </div>
