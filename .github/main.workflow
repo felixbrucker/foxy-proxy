@@ -1,6 +1,9 @@
 workflow "Build, Audit and Publish" {
   on = "push"
-  resolves = ["Publish"]
+  resolves = [
+    "Publish",
+    "Audit Web UI",
+  ]
 }
 
 action "Build" {
@@ -16,7 +19,10 @@ action "Audit" {
 
 action "Tag" {
   uses = "actions/bin/filter@9d4ef995a71b0771f438dd7438851858f4a55d0c"
-  needs = ["Audit"]
+  needs = [
+    "Audit",
+    "Audit Web UI",
+  ]
   args = "tag"
 }
 
@@ -25,4 +31,15 @@ action "Publish" {
   needs = ["Tag"]
   args = "publish --access public"
   secrets = ["NPM_AUTH_TOKEN"]
+}
+
+action "Build Web UI" {
+  uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
+  args = "run build"
+}
+
+action "Audit Web UI" {
+  uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
+  needs = ["Build Web UI"]
+  args = "run audit-web"
 }
