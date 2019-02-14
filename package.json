@@ -5,7 +5,9 @@
   "keywords": [
     "burst",
     "bhd",
-    "proxy"
+    "proxy",
+    "multi-chain",
+    "collision-free"
   ],
   "repository": "https://github.com/felixbrucker/bhd-burst-proxy.git",
   "bugs": "https://github.com/felixbrucker/bhd-burst-proxy/issues",
