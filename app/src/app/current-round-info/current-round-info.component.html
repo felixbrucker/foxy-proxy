@@ -1,0 +1,18 @@
+<mat-card style="width: 320px" class="custom-card">
+  <mat-card-header>
+    <mat-card-title>
+      <span>Current Block: {{currentBlock}}</span>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <span>Start time: {{getStartTime()}} | Elapsed: {{getElapsedSinceStart()}}</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content style="font-size: 1em">
+    <span style="float: left;">Best deadline</span>
+    <span style="float: right;">{{getBestDLString()}}</span>
+    <div style="clear: both;"></div>
+    <span style="float: left;">Difficulty</span>
+    <span style="float: right;">{{netDiff.toFixed(0)}}</span>
+    <div style="clear: both;"></div>
+  </mat-card-content>
+</mat-card>

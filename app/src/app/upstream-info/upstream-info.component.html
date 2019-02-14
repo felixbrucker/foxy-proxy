@@ -1,0 +1,21 @@
+<mat-card style="width: 320px" class="custom-card">
+  <mat-card-header>
+    <mat-card-title>
+      {{name}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      Upstream
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <span style="float: left;">Estimated Capacity</span>
+    <span style="float: right;">{{getEstimatedCapacity()}}</span>
+    <div style="clear: both;"></div>
+    <span style="float: left;">Avg DL all time</span>
+    <span style="float: right;">{{getAvgDL()}}</span>
+    <div style="clear: both;"></div>
+    <span style="float: left;">Best DL all time</span>
+    <span style="float: right;">{{getBestDL()}}</span>
+    <div style="clear: both;"></div>
+  </mat-card-content>
+</mat-card>

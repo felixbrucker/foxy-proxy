@@ -1,0 +1,25 @@
+<div class="flex-container-row">
+  <div style="margin: 5px;">
+    <app-current-round-info [bestDL]="upstream.bestDL"
+                            [currentBlock]="upstream.blockNumber"
+                            [netDiff]="upstream.netDiff"
+                            [roundStart]="upstream.roundStart"
+                            style="margin-right: 10px">
+    </app-current-round-info>
+    <app-upstream-info
+      [name]="upstream.name"
+      [estimatedCapacityInTB]="upstream.estimatedCapacityInTB"
+      [historicalRounds]="upstream.historicalRounds">
+    </app-upstream-info>
+  </div>
+  <app-net-diff-chart
+    [historicalRounds]="upstream.historicalRounds.reverse()"
+    style="margin: 5px;">
+  </app-net-diff-chart>
+  <app-round-stats [totalRounds]="upstream.totalRounds"
+                   [roundsWithDLs]="upstream.roundsWithDLs"
+                   [roundsSubmitted]="upstream.roundsSubmitted"
+                   [roundsWon]="upstream.roundsWon"
+                   style="margin: 5px;">
+  </app-round-stats>
+</div>

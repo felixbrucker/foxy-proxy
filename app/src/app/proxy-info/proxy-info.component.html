@@ -1,0 +1,51 @@
+<mat-card style="width: 320px" class="custom-card">
+  <mat-card-header>
+    <mat-card-title>
+      {{name}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      Proxy
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <span style="float: left;">Scan progress</span>
+    <span style="float: right;">
+      <span style="display: flex">
+        <mat-progress-bar
+          [ngClass]="{'green': scanProgress === 100}"
+          style="width: 120px; height: 10px; border-radius: 8px; margin-top: 3px"
+          color="primary"
+          mode="determinate"
+          [value]="scanProgress">
+      </mat-progress-bar>
+      &nbsp;{{scanProgress}}%
+      </span>
+    </span>
+    <div style="clear: both;"></div>
+    <div>
+      &nbsp;
+    </div>
+    <div *ngFor="let miner of getMiner()">
+      <span style="float: left;">{{miner.id}}</span>
+      <span style="float: right;">
+        <span style="display: flex">
+          <mat-progress-bar
+            [ngClass]="{'green': miner.progress === 100}"
+            style="width: 70px; height: 10px; border-radius: 8px; margin-top: 3px"
+            color="primary"
+            mode="determinate"
+            [value]="miner.progress">
+        </mat-progress-bar>
+        &nbsp;{{getCapacityString(miner.capacity)}}
+        </span>
+      </span>
+      <div style="clear: both;"></div>
+    </div>
+    <hr>
+    <div>
+      <span style="float: left;">Total</span>
+      <span style="float: right;">{{getCapacityString(totalCapacity)}}</span>
+      <div style="clear: both;"></div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,13 @@
+<div class="flex-container-row">
+  <div style="margin: 10px;">
+    <app-proxy-info
+      [name]="proxy.name"
+      [maxScanTime]="proxy.maxScanTime"
+      [miners]="proxy.miner"
+      [totalCapacity]="proxy.totalCapacity">
+    </app-proxy-info>
+  </div>
+  <div class="flex-container-col">
+    <app-upstream *ngFor="let upstream of proxy.upstreamStats" [upstream]="upstream" style="margin: 8px"></app-upstream>
+  </div>
+</div>
