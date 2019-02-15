@@ -1,3 +1,8 @@
+1.5.2 / 2019-02-15
+==================
+
+* Fix historical difficulty display on mobile
+
 1.5.1 / 2019-02-14
 ==================
 
