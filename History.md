@@ -1,3 +1,9 @@
+1.5.3 / 2019-02-15
+==================
+
+* Add per upstream scan progress
+* Use dark theme everywhere
+
 1.5.2 / 2019-02-15
 ==================
 
