@@ -68,12 +68,13 @@ export class ProxyInfoComponent implements OnInit {
 
   getState(miner) {
     const lastActiveDiffMin = moment().diff(miner.lastTimeActive, 'minutes');
-    const lastActiveError = this.currentBlockHeights.every(height => Math.abs(miner.lastBlockActive - height) > 7);
+    const lastBlockActive = miner.lastBlockActive ? parseInt(miner.lastBlockActive, 10) : null;
+    const lastActiveError = this.currentBlockHeights.every(height => Math.abs(lastBlockActive - height) > 7);
     if (lastActiveDiffMin >= 5 && lastActiveError) {
       return 0;
     }
     const lastActiveWarn = this.currentBlockHeights.some(height => {
-      const diff = Math.abs(miner.lastBlockActive - height);
+      const diff = Math.abs(lastBlockActive - height);
 
       return diff >= 2 && diff < 7;
     });

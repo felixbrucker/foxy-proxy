@@ -1,0 +1,9 @@
+.scalable {
+  width: 400px;
+}
+
+@media (max-width: 460px) {
+  .scalable {
+    width: 320px;
+  }
+}
