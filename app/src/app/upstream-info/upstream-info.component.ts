@@ -20,7 +20,6 @@ export class UpstreamInfoComponent implements OnInit {
   @Input() bestDL: string;
   @Input() miners: any;
   @Input() maxScanTime: number;
-  @Input() totalCapacity: number;
 
   private counter: Observable<Duration>;
   private subscription: Subscription;
@@ -109,6 +108,7 @@ export class UpstreamInfoComponent implements OnInit {
     const miners = Object.keys(this.miners)
       .map(key => this.miners[key])
       .filter(miner => miner.currentHeightScanning === this.currentBlock);
+    const totalCapacity = miners.reduce((acc, miner) => acc + (miner.capacity || 0), 0);
     const elapsed = moment().diff(this.roundStart, 'seconds');
     if (miners.length === 0 && elapsed >= this.maxScanTime) {
       return 100;
@@ -122,7 +122,7 @@ export class UpstreamInfoComponent implements OnInit {
       if (!miner.capacity) {
         return progress / miners.length;
       }
-      const capacityShare = miner.capacity / this.totalCapacity;
+      const capacityShare = miner.capacity / totalCapacity;
 
       return capacityShare * progress;
     }).reduce((acc, curr) => acc + curr, 0);
