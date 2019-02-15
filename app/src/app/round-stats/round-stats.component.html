@@ -6,7 +6,7 @@
   </mat-card-header>
   <mat-card-content style="font-size: 1em">
     <span style="float: left;">Submitted</span>
-    <span style="float: right;"><span style="font-size: 0.8em">{{(roundsSubmitted / totalRounds * 100).toFixed(2)}}%</span> {{roundsSubmitted}}/{{totalRounds}}</span>
+    <span style="float: right;"><span style="font-size: 0.8em">{{getSubmitPercent()}}%</span> {{roundsSubmitted}}/{{totalRounds}}</span>
     <div style="clear: both;"></div>
     <span style="float: left;">Won</span>
     <span style="float: right;">{{roundsWon}}</span>

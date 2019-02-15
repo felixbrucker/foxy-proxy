@@ -43,6 +43,10 @@ export class ProxyInfoComponent implements OnInit {
 
   getScanProgress() {
     const miners = Object.keys(this.miners).map(key => this.miners[key]);
+    if (miners.length === 0) {
+      return 100;
+    }
+
     const scanProgress = miners.map(miner => {
       const progress = this.getProgressForMiner(miner);
       if (!miner.capacity) {
@@ -68,7 +72,7 @@ export class ProxyInfoComponent implements OnInit {
 
   getState(miner) {
     const lastActiveDiffMin = moment().diff(miner.lastTimeActive, 'minutes');
-    const lastBlockActive = miner.lastBlockActive ? parseInt(miner.lastBlockActive, 10) : null;
+    const lastBlockActive = miner.lastBlockActive;
     const lastActiveError = this.currentBlockHeights.every(height => Math.abs(lastBlockActive - height) > 7);
     if (lastActiveDiffMin >= 5 && lastActiveError) {
       return 0;

@@ -8,6 +8,9 @@ import {Component, Input, OnInit} from '@angular/core';
 export class UpstreamComponent implements OnInit {
 
   @Input() upstream: any;
+  @Input() miners: any;
+  @Input() maxScanTime: number;
+  @Input() totalCapacity: number;
 
   constructor() { }
 

@@ -26,11 +26,28 @@ export class NetDiffChartComponent implements OnInit, OnChanges {
           backgroundColor: [
             'rgba(33, 224, 132, 0.5)',
           ],
+          borderColor: [
+            'rgb(51, 51, 51, 1)',
+          ],
         }],
       },
       options: {
         legend: {
           display: false
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            ticks: {
+              fontColor: "#dcddde",
+            },
+          }],
+          yAxes: [{
+            display: true,
+            ticks: {
+              fontColor: "#dcddde",
+            },
+          }]
         },
       }
     });

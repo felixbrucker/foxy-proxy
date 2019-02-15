@@ -3,7 +3,7 @@
     <mat-card-title>
       {{name}}
     </mat-card-title>
-    <mat-card-subtitle>
+    <mat-card-subtitle style="color: #dcddde">
       Proxy
     </mat-card-subtitle>
   </mat-card-header>
@@ -12,12 +12,12 @@
     <span style="float: right;">
       <span style="display: flex">
         <mat-progress-bar
-          [ngClass]="{'green': scanProgress === 100}"
-          style="width: 120px; height: 10px; border-radius: 8px; margin-top: 3px"
+          [ngClass]="{'green': scanProgress === 100, 'purple': scanProgress !== 100}"
+          style="width: 120px; height: 10px; border-radius: 8px; margin-top: 3px;"
           color="primary"
           mode="determinate"
           [value]="scanProgress">
-      </mat-progress-bar>
+        </mat-progress-bar>
       &nbsp;{{scanProgress}}%
       </span>
     </span>
@@ -37,7 +37,7 @@
       <span style="float: right;">
         <span style="display: flex">
           <mat-progress-bar
-            [ngClass]="{'green': miner.progress === 100}"
+            [ngClass]="{'green': miner.progress === 100, 'purple': miner.progress !== 100}"
             style="width: 70px; height: 10px; border-radius: 8px; margin-top: 3px"
             color="primary"
             mode="determinate"

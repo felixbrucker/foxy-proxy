@@ -36,6 +36,12 @@ export class RoundStatsComponent implements OnInit {
             'rgba(114, 14, 237, 0.5)',
             'rgba(61, 120, 204, 0.5)',
           ],
+          borderColor: [
+            'rgb(51, 51, 51, 1)',
+            'rgb(51, 51, 51, 1)',
+            'rgb(51, 51, 51, 1)',
+            'rgb(51, 51, 51, 1)',
+          ],
         }],
       },
       options: {
@@ -46,4 +52,11 @@ export class RoundStatsComponent implements OnInit {
     });
   }
 
+  getSubmitPercent() {
+    if (this.totalRounds === 0) {
+      return 0;
+    }
+
+    return (this.roundsSubmitted / this.totalRounds * 100).toFixed(2);
+  }
 }

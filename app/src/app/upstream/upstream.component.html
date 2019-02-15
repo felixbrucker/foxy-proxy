@@ -1,15 +1,16 @@
 <div class="flex-container-row">
   <div style="margin: 5px;">
-    <app-current-round-info [bestDL]="upstream.bestDL"
-                            [currentBlock]="upstream.blockNumber"
-                            [netDiff]="upstream.netDiff"
-                            [roundStart]="upstream.roundStart"
-                            style="margin-right: 10px">
-    </app-current-round-info>
     <app-upstream-info
       [name]="upstream.name"
       [estimatedCapacityInTB]="upstream.estimatedCapacityInTB"
-      [historicalRounds]="upstream.historicalRounds">
+      [historicalRounds]="upstream.historicalRounds"
+      [bestDL]="upstream.bestDL"
+      [currentBlock]="upstream.blockNumber"
+      [netDiff]="upstream.netDiff"
+      [roundStart]="upstream.roundStart"
+      [miners]="miners"
+      [maxScanTime]="maxScanTime"
+      [totalCapacity]="totalCapacity">
     </app-upstream-info>
   </div>
   <app-round-stats [totalRounds]="upstream.totalRounds"

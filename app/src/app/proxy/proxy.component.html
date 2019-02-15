@@ -9,6 +9,12 @@
     </app-proxy-info>
   </div>
   <div class="flex-container-col">
-    <app-upstream *ngFor="let upstream of proxy.upstreamStats" [upstream]="upstream" style="margin: 8px"></app-upstream>
+    <app-upstream *ngFor="let upstream of proxy.upstreamStats"
+                  [upstream]="upstream"
+                  [miners]="proxy.miner"
+                  [maxScanTime]="proxy.maxScanTime"
+                  [totalCapacity]="proxy.totalCapacity"
+                  style="margin: 8px">
+    </app-upstream>
   </div>
 </div>
