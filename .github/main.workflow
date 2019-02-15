@@ -35,14 +35,8 @@ action "Publish to npm" {
 
 action "Build Web UI" {
   uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
-  args = "run build"
-  needs = ["Audit Web UI dependencies"]
-}
-
-action "Audit Web UI dependencies" {
-  uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
+  args = "run build-web"
   needs = ["Install Web UI dependencies"]
-  args = "run audit-web"
 }
 
 action "Install Web UI dependencies" {

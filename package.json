@@ -46,8 +46,8 @@
   "main": "main.js",
   "scripts": {
     "start": "node main.js",
-    "install-web": "cd app && npm install",
-    "build": "cd app && npm run build-prod",
+    "install-web": "cd app && npm ci",
+    "build-web": "cd app && npm run build-prod",
     "audit-web": "cd app && npm audit"
   },
   "engines": {
