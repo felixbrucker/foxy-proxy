@@ -1,8 +1,9 @@
 workflow "Build, Audit and Publish" {
   on = "push"
   resolves = [
-    "Build Web UI",
     "Publish to npm",
+    "Audit dependencies",
+    "Audit Web UI",
   ]
 }
 
@@ -42,4 +43,10 @@ action "Build Web UI" {
 action "Install Web UI dependencies" {
   uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
   args = "run install-web"
+}
+
+action "Audit Web UI" {
+  uses = "actions/npm@59b64a598378f31e49cb76f27d6f3312b582f680"
+  needs = ["Build Web UI"]
+  args = "run audit-web"
 }
