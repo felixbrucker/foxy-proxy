@@ -7,7 +7,11 @@ BHD-Burst-Proxy
 
 ## Prerequisites
 
-- nodejs >= 10
+- nodejs >= 10, see [here](https://github.com/felixbrucker/bhd-burst-proxy/wiki/Installing-nodejs) how to install it
+
+## Getting started
+
+If you are unsure on how to proceed check this [Getting started](https://github.com/felixbrucker/bhd-burst-proxy/wiki/Getting-started) guide.
 
 ## Setup
 
