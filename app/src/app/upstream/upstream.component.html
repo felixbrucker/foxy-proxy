@@ -23,7 +23,7 @@
     [isBHD]="upstream.isBHD">
   </app-blocks-won-list>
   <app-net-diff-chart
-    [historicalRounds]="upstream.historicalRounds.reverse()"
+    [historicalRounds]="upstream.historicalRounds.slice(0).reverse()"
     style="margin: 5px;">
   </app-net-diff-chart>
 </div>
