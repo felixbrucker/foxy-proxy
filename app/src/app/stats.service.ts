@@ -22,7 +22,6 @@ export class StatsService {
     this.statsObservable = this.stats.asObservable();
     this.authenticatedObservable = this.authenticated.asObservable();
     this.websocketService.subscribe('unauthorized', this.onUnauthorized.bind(this));
-    this.websocketService.subscribe('stats/init', this.onNewStats.bind(this));
     this.websocketService.subscribe('stats/proxy', this.onNewProxyStats.bind(this));
     this.websocketService.subscribe('stats/current-round', this.onNewUpstreamStats.bind(this));
     this.websocketService.subscribe('stats/historical', this.onNewUpstreamStats.bind(this));
@@ -33,18 +32,17 @@ export class StatsService {
   }
 
   init() {
-    this.websocketService.publish('stats/get');
+    this.websocketService.publish('stats/init', (stats) => {
+      this.stats.next(stats);
+    });
   }
 
-  async authenticate(username, passHash) {
-    this.websocketService.publish('authenticate', {
-      username,
-      passHash,
-    });
-
+  authenticate(username, passHash) {
     return new Promise(resolve => {
-      this.websocketService.subscribe('authenticated', (result) => {
-        this.websocketService.unsubscribeAll('authenticated');
+      this.websocketService.publish('authenticate', {
+        username,
+        passHash,
+      }, (result) => {
         if (result) {
           this.authenticated.next(true);
         }
@@ -55,10 +53,6 @@ export class StatsService {
 
   async onUnauthorized() {
     await this.router.navigate(['/login']);
-  }
-
-  onNewStats(stats) {
-    this.stats.next(stats);
   }
 
   onNewProxyStats(proxyName, proxyStats) {

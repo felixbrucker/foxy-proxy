@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.statsService.getStatsObservable().subscribe((stats => {
-      if (this.stats.length === 0 && stats.length !== 0) {
+      if (stats.length > 0) {
         this.setCurrentProxy(stats[0]);
       }
       this.stats = stats;

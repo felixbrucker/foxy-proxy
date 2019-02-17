@@ -154,9 +154,9 @@ async function init() {
     if (authenticated) {
       authenticatedClients[client.id] = client;
     }
-    client.on('authenticate', ({username, passHash}) => {
+    client.on('authenticate', ({username, passHash}, cb) => {
       if (authenticated) {
-        client.emit('authenticated', authenticated);
+        cb(true);
         return;
       }
 
@@ -165,15 +165,15 @@ async function init() {
         authenticated = true;
       }
 
-      client.emit('authenticated', authenticated);
+      cb(authenticated);
     });
-    client.on('stats/get', async () => {
+    client.on('stats/init', async (cb) => {
       if (!authenticated) {
         client.emit('unauthorized');
         return;
       }
       const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
-      client.emit('stats/init', stats);
+      cb(stats);
     });
     client.on('disconnect', () => {
       if (!authenticatedClients[client.id]) {
@@ -181,6 +181,7 @@ async function init() {
       }
       delete authenticatedClients[client.id];
     });
+
     if (!authenticated) {
       return;
     }
