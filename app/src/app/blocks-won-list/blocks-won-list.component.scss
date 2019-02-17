@@ -1,0 +1,19 @@
+.scalable {
+  width: 260px;
+}
+
+@media (max-width: 684px) {
+  .scalable {
+    width: 320px;
+  }
+}
+
+.scalable-item {
+  width: 290px !important;
+}
+
+@media (max-width: 684px) {
+  .scalable-item {
+    width: 350px !important;
+  }
+}

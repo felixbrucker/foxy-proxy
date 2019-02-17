@@ -1,7 +1,8 @@
 import * as bytes from 'bytes';
 import {Component, Input, OnInit} from '@angular/core';
 import * as moment from 'moment';
-import {Observable, Subscription} from 'rxjs';
+import {Observable, Subscription, interval} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {Duration} from 'moment';
 
 @Component({
@@ -29,7 +30,7 @@ export class UpstreamInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.counter = Observable.interval(1000).map(() => moment.duration(moment().diff(this.roundStart)));
+    this.counter = interval(1000).pipe(map(() => moment.duration(moment().diff(this.roundStart))));
     this.subscription = this.counter.subscribe((duration) => {
         this.elapsedSinceStart = `${duration.hours().toString().padStart(2, '0')}:${duration.minutes().toString().padStart(2, '0')}:${duration.seconds().toString().padStart(2, '0')}`;
         this.scanProgress = this.getScanProgress();

@@ -1,0 +1,49 @@
+<mat-card style="height: 236px" class="scalable custom-card">
+  <mat-card-header style="margin-left: -16px">
+    <div class="mat-card-header-text" style="margin-left: -16px; width: 100%">
+      <mat-card-title>
+        Latest Blocks won
+      </mat-card-title>
+      <mat-card-subtitle style="color: #dcddde; margin-right: -16px">
+        <div style="width: 100%; display: flex; justify-content: space-between">
+          <div>
+            BlockHeight
+          </div>
+          <div>
+            Timestamp
+          </div>
+          <div>
+            Deadline
+          </div>
+        </div>
+      </mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list style="margin-top: -12px;">
+      <span *ngFor="let round of getLastFourBlockWins(); let i = index;">
+        <mat-list-item style="color: #cfd0d1; margin-left: -14px" class="scalable-item">
+          <div style="width: 100%; display: flex; justify-content: space-between">
+            <div>
+              <a style="color: #cfd0d1" href="{{isBHD ? 'https://www.btchd.org/explorer/block/' : 'https://explore.burst.cryptoguru.org/block/'}}{{round.blockHeight}}" target="_blank">{{round.blockHeight}}</a>
+            </div>
+            <div>
+              {{getTimeDiff(round.createdAt)}}
+            </div>
+            <div>
+              {{round.bestDL}}
+            </div>
+          </div>
+        </mat-list-item>
+        <mat-divider *ngIf="i !== getLastFourBlockWins().length - 1"></mat-divider>
+      </span>
+      <span *ngIf="getLastFourBlockWins().length === 0">
+        <mat-list-item style="color: #cfd0d1">
+          <div style="width: 100%; text-align: center">
+             <i>None</i>
+          </div>
+        </mat-list-item>
+      </span>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

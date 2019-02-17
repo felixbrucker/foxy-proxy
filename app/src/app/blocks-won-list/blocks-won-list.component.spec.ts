@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CurrentRoundInfoComponent } from './current-round-info.component';
+import { BlocksWonListComponent } from './blocks-won-list.component';
 
-describe('CurrentRoundInfoComponent', () => {
-  let component: CurrentRoundInfoComponent;
-  let fixture: ComponentFixture<CurrentRoundInfoComponent>;
+describe('BlocksWonListComponent', () => {
+  let component: BlocksWonListComponent;
+  let fixture: ComponentFixture<BlocksWonListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CurrentRoundInfoComponent ]
+      declarations: [ BlocksWonListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CurrentRoundInfoComponent);
+    fixture = TestBed.createComponent(BlocksWonListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
