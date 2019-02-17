@@ -7,8 +7,8 @@ import { MainComponent } from './main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
-  MatCardModule,
-  MatIconModule, MatListModule,
+  MatCardModule, MatFormFieldModule,
+  MatIconModule, MatInputModule, MatListModule,
   MatProgressBarModule, MatProgressSpinnerModule, MatTabsModule, MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import { NetDiffChartComponent } from './net-diff-chart/net-diff-chart.component';
@@ -19,6 +19,8 @@ import { UpstreamComponent } from './upstream/upstream.component';
 import { UpstreamInfoComponent } from './upstream-info/upstream-info.component';
 import { ProxyInfoComponent } from './proxy-info/proxy-info.component';
 import { BlocksWonListComponent } from './blocks-won-list/blocks-won-list.component';
+import { LoginComponent } from './login/login.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { BlocksWonListComponent } from './blocks-won-list/blocks-won-list.compon
     UpstreamComponent,
     UpstreamInfoComponent,
     ProxyInfoComponent,
-    BlocksWonListComponent
+    BlocksWonListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,9 @@ import { BlocksWonListComponent } from './blocks-won-list/blocks-won-list.compon
     MatTooltipModule,
     MatTabsModule,
     MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
     MatProgressSpinnerModule,
     FlexLayoutModule,
   ],

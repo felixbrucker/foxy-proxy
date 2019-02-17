@@ -40,4 +40,20 @@ export class LocalStorageService {
     }
     keysToRemove.forEach(key => localStorage.removeItem(key));
   }
+
+  getAuthData() {
+    const auth = localStorage.getItem('auth');
+    if (!auth) {
+      return null;
+    }
+
+    return JSON.parse(auth);
+  }
+
+  setAuthData(username, passHash) {
+    localStorage.setItem('auth', JSON.stringify({
+      username,
+      passHash,
+    }));
+  }
 }

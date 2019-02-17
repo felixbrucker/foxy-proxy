@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {WebsocketService} from './websocket.service';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {Router} from '@angular/router';
+import {LocalStorageService} from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,17 +11,50 @@ export class StatsService {
 
   private stats = new BehaviorSubject<any>([]);
   private statsObservable: any;
+  private authenticated = new BehaviorSubject<boolean>(false);
+  private authenticatedObservable: Observable<boolean>;
 
-  constructor(private websocketService: WebsocketService) {
+  constructor(
+    private websocketService: WebsocketService,
+    private localStorageService: LocalStorageService,
+    private router: Router
+  ) {
     this.statsObservable = this.stats.asObservable();
+    this.authenticatedObservable = this.authenticated.asObservable();
+    this.websocketService.subscribe('unauthorized', this.onUnauthorized.bind(this));
     this.websocketService.subscribe('stats/init', this.onNewStats.bind(this));
     this.websocketService.subscribe('stats/proxy', this.onNewProxyStats.bind(this));
     this.websocketService.subscribe('stats/current-round', this.onNewUpstreamStats.bind(this));
     this.websocketService.subscribe('stats/historical', this.onNewUpstreamStats.bind(this));
+    const authData = this.localStorageService.getAuthData();
+    if (authData) {
+      this.authenticate(authData.username, authData.passHash);
+    }
   }
 
   init() {
     this.websocketService.publish('stats/get');
+  }
+
+  async authenticate(username, passHash) {
+    this.websocketService.publish('authenticate', {
+      username,
+      passHash,
+    });
+
+    return new Promise(resolve => {
+      this.websocketService.subscribe('authenticated', (result) => {
+        this.websocketService.unsubscribeAll('authenticated');
+        if (result) {
+          this.authenticated.next(true);
+        }
+        resolve(result);
+      });
+    });
+  }
+
+  async onUnauthorized() {
+    await this.router.navigate(['/login']);
   }
 
   onNewStats(stats) {
@@ -59,5 +94,9 @@ export class StatsService {
 
   getStatsObservable() {
     return this.statsObservable;
+  }
+
+  getAuthenticatedObservable() {
+    return this.authenticatedObservable;
   }
 }

@@ -148,34 +148,69 @@ async function init() {
   const io = IO(server);
   server.listen(config.listenPort, config.listenHost);
 
+  const authenticatedClients = {};
   io.on('connection', async client => {
+    let authenticated = !config.webAuth; // Without any auth set, allow all
+    if (authenticated) {
+      authenticatedClients[client.id] = client;
+    }
+    client.on('authenticate', ({username, passHash}) => {
+      if (authenticated) {
+        client.emit('authenticated', authenticated);
+        return;
+      }
+
+      if (username === config.webAuth.username && passHash === config.webAuth.passHash) {
+        authenticatedClients[client.id] = client;
+        authenticated = true;
+      }
+
+      client.emit('authenticated', authenticated);
+    });
     client.on('stats/get', async () => {
+      if (!authenticated) {
+        client.emit('unauthorized');
+        return;
+      }
       const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
       client.emit('stats/init', stats);
     });
+    client.on('disconnect', () => {
+      if (!authenticatedClients[client.id]) {
+        return;
+      }
+      delete authenticatedClients[client.id];
+    });
+    if (!authenticated) {
+      return;
+    }
     const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
     client.emit('stats', stats);
   });
 
+  // todo: legacy, drop this
   eventBus.subscribe('stats/new', async () => {
-    const connections = Object.keys(io.sockets.connected).length;
-    if (connections === 0) {
+    const clients = Object.keys(authenticatedClients).map(id => authenticatedClients[id]);
+    if (clients.length === 0) {
       return;
     }
     const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
-    io.emit('stats', stats);
+    clients.forEach(client => client.emit('stats', stats));
   });
 
   eventBus.subscribe('stats/proxy', (proxyName, proxyStats) => {
-    io.emit('stats/proxy', proxyName, proxyStats);
+    const clients = Object.keys(authenticatedClients).map(id => authenticatedClients[id]);
+    clients.forEach(client => client.emit('stats/proxy', proxyName, proxyStats));
   });
 
   eventBus.subscribe('stats/current-round', (upstreamName, currentRoundStats) => {
-    io.emit('stats/current-round', upstreamName, currentRoundStats);
+    const clients = Object.keys(authenticatedClients).map(id => authenticatedClients[id]);
+    clients.forEach(client => client.emit('stats/current-round', upstreamName, currentRoundStats));
   });
 
   eventBus.subscribe('stats/historical', (upstreamName, historicalStats) => {
-    io.emit('stats/historical', upstreamName, historicalStats);
+    const clients = Object.keys(authenticatedClients).map(id => authenticatedClients[id]);
+    clients.forEach(client => client.emit('stats/historical', upstreamName, historicalStats));
   });
 
   store.setProxies(proxies);

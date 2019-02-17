@@ -19,4 +19,8 @@ export class WebsocketService {
   publish(topic, ...args) {
     this.socket.emit(topic, ...args);
   }
+
+  unsubscribeAll(topic) {
+    this.socket.removeAllListeners(topic);
+  }
 }

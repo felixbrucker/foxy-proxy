@@ -1,0 +1,42 @@
+<mat-toolbar color="primary" style="margin-bottom: 10px; background-color: #333">
+  <mat-toolbar-row>
+    <span style="margin-right: 14px"><img src="favicon.png" height="28" style="position: relative; top: 7px; margin-top: -7px"> BHD-Burst-Proxy</span>
+    <span style="flex: 1 1 auto;"></span>
+    <a mat-icon-button href="https://github.com/felixbrucker/bhd-burst-proxy#donate" target="_blank">
+      <mat-icon aria-label="Github" style="color: #b700b4">favorite</mat-icon>
+    </a>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="flex-container">
+  <mat-card style="width: 280px" class="custom-card">
+    <mat-card-header style="margin-left: -16px">
+      <mat-card-title>
+        Please login
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form #loginForm="ngForm">
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput [(ngModel)]="username" name="username" type="text" (ngModelChange)="clearInvalidAuth()" required>
+            <mat-placeholder class="placeholder">Username</mat-placeholder>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <input matInput [(ngModel)]="password" name="password" [type]="hide ? 'password' : 'text'" (ngModelChange)="clearInvalidAuth()" required>
+            <mat-placeholder class="placeholder">Enter your password</mat-placeholder>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+        </div>
+        <button mat-stroked-button
+                style="background-color: #262525"
+                (click)="login()"
+                [disabled]="!loginForm.valid">
+          Login
+        </button>
+        <mat-error *ngIf="invalidAuth" style="margin-top: 8px">The username or password is invalid!</mat-error>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
