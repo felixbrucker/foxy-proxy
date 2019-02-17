@@ -1,3 +1,9 @@
+1.6.1 / 2019-02-17
+==================
+
+* Use 'explorer.burstcoin.dk' for burst blocks
+* Fix stats not updating after login
+
 1.6.0 / 2019-02-17
 ==================
 
