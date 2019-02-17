@@ -1,3 +1,10 @@
+1.6.0 / 2019-02-17
+==================
+
+* Add authentication to the web ui
+* Add blocks won to the web ui
+* Allow hiding blocks won in the web ui
+
 1.5.3 / 2019-02-15
 ==================
 
