@@ -32,7 +32,7 @@
         <mat-list-item style="color: #cfd0d1; margin-left: -14px" class="scalable-item">
           <div style="width: 100%; display: flex; justify-content: space-between">
             <div>
-              <a style="color: #cfd0d1" href="{{isBHD ? 'https://www.btchd.org/explorer/block/' : 'https://explore.burst.cryptoguru.org/block/'}}{{round.blockHeight}}" target="_blank">{{round.blockHeight}}</a>
+              <a style="color: #cfd0d1" href="{{isBHD ? 'https://www.btchd.org/explorer/block/' : 'https://explorer.burstcoin.dk/?action=block_inspect&height='}}{{round.blockHeight}}" target="_blank">{{round.blockHeight}}</a>
             </div>
             <div>
               {{getTimeDiff(round.createdAt)}}
