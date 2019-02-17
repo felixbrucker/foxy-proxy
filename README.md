@@ -3,7 +3,8 @@ BHD-Burst-Proxy
 
 [![Software License](https://img.shields.io/badge/license-GPL--3.0-brightgreen.svg?style=flat-square)](LICENSE)
 [![npm](https://img.shields.io/npm/v/bhd-burst-proxy.svg?style=flat-square)](https://www.npmjs.com/package/bhd-burst-proxy)
-[![docker](https://img.shields.io/docker/pulls/felixbrucker/bhd-burst-proxy.svg?style=flat-square)](https://hub.docker.com/r/felixbrucker/bhd-burst-proxy)
+[![npm weekly downloads](https://img.shields.io/npm/dw/bhd-burst-proxy.svg?style=flat)](https://www.npmjs.com/package/bhd-burst-proxy)
+[![docker pulls](https://img.shields.io/docker/pulls/felixbrucker/bhd-burst-proxy.svg?style=flat-square)](https://hub.docker.com/r/felixbrucker/bhd-burst-proxy)
 
 ## Prerequisites
 
