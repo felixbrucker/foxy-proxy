@@ -2,7 +2,14 @@
   <mat-card-header style="margin-left: -16px">
     <div class="mat-card-header-text" style="margin-left: -16px; width: 100%">
       <mat-card-title>
-        Latest Blocks won
+        <div style="width: 100%; display: flex; justify-content: space-between">
+          <div>
+            Latest Blocks won
+          </div>
+          <div>
+            <span (click)="hideCard()" matTooltip="Hide this card">&times;</span>
+          </div>
+        </div>
       </mat-card-title>
       <mat-card-subtitle style="color: #dcddde; margin-right: -16px">
         <div style="width: 100%; display: flex; justify-content: space-between">

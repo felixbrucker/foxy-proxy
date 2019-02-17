@@ -9,7 +9,7 @@ import {
   MatButtonModule,
   MatCardModule,
   MatIconModule, MatListModule,
-  MatProgressBarModule, MatProgressSpinnerModule, MatTabsModule, MatToolbarModule
+  MatProgressBarModule, MatProgressSpinnerModule, MatTabsModule, MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import { NetDiffChartComponent } from './net-diff-chart/net-diff-chart.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -41,6 +41,7 @@ import { BlocksWonListComponent } from './blocks-won-list/blocks-won-list.compon
     MatIconModule,
     MatProgressBarModule,
     MatToolbarModule,
+    MatTooltipModule,
     MatTabsModule,
     MatListModule,
     MatProgressSpinnerModule,

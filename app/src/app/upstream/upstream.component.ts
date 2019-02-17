@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {LocalStorageService} from '../local-storage.service';
 
 @Component({
   selector: 'app-upstream',
@@ -11,9 +12,12 @@ export class UpstreamComponent implements OnInit {
   @Input() miners: any;
   @Input() maxScanTime: number;
 
-  constructor() { }
+  constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
   }
 
+  showCard(identifier) {
+    return this.localStorageService.shouldShowItem(identifier, this.upstream.fullName);
+  }
 }

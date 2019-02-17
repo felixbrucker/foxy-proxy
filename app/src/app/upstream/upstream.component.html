@@ -18,9 +18,10 @@
                    [roundsWon]="upstream.roundsWon"
                    style="margin: 5px;">
   </app-round-stats>
-  <app-blocks-won-list
+  <app-blocks-won-list *ngIf="showCard('blocks-won-list')"
     [historicalRounds]="upstream.historicalRounds"
-    [isBHD]="upstream.isBHD">
+    [isBHD]="upstream.isBHD"
+    [upstreamFullName]="upstream.fullName">
   </app-blocks-won-list>
   <app-net-diff-chart
     [historicalRounds]="upstream.historicalRounds"

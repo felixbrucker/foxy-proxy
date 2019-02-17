@@ -1,17 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {StatsService} from '../stats.service';
+import {LocalStorageService} from '../local-storage.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class MainComponent implements OnInit {
 
   private stats = [];
   private currentProxy: any;
 
-  constructor(private statsService: StatsService) { }
+  constructor(
+    private statsService: StatsService,
+    private localStorageService: LocalStorageService
+  ) { }
 
   ngOnInit() {
     this.statsService.getStatsObservable().subscribe((stats => {
@@ -33,5 +38,9 @@ export class MainComponent implements OnInit {
 
   setCurrentProxy(currentProxy) {
     this.currentProxy = currentProxy;
+  }
+
+  resetLocalConfig() {
+    this.localStorageService.clearHideItems();
   }
 }
