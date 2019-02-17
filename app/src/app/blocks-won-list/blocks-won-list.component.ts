@@ -19,7 +19,6 @@ export class BlocksWonListComponent implements OnInit {
   getLastFourBlockWins() {
     return this.historicalRounds
       .filter(round => round.roundWon)
-      .slice(0)
       .reverse()
       .slice(0, 4);
   }
