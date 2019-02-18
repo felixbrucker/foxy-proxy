@@ -1,3 +1,10 @@
+1.6.2 / 2019-02-18
+==================
+
+* Improve overall performance especially with many proxies
+* Add web ui support for IE
+* Fix web ui authentication over http for chrome
+
 1.6.1 / 2019-02-17
 ==================
 
