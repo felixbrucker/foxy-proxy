@@ -31,9 +31,10 @@ if (program.config) {
 if (program.db) {
   store.setDbFilePath(program.db);
 }
+let dashboard = null;
 if (program.live) {
   store.setUseLiveDashboard(true);
-  const dashboard = new Dashboard();
+  dashboard = new Dashboard();
   dashboard.start();
 }
 
@@ -181,22 +182,6 @@ async function init() {
       }
       delete authenticatedClients[client.id];
     });
-
-    if (!authenticated) {
-      return;
-    }
-    const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
-    client.emit('stats', stats);
-  });
-
-  // todo: legacy, drop this
-  eventBus.subscribe('stats/new', async () => {
-    const clients = Object.keys(authenticatedClients).map(id => authenticatedClients[id]);
-    if (clients.length === 0) {
-      return;
-    }
-    const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
-    clients.forEach(client => client.emit('stats', stats));
   });
 
   eventBus.subscribe('stats/proxy', (proxyName, proxyStats) => {
@@ -217,7 +202,9 @@ async function init() {
   store.setProxies(proxies);
 
   eventBus.publish('log/info', `BHD-Burst-Proxy ${version} initialized. The WebUI is reachable on http://${config.listenAddr}`);
-  eventBus.publish('stats/new');
+  if (dashboard) {
+    await dashboard.initStats();
+  }
 }
 
 init();
