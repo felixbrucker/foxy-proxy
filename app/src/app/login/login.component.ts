@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {StatsService} from '../stats.service';
 import {Router} from '@angular/router';
 import {LocalStorageService} from '../local-storage.service';
+import {sha256} from 'hash.js';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +10,6 @@ import {LocalStorageService} from '../local-storage.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  static async getHashForString(algorithm, str) {
-    const buffer = await crypto.subtle.digest(algorithm, new TextEncoder().encode(str));
-    const view = new DataView(buffer);
-
-    let hexCodes = '';
-    for (let i = 0; i < view.byteLength; i += 4) {
-      hexCodes += view.getUint32(i).toString(16).padStart(8, '0');
-    }
-
-    return hexCodes;
-  }
 
   username: '';
   password: '';
@@ -44,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    const passHash = await LoginComponent.getHashForString('sha-256', this.password);
+    const passHash = await sha256().update(this.password).digest('hex');
     const result = await this.statsService.authenticate(this.username, passHash);
     if (!result) {
       this.invalidAuth = true;
