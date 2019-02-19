@@ -1,6 +1,6 @@
 {
   "/socket.io": {
-    "target": "ws://10.1.0.11:5000",
+    "target": "ws://localhost:12345",
     "ws": true,
     "secure": false
   }
