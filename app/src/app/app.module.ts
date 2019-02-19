@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatCardModule, MatFormFieldModule,
-  MatIconModule, MatInputModule, MatListModule,
+  MatIconModule, MatInputModule, MatListModule, MatMenuModule,
   MatProgressBarModule, MatProgressSpinnerModule, MatSnackBarModule, MatTabsModule, MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import { NetDiffChartComponent } from './net-diff-chart/net-diff-chart.component';
@@ -50,6 +50,7 @@ import {FormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatSnackBarModule,
+    MatMenuModule,
     FormsModule,
     MatProgressSpinnerModule,
     FlexLayoutModule,

@@ -99,6 +99,8 @@ THE SOFTWARE.
 
 @angular/material/list
 
+@angular/material/menu
+
 @angular/material/progress-bar
 
 @angular/material/progress-spinner

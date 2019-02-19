@@ -6,12 +6,19 @@
       <button mat-button (click)="setCurrentProxy(proxy)" [ngClass]="{'mat-accent': getCurrentProxy() === proxy}">{{proxy.name}}</button>
     </span>
     <span style="flex: 1 1 auto;"></span>
-    <button mat-button
-            (click)="resetLocalConfig()"
-            matTooltip="Reset the local configuration"
-            matTooltipClass="larger-tooltip">
-      <mat-icon aria-label="Reset local config">replay</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
     </button>
+    <mat-menu #menu="matMenu" class="custom-menu">
+      <button mat-menu-item (click)="resetLocalConfig()">
+        <mat-icon>replay</mat-icon>
+        Reset the local configuration
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
     <a mat-icon-button href="https://github.com/felixbrucker/bhd-burst-proxy#donate" target="_blank">
       <mat-icon aria-label="Github" style="color: #b700b4">favorite</mat-icon>
     </a>

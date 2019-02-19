@@ -56,4 +56,8 @@ export class LocalStorageService {
       passHash,
     }));
   }
+
+  clearAuthData() {
+    localStorage.removeItem('auth');
+  }
 }

@@ -48,6 +48,11 @@ export class MainComponent implements OnInit {
     });
   }
 
+  async logout() {
+    this.localStorageService.clearAuthData();
+    window.location.reload();
+  }
+
   getStats() {
     return this.stats;
   }
