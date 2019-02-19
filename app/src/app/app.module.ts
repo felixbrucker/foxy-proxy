@@ -9,7 +9,7 @@ import {
   MatButtonModule,
   MatCardModule, MatFormFieldModule,
   MatIconModule, MatInputModule, MatListModule,
-  MatProgressBarModule, MatProgressSpinnerModule, MatTabsModule, MatToolbarModule, MatTooltipModule
+  MatProgressBarModule, MatProgressSpinnerModule, MatSnackBarModule, MatTabsModule, MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import { NetDiffChartComponent } from './net-diff-chart/net-diff-chart.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -49,6 +49,7 @@ import {FormsModule} from '@angular/forms';
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSnackBarModule,
     FormsModule,
     MatProgressSpinnerModule,
     FlexLayoutModule,

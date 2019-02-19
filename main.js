@@ -17,6 +17,7 @@ const store = require('./lib/store');
 const version = require('./lib/version');
 const Dashboard = require('./lib/cli-dashboard');
 const logger = require('./lib/logger');
+const latestVersionService = require('./lib/services/latest-version-service');
 
 program
   .version(version)
@@ -176,6 +177,10 @@ async function init() {
       const stats = await Promise.all(proxies.map(({proxy}) => proxy.getStats()));
       cb(stats);
     });
+    client.on('version/info', (cb) => cb({
+      latestVersion: latestVersionService.getLatestVersion(),
+      runningVersion: version,
+    }));
     client.on('disconnect', () => {
       if (!authenticatedClients[client.id]) {
         return;
@@ -204,6 +209,12 @@ async function init() {
   eventBus.publish('log/info', `BHD-Burst-Proxy ${version} initialized. The WebUI is reachable on http://${config.listenAddr}`);
   if (dashboard) {
     await dashboard.initStats();
+  }
+
+  await new Promise(resolve => setTimeout(resolve, 5 * 1000));
+  const latestVersion = latestVersionService.getLatestVersion();
+  if (latestVersion && latestVersion !== version) {
+    eventBus.publish('log/info', `Newer version ${latestVersion} is available!`);
   }
 }
 

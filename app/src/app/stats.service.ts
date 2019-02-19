@@ -37,6 +37,10 @@ export class StatsService {
     });
   }
 
+  getVersionInfo() {
+    return new Promise(resolve => this.websocketService.publish('version/info', (result) => resolve(result)));
+  }
+
   authenticate(username, passHash) {
     return new Promise(resolve => {
       this.websocketService.publish('authenticate', {
