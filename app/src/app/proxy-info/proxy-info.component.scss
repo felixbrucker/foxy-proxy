@@ -22,3 +22,16 @@ span[intermediary] {
 span[negative] {
   background-color: rgb(255, 77, 77);
 }
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 172px;
+}
+.ellipsis:hover {
+  overflow: visible;
+  max-width: none;
+  width: auto;
+}

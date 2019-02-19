@@ -26,7 +26,7 @@
       &nbsp;
     </div>
     <div *ngFor="let miner of getMiner()">
-      <span style="float: left;">
+      <span style="float: left; margin-right: 4px;" class="ellipsis">
         <span class="dot"
           [attr.positive]="getState(miner) === 2 ? true: null"
           [attr.intermediary]="getState(miner) === 1 ? true: null"
