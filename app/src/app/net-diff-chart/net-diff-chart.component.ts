@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import { Chart } from 'chart.js';
+import {LocalStorageService} from '../local-storage.service';
 
 @Component({
   selector: 'app-net-diff-chart',
@@ -9,11 +10,12 @@ import { Chart } from 'chart.js';
 export class NetDiffChartComponent implements OnInit, OnChanges {
 
   @Input() historicalRounds;
+  @Input() upstreamFullName: string;
 
   @ViewChild('netDiffChart') private netDiffChartRef;
   private netDiffChart:any = {};
 
-  constructor() { }
+  constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.netDiffChart = new Chart(this.netDiffChartRef.nativeElement, {
@@ -47,7 +49,7 @@ export class NetDiffChartComponent implements OnInit, OnChanges {
             ticks: {
               fontColor: "#dcddde",
             },
-          }]
+          }],
         },
       }
     });
@@ -62,4 +64,7 @@ export class NetDiffChartComponent implements OnInit, OnChanges {
     this.netDiffChart.update();
   }
 
+  hideCard() {
+    this.localStorageService.hideItem('net-diff-chart', this.upstreamFullName);
+  }
 }

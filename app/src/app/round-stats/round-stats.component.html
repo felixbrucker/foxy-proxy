@@ -1,8 +1,15 @@
 <mat-card style="width: 320px" class="custom-card">
   <mat-card-header style="margin-left: -16px">
-    <mat-card-title>
-      <span>Rounds</span>
-    </mat-card-title>
+    <div class="mat-card-header-text" style="margin-left: -16px; width: 100%">
+      <mat-card-title>
+        <div style="width: 100%; display: flex; justify-content: space-between">
+          <div>Rounds</div>
+          <div>
+            <span (click)="hideCard()" matTooltip="Hide this card">&times;</span>
+          </div>
+        </div>
+      </mat-card-title>
+    </div>
   </mat-card-header>
   <mat-card-content style="font-size: 1em">
     <span style="float: left;">Submitted</span>

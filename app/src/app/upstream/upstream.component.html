@@ -12,10 +12,12 @@
       [maxScanTime]="maxScanTime">
     </app-upstream-info>
   </div>
-  <app-round-stats [totalRounds]="upstream.totalRounds"
+  <app-round-stats *ngIf="showCard('round-stats')"
+                   [totalRounds]="upstream.totalRounds"
                    [roundsWithDLs]="upstream.roundsWithDLs"
                    [roundsSubmitted]="upstream.roundsSubmitted"
                    [roundsWon]="upstream.roundsWon"
+                   [upstreamFullName]="upstream.fullName"
                    style="margin: 5px;">
   </app-round-stats>
   <app-blocks-won-list *ngIf="showCard('blocks-won-list')"
@@ -23,8 +25,9 @@
     [isBHD]="upstream.isBHD"
     [upstreamFullName]="upstream.fullName">
   </app-blocks-won-list>
-  <app-net-diff-chart
+  <app-net-diff-chart *ngIf="showCard('net-diff-chart')"
     [historicalRounds]="upstream.historicalRounds"
+    [upstreamFullName]="upstream.fullName"
     style="margin: 5px;">
   </app-net-diff-chart>
 </div>

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import { Chart } from 'chart.js';
+import {LocalStorageService} from '../local-storage.service';
 
 @Component({
   selector: 'app-round-stats',
@@ -12,11 +13,12 @@ export class RoundStatsComponent implements OnInit {
   @Input() roundsWithDLs: number;
   @Input() roundsSubmitted: number;
   @Input() roundsWon: number;
+  @Input() upstreamFullName: string;
 
   @ViewChild('roundsSubmittedChart') private roundsSubmittedChartRef;
   private roundsSubmittedChart = [];
 
-  constructor() { }
+  constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
     this.roundsSubmittedChart = new Chart(this.roundsSubmittedChartRef.nativeElement, {
@@ -58,5 +60,9 @@ export class RoundStatsComponent implements OnInit {
     }
 
     return (this.roundsSubmitted / this.totalRounds * 100).toFixed(2);
+  }
+
+  hideCard() {
+    this.localStorageService.hideItem('round-stats', this.upstreamFullName);
   }
 }

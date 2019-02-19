@@ -1,8 +1,15 @@
 <mat-card class="custom-card scalable">
   <mat-card-header style="margin-left: -16px">
-    <mat-card-title>
-      <span>Historical Difficulty</span>
-    </mat-card-title>
+    <div class="mat-card-header-text" style="margin-left: -16px; width: 100%">
+      <mat-card-title>
+        <div style="width: 100%; display: flex; justify-content: space-between">
+          <span>Historical Difficulty</span>
+          <div>
+            <span (click)="hideCard()" matTooltip="Hide this card">&times;</span>
+          </div>
+        </div>
+      </mat-card-title>
+    </div>
   </mat-card-header>
   <mat-card-content>
     <canvas #netDiffChart>{{ netDiffChart }}</canvas>
