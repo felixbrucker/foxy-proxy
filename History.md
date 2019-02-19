@@ -1,3 +1,14 @@
+1.7.0 / 2019-02-19
+==================
+
+* Add update notification in the web ui on new versions
+* Add update notification log line on startup on new versions
+* Add web ui logout button
+* Add web ui connection notifications
+* Allow hiding more cards
+* Fix spacing for long miner and upstream names
+* Fix upstream scan progress for low default proxy maxScanTimes
+
 1.6.2 / 2019-02-18
 ==================
 
