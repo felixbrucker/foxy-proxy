@@ -24,7 +24,14 @@ export class MainComponent implements OnInit {
   async ngOnInit() {
     this.statsService.getStatsObservable().subscribe((stats => {
       if (stats.length > 0) {
-        this.setCurrentProxy(stats[0]);
+        let selectProxy = stats[0];
+        if (this.currentProxy) {
+          const foundProxy = stats.find(proxy => proxy.name === this.currentProxy.name);
+          if (foundProxy) {
+            selectProxy = foundProxy;
+          }
+        }
+        this.setCurrentProxy(selectProxy);
       }
       this.stats = stats;
     }));
