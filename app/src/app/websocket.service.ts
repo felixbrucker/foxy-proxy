@@ -23,4 +23,9 @@ export class WebsocketService {
   unsubscribeAll(topic) {
     this.socket.removeAllListeners(topic);
   }
+
+  reconnect() {
+    this.socket.disconnect();
+    this.socket.connect();
+  }
 }

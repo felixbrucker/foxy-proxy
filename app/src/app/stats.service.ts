@@ -3,6 +3,7 @@ import {WebsocketService} from './websocket.service';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {LocalStorageService} from './local-storage.service';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
@@ -13,27 +14,59 @@ export class StatsService {
   private statsObservable: any;
   private authenticated = new BehaviorSubject<boolean>(false);
   private authenticatedObservable: Observable<boolean>;
+  private reconnecting = false;
 
   constructor(
     private websocketService: WebsocketService,
     private localStorageService: LocalStorageService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.statsObservable = this.stats.asObservable();
     this.authenticatedObservable = this.authenticated.asObservable();
+    this.websocketService.subscribe('connect', this.onConnected.bind(this));
+    this.websocketService.subscribe('disconnect', this.onDisconnected.bind(this));
+    this.websocketService.subscribe('reconnect', this.onReconnected.bind(this));
     this.websocketService.subscribe('unauthorized', this.onUnauthorized.bind(this));
     this.websocketService.subscribe('stats/proxy', this.onNewProxyStats.bind(this));
     this.websocketService.subscribe('stats/current-round', this.onNewUpstreamStats.bind(this));
     this.websocketService.subscribe('stats/historical', this.onNewUpstreamStats.bind(this));
-    const authData = this.localStorageService.getAuthData();
-    if (authData) {
-      this.authenticate(authData.username, authData.passHash);
-    }
   }
 
   init() {
     this.websocketService.publish('stats/init', (stats) => {
       this.stats.next(stats);
+    });
+  }
+
+  onConnected() {
+    this.authenticated.next(false);
+    const authData = this.localStorageService.getAuthData();
+    if (authData) {
+      this.authenticate(authData.username, authData.passHash);
+    }
+    this.init();
+  }
+
+  onDisconnected() {
+    if (this.reconnecting) {
+      return;
+    }
+    this.snackBar.open('Lost the connection to the proxy, reconnecting..', null, {
+      duration: 2 * 1000,
+      verticalPosition: 'top',
+      horizontalPosition: 'right',
+    });
+  }
+
+  onReconnected() {
+    if (this.reconnecting) {
+      return;
+    }
+    this.snackBar.open('Re-established the connection to the proxy', null, {
+      duration: 2 * 1000,
+      verticalPosition: 'top',
+      horizontalPosition: 'right',
     });
   }
 
@@ -96,5 +129,12 @@ export class StatsService {
 
   getAuthenticatedObservable() {
     return this.authenticatedObservable;
+  }
+
+  async reconnect() {
+    this.reconnecting = true;
+    this.websocketService.reconnect();
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    this.reconnecting = false;
   }
 }

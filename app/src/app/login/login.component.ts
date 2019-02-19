@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
       }
       await this.router.navigate(['/']);
     });
-    this.statsService.init();
   }
 
   async login() {

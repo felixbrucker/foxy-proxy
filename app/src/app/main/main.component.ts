@@ -28,7 +28,6 @@ export class MainComponent implements OnInit {
       }
       this.stats = stats;
     }));
-    this.statsService.init();
     this.detectVersionUpdate();
     setInterval(this.detectVersionUpdate.bind(this), 10 * 60 * 1000);
   }
@@ -50,7 +49,7 @@ export class MainComponent implements OnInit {
 
   async logout() {
     this.localStorageService.clearAuthData();
-    window.location.reload();
+    await this.statsService.reconnect();
   }
 
   getStats() {
