@@ -106,22 +106,28 @@ export class UpstreamInfoComponent implements OnInit {
   }
 
   getScanProgress() {
-    const miners = Object.keys(this.miners)
-      .map(key => this.miners[key])
-      .filter(miner => miner.currentHeightScanning === this.currentBlock);
-    const totalCapacity = miners.reduce((acc, miner) => acc + (miner.capacity || 0), 0);
+    const miners = Object.keys(this.miners).map(key => this.miners[key]);
+    const greatestMaxScanTime = miners.reduce((acc, curr) => {
+      if (!acc) {
+        return curr.maxScanTime;
+      }
+
+      return acc > curr.maxScanTime ? acc : curr.maxScanTime;
+    }, 0);
+    const scanningMiners = miners.filter(miner => miner.currentHeightScanning === this.currentBlock);
+    const totalCapacity = scanningMiners.reduce((acc, miner) => acc + (miner.capacity || 0), 0);
     const elapsed = moment().diff(this.roundStart, 'seconds');
-    if (miners.length === 0 && elapsed >= this.maxScanTime) {
+    if (scanningMiners.length === 0 && elapsed >= greatestMaxScanTime) {
       return 100;
     }
-    if (miners.length === 0 && elapsed < this.maxScanTime) {
+    if (scanningMiners.length === 0 && elapsed < greatestMaxScanTime) {
       return 0;
     }
 
-    const scanProgress = miners.map(miner => {
+    const scanProgress = scanningMiners.map(miner => {
       const progress = this.getProgressForMiner(miner);
       if (!miner.capacity) {
-        return progress / miners.length;
+        return progress / scanningMiners.length;
       }
       const capacityShare = miner.capacity / totalCapacity;
 
