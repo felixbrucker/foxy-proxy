@@ -43,7 +43,6 @@ export class MainComponent implements OnInit {
       return;
     }
     this.snackBar.open(`Newer version ${versionInfo.latestVersion} is available!`, 'OK', {
-      duration: 10 * 1000,
       verticalPosition: 'top',
       horizontalPosition: 'right',
     });
