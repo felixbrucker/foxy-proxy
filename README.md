@@ -124,7 +124,7 @@ An embedded web ui is available on the `listenAddr` address and port. Alternativ
 
 ## Changelog
 
-A Changelog can be found [here](https://github.com/felixbrucker/bhd-burst-proxy/blob/master/History.md)
+A Changelog can be found [here](https://github.com/felixbrucker/bhd-burst-proxy/blob/master/CHANGELOG.md)
 
 ## License
 

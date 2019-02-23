@@ -211,7 +211,7 @@ async function init() {
     await dashboard.initStats();
   }
 
-  await new Promise(resolve => setTimeout(resolve, 5 * 1000));
+  await latestVersionService.init();
   const latestVersion = latestVersionService.getLatestVersion();
   if (latestVersion && latestVersion !== version) {
     eventBus.publish('log/info', `Newer version ${latestVersion} is available!`);
