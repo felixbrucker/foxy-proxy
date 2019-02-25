@@ -42,6 +42,10 @@ if (program.live) {
 const config = new Config();
 
 store.setLogLevel(config.logLevel || 'info');
+store.setLogDir(config.logDir);
+if (config.logToFile) {
+  logger.enableFileLogging();
+}
 
 const proxyConfigs = config.proxies.map(proxyConfig => JSON.parse(JSON.stringify(proxyConfig)));
 
