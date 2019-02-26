@@ -1,3 +1,8 @@
+1.8.2 / 2019-02-26
+==================
+
+* Capture some errors which were previously not captured
+
 1.8.1 / 2019-02-26
 ==================
 
