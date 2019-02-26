@@ -15,6 +15,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@grpc/proto-loader": "^0.4.0",
+    "@sentry/node": "^4.6.3",
     "big-integer": "^1.6.42",
     "bignumber.js": "^8.1.1",
     "bytes": "^3.1.0",
@@ -28,9 +29,9 @@
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-json": "^2.0.2",
+    "koa-router": "^7.4.0",
     "koa-send": "^5.0.0",
     "koa-static": "^5.0.0",
-    "koa-router": "^7.4.0",
     "log-update": "^2.3.0",
     "mkdirp": "^0.5.1",
     "moment": "^2.24.0",

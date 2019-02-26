@@ -9,6 +9,7 @@ const koaStatic = require('koa-static');
 const program = require('commander');
 const Router = require('koa-router');
 const send = require('koa-send');
+const Sentry = require('@sentry/node');
 const Config = require('./lib/config');
 const database = require('./models');
 const eventBus = require('./lib/event-bus');
@@ -18,6 +19,18 @@ const version = require('./lib/version');
 const Dashboard = require('./lib/cli-dashboard');
 const logger = require('./lib/logger');
 const latestVersionService = require('./lib/services/latest-version-service');
+
+Sentry.init({
+  dsn: 'https://2d4461f632f64ecc99e24c7d88dc1cea@sentry.io/1402474',
+  release: `bhd-burst-proxy@${version}`,
+});
+
+process.on('unhandledRejection', (err) => {
+  eventBus.publish('log/error', `Error: ${err.message}`);
+});
+process.on('uncaughtException', (err) => {
+  eventBus.publish('log/error', `Error: ${err.message}`);
+});
 
 program
   .version(version)
