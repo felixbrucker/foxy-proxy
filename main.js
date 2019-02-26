@@ -60,6 +60,11 @@ if (config.logToFile) {
   logger.enableFileLogging();
 }
 
+if (!config.proxies) {
+  eventBus.publish('log/error', 'No proxies configured, exiting ..');
+  process.exit(1);
+}
+
 const proxyConfigs = config.proxies.map(proxyConfig => JSON.parse(JSON.stringify(proxyConfig)));
 
 async function init() {
@@ -74,7 +79,13 @@ async function init() {
   app.use(json());
   app.use(bodyParser());
 
-  const proxies = await Promise.all(proxyConfigs.map(async (proxyConfig, index) => {
+  const proxiesWithUpstreams = proxyConfigs.filter(proxyConfig => proxyConfig.upstreams);
+  if (proxiesWithUpstreams.length === 0) {
+    eventBus.publish('log/error', 'No proxies with upstreams configured, exiting ..');
+    process.exit(1);
+  }
+
+  const proxies = await Promise.all(proxiesWithUpstreams.map(async (proxyConfig, index) => {
     const proxy = new Proxy(proxyConfig);
     await proxy.init();
 
