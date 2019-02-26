@@ -74,6 +74,10 @@ async function init() {
   });
 
   const app = new Koa();
+  app.on('error', err => {
+    eventBus.publish('log/error', `Error: ${err.message}`);
+    Sentry.captureException(err);
+  });
   app.use(koaStatic(`${__dirname}/app/dist`));
   const router = new Router();
   app.use(json());
@@ -138,6 +142,10 @@ async function init() {
     let listenAddr = config.listenAddr;
     if (config.useMultiplePorts) {
       const localApp = new Koa();
+      localApp.on('error', err => {
+        eventBus.publish('log/error', `Error: ${err.message}`);
+        Sentry.captureException(err);
+      });
       const localRouter = new Router();
       localApp.use(json());
       localApp.use(bodyParser());
