@@ -1,3 +1,10 @@
+1.8.0 / 2019-02-26
+==================
+
+* Add log level support
+* Add file logging support
+* Add automatic error reporting
+
 1.7.3 / 2019-02-23
 ==================
 
