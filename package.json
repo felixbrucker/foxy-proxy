@@ -38,7 +38,7 @@
     "pg": "^7.8.1",
     "rotating-file-stream": "^1.4.0",
     "semver": "^5.6.0",
-    "sequelize": "^4.42.0",
+    "sequelize": "^4.42.1",
     "socket.io": "^2.2.0",
     "sqlite3": "^4.0.6",
     "superagent": "^4.1.0"
