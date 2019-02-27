@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const store = require('../lib/store');
+const store = require('../lib/services/store');
 const util = require('../lib/util');
 
 const useSSL = process.env.NODE_ENV === 'production';

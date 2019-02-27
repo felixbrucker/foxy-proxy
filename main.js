@@ -11,14 +11,14 @@ const Router = require('koa-router');
 const send = require('koa-send');
 const Sentry = require('@sentry/node');
 const Config = require('./lib/config');
-const database = require('./models');
-const eventBus = require('./lib/event-bus');
-const Proxy = require('./lib/proxy');
-const store = require('./lib/store');
-const version = require('./lib/version');
 const Dashboard = require('./lib/cli-dashboard');
-const logger = require('./lib/logger');
+const database = require('./models');
+const eventBus = require('./lib/services/event-bus');
 const latestVersionService = require('./lib/services/latest-version-service');
+const logger = require('./lib/services/logger');
+const Proxy = require('./lib/proxy');
+const store = require('./lib/services/store');
+const version = require('./lib/version');
 
 Sentry.init({
   dsn: 'https://2d4461f632f64ecc99e24c7d88dc1cea@sentry.io/1402474',
