@@ -181,7 +181,9 @@ async function init() {
 
   // redirect everything else to index.html
   app.use(async ctx => {
-    await send(ctx, `${__dirname}/app/dist/index.html`);
+    await send(ctx, 'app/dist/index.html', {
+      root: __dirname,
+    });
   });
 
   const server = http.createServer(app.callback());
