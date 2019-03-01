@@ -1,3 +1,8 @@
+1.8.4 / 2019-03-01
+==================
+
+* Fixes a bug which could have prevented the catch-all web ui route from working for npm installs.
+
 1.8.3 / 2019-03-01
 ==================
 
