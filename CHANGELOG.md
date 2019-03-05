@@ -1,3 +1,8 @@
+1.10.0 / 2019-03-05
+==================
+
+* Detect forks and update miningInfo accordingly.
+
 1.9.0 / 2019-03-05
 ==================
 
