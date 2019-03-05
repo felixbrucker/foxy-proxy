@@ -1,3 +1,8 @@
+1.9.0 / 2019-03-05
+==================
+
+* Officially support Burst's v2 API via `burst-grpc` type. See config examples on how to configure.
+
 1.8.4 / 2019-03-01
 ==================
 
