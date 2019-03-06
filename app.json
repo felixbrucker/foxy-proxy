@@ -1,0 +1,22 @@
+{
+  "name": "BHD-Burst-Proxy",
+  "description": "A BHD and Burst proxy which supports solo and pool mining upstreams.",
+  "logo": "https://raw.githubusercontent.com/felixbrucker/bhd-burst-proxy/master/app/src/favicon.png",
+  "keywords": [
+    "burst",
+    "bhd",
+    "proxy",
+    "multi-chain",
+    "collision-free",
+    "web-ui"
+  ],
+  "env": {
+    "CONFIG": {
+      "description": "The config which is usually stored as file as JSON string. You can use https://www.json2yaml.com to convert from yaml to JSON.",
+      "value": "{}"
+    }
+  },
+  "addons": [
+    "heroku-postgresql"
+  ]
+}
