@@ -6,8 +6,6 @@ BHD-Burst-Proxy
 [![npm weekly downloads](https://img.shields.io/npm/dw/bhd-burst-proxy.svg?style=flat-square)](https://www.npmjs.com/package/bhd-burst-proxy)
 [![docker pulls](https://img.shields.io/docker/pulls/felixbrucker/bhd-burst-proxy.svg?style=flat-square)](https://hub.docker.com/r/felixbrucker/bhd-burst-proxy)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 ## Prerequisites
 
 - nodejs >= 10, see [here](https://github.com/felixbrucker/bhd-burst-proxy/wiki/Installing-nodejs) how to install it
@@ -127,6 +125,12 @@ An embedded web ui is available on the `listenAddr` address and port. Alternativ
 ## Changelog
 
 A Changelog can be found [here](https://github.com/felixbrucker/bhd-burst-proxy/blob/master/CHANGELOG.md)
+
+## Heroku
+
+One can deploy the proxy to Heroku, though you'll want the config to contain the `ignoreMinerIP` config option per proxy because Heroku assigns each request a different internal ip based on the load balancer route the request took.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## License
 
