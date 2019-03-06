@@ -6,6 +6,8 @@ BHD-Burst-Proxy
 [![npm weekly downloads](https://img.shields.io/npm/dw/bhd-burst-proxy.svg?style=flat-square)](https://www.npmjs.com/package/bhd-burst-proxy)
 [![docker pulls](https://img.shields.io/docker/pulls/felixbrucker/bhd-burst-proxy.svg?style=flat-square)](https://hub.docker.com/r/felixbrucker/bhd-burst-proxy)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Prerequisites
 
 - nodejs >= 10, see [here](https://github.com/felixbrucker/bhd-burst-proxy/wiki/Installing-nodejs) how to install it
