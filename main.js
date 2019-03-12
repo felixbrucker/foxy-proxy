@@ -21,6 +21,7 @@ const version = require('./lib/version');
 const {
   HttpSinglePortTransport,
   HttpMultiplePortsTransport,
+  SocketIoTransport,
 } = require('./lib/transports');
 
 Sentry.init({
@@ -98,12 +99,14 @@ async function init() {
     return proxy;
   }));
   let transport = null;
-  if (config.useMultiplePorts) {
-    transport = new HttpMultiplePortsTransport(config.listenHost, config.listenPort);
-  } else {
-    transport = new HttpSinglePortTransport(router, config.listenAddr);
+  if (config.transport === 'http') {
+    if (config.useMultiplePorts) {
+      transport = new HttpMultiplePortsTransport(config.listenHost, config.listenPort);
+    } else {
+      transport = new HttpSinglePortTransport(router, config.listenAddr);
+    }
+    transport.addProxies(proxies);
   }
-  transport.addProxies(proxies);
 
   app.use(router.routes());
   app.use(router.allowedMethods());
@@ -117,10 +120,17 @@ async function init() {
 
   const server = http.createServer(app.callback());
   const io = IO(server);
+
+  if (config.transport === 'socket.io') {
+    transport = new SocketIoTransport(io, config.listenAddr);
+    transport.addProxies(proxies);
+  }
+
   server.listen(config.listenPort, config.listenHost);
 
   const authenticatedClients = {};
-  io.on('connection', async client => {
+  const webUiSocketIo = io.of('web-ui');
+  webUiSocketIo.on('connection', async client => {
     let authenticated = !config.webAuth; // Without any auth set, allow all
     if (authenticated) {
       authenticatedClients[client.id] = client;

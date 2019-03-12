@@ -9,7 +9,7 @@ export class WebsocketService {
   private socket;
 
   constructor() {
-    this.socket = io();
+    this.socket = io('/web-ui');
   }
 
   subscribe(topic, cb) {
