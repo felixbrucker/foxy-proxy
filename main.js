@@ -121,6 +121,13 @@ async function init() {
     transport.addProxies(proxies);
   }
 
+  server.on('error', (err) => {
+    eventBus.publish('log/error', `Error: ${err.message}`);
+    if (err.code === 'EADDRINUSE' || err.code === 'EACCES') {
+      process.exit(1);
+    }
+  });
+
   server.listen(config.listenPort, config.listenHost);
 
   const authenticatedClients = {};
