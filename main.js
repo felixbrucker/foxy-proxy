@@ -64,11 +64,6 @@ if (config.logToFile) {
   logger.enableFileLogging();
 }
 
-if (!config.proxies) {
-  eventBus.publish('log/error', 'No proxies configured, exiting ..');
-  process.exit(1);
-}
-
 const proxyConfigs = config.proxies.map(proxyConfig => JSON.parse(JSON.stringify(proxyConfig)));
 
 async function init() {
