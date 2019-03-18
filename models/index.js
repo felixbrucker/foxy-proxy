@@ -22,14 +22,12 @@ function init() {
       ssl: useSSL,
     },
     logging: false,
-    operatorsAliases: false, // Do not use deprecated operator aliases ($gte etc), disable warning here
   };
   if (!isPostgres) {
     sequelizeConfig = {
       dialect: 'sqlite',
       storage: sqliteFilePath,
       logging: false,
-      operatorsAliases: false, // Do not use deprecated operator aliases ($gte etc), disable warning here
     };
   }
   const sequelize = new Sequelize(databaseUrl, sequelizeConfig);
