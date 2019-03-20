@@ -1,3 +1,13 @@
+1.11.0 / 2019-03-21
+==================
+
+* Add config validations.
+* Fix the capacity not displayed correctly on hpool without deadline submits.
+* Use new tld for burst block explorer links.
+* Allow setting the passphrase in the miner when solo mining Burst.
+* Make it possible to run the proxy in Heroku, and possibly other cloud services.
+* Update all the dependencies.
+
 1.10.0 / 2019-03-05
 ==================
 
