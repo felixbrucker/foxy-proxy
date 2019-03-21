@@ -1,3 +1,8 @@
+1.11.1 / 2019-03-21
+==================
+
+* Fix a bug which prevented the usage of postgres databases for stats.
+
 1.11.0 / 2019-03-21
 ==================
 
