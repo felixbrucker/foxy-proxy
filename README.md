@@ -75,11 +75,12 @@ The proxy can be setup with a custom config and db file path, see `--help` for m
 
 ```bash
 Options:
-  -V, --version           output the version number
-  --config <config.yaml>  The custom config.yaml file path
-  --db <db.sqlite>        The custom db.sqlite file path
-  --live                  Show a live dashboard with stats
-  -h, --help              output usage information
+  -V, --version              output the version number
+  --config <config.yaml>     The custom config.yaml file path
+  --db <db.sqlite>           The custom db.sqlite file path
+  --live                     Show a live dashboard with stats
+  --update-historical-stats  Update all historical stats
+  -h, --help                 output usage information
 ```
 
 ## Config examples

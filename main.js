@@ -13,6 +13,7 @@ const Config = require('./lib/config');
 const Dashboard = require('./lib/cli-dashboard');
 const database = require('./models');
 const eventBus = require('./lib/services/event-bus');
+const historicalStatsUpdater = require('./lib/services/historical-stats-udater');
 const latestVersionService = require('./lib/services/latest-version-service');
 const logger = require('./lib/services/logger');
 const Proxy = require('./lib/proxy');
@@ -41,6 +42,7 @@ program
   .option('--config <config.yaml>', 'The custom config.yaml file path')
   .option('--db <db.sqlite>', 'The custom db.sqlite file path')
   .option('--live', 'Show a live dashboard with stats')
+  .option('--update-historical-stats', 'Update all historical stats')
   .parse(process.argv);
 
 if (program.config) {
@@ -196,6 +198,13 @@ async function init() {
   const latestVersion = latestVersionService.getLatestVersion();
   if (latestVersion && latestVersion !== version) {
     eventBus.publish('log/info', `Newer version ${latestVersion} is available!`);
+  }
+
+  if (program.updateHistoricalStats) {
+    eventBus.publish('log/info', 'Waiting 60 seconds for miners to submit nonces so we know all account ids before ' +
+        'updating all historical stats ..');
+    await new Promise(resolve => setTimeout(resolve, 60 * 1000));
+    await historicalStatsUpdater.updateHistoricalStats(proxies);
   }
 }
 
