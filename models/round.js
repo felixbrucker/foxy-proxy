@@ -29,7 +29,6 @@ module.exports = (sequelize, DataTypes) => sequelize.define('round', {
   },
   roundWon: {
     type: DataTypes.BOOLEAN,
-    allowNull: false,
   },
 }, {
   indexes: [

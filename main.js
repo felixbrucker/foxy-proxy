@@ -72,6 +72,7 @@ async function init() {
   // sync() creates missing tables
   await database().sequelize.sync({
     force: false, // Do not drop tables
+    alter: true,
   });
 
   const app = new Koa();
