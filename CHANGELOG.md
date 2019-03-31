@@ -1,3 +1,13 @@
+1.12.0 / 2019-03-31
+==================
+
+* Add per upstream connection quality indicators to the web ui.
+* Improve the display and selection of proxies in the web ui for small screens.
+* Show the exact pool/wallets error messages in the log.
+* Retry fetching the last round won info up to 10 times for slowly syncing wallets.
+* Add historical stats (round won) update via startup flag.
+* Update all the dependencies.
+
 1.11.1 / 2019-03-21
 ==================
 
