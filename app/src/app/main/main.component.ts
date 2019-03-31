@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {StatsService} from '../stats.service';
-import {LocalStorageService} from '../local-storage.service';
 import {MatSnackBar} from '@angular/material';
 
 @Component({
@@ -12,12 +11,11 @@ import {MatSnackBar} from '@angular/material';
 export class MainComponent implements OnInit {
 
   private stats = [];
-  private currentProxy: any;
+  private _currentProxy: any;
   private latestVersion = null;
 
   constructor(
     private statsService: StatsService,
-    private localStorageService: LocalStorageService,
     private snackBar: MatSnackBar
   ) { }
 
@@ -31,7 +29,7 @@ export class MainComponent implements OnInit {
             selectProxy = foundProxy;
           }
         }
-        this.setCurrentProxy(selectProxy);
+        this.currentProxy = selectProxy;
       }
       this.stats = stats;
     }));
@@ -54,24 +52,15 @@ export class MainComponent implements OnInit {
     });
   }
 
-  async logout() {
-    this.localStorageService.clearAuthData();
-    await this.statsService.reconnect();
-  }
-
   getStats() {
     return this.stats;
   }
 
-  getCurrentProxy() {
-    return this.currentProxy;
+  get currentProxy() {
+    return this._currentProxy;
   }
 
-  setCurrentProxy(currentProxy) {
-    this.currentProxy = currentProxy;
-  }
-
-  resetLocalConfig() {
-    this.localStorageService.clearHideItems();
+  set currentProxy(proxy: any) {
+    this._currentProxy = proxy;
   }
 }

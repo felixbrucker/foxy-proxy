@@ -21,6 +21,7 @@ import { ProxyInfoComponent } from './proxy-info/proxy-info.component';
 import { BlocksWonListComponent } from './blocks-won-list/blocks-won-list.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule} from '@angular/forms';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {FormsModule} from '@angular/forms';
     UpstreamInfoComponent,
     ProxyInfoComponent,
     BlocksWonListComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
