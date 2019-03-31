@@ -21,6 +21,8 @@ export class UpstreamInfoComponent implements OnInit {
   @Input() bestDL: string;
   @Input() miners: any;
   @Input() maxScanTime: number;
+  @Input() connected: number;
+  @Input() connectionQuality: number;
 
   private counter: Observable<Duration>;
   private subscription: Subscription;

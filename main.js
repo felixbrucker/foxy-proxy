@@ -183,6 +183,11 @@ async function init() {
     clients.forEach(client => client.emit('stats/current-round', upstreamName, currentRoundStats));
   });
 
+  eventBus.subscribe('stats/connection-stats', (upstreamName, connectionStats) => {
+    const clients = Object.keys(authenticatedClients).map(id => authenticatedClients[id]);
+    clients.forEach(client => client.emit('stats/connection-stats', upstreamName, connectionStats));
+  });
+
   eventBus.subscribe('stats/historical', (upstreamName, historicalStats) => {
     const clients = Object.keys(authenticatedClients).map(id => authenticatedClients[id]);
     clients.forEach(client => client.emit('stats/historical', upstreamName, historicalStats));

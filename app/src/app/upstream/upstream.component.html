@@ -9,7 +9,9 @@
       [netDiff]="upstream.netDiff"
       [roundStart]="upstream.roundStart"
       [miners]="miners"
-      [maxScanTime]="maxScanTime">
+      [maxScanTime]="maxScanTime"
+      [connected]="upstream.connected"
+      [connectionQuality]="upstream.connectionQuality">
     </app-upstream-info>
   </div>
   <app-round-stats *ngIf="showCard('round-stats')"

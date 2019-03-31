@@ -1,7 +1,14 @@
 <mat-card style="width: 320px" class="custom-card">
   <mat-card-header style="margin-left: -16px">
     <mat-card-title style="display: flex; justify-content: space-between;">
-      <span class="ellipsis" style="margin-right: 8px">{{name}}</span>
+      <span class="ellipsis" style="margin-right: 8px">
+        <span class="dot" style="margin-bottom: 2px"
+              [attr.positive]="connected || connectionQuality >= 99.4 ? true: null"
+              [attr.intermediary]="!connected && connectionQuality < 99.4 && connectionQuality >= 94 ? true: null"
+              [attr.negative]="!connected && connectionQuality < 94 ? true: null">
+        </span>
+        {{name}}
+      </span>
       <span style="display: flex; margin-top: 6px">
         <mat-progress-bar
           [ngClass]="{'green': scanProgress === 100, 'purple': scanProgress !== 100}"
@@ -38,6 +45,12 @@
     <div style="clear: both;"></div>
     <span style="float: left;">Estimated Capacity</span>
     <span style="float: right;">{{getEstimatedCapacity()}}</span>
+    <div style="clear: both;"></div>
+    <div>
+      &nbsp;
+    </div>
+    <span style="float: left;">Connection quality</span>
+    <span style="float: right;">{{connectionQuality.toFixed(2)}} %</span>
     <div style="clear: both;"></div>
   </mat-card-content>
 </mat-card>

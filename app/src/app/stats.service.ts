@@ -30,6 +30,7 @@ export class StatsService {
     this.websocketService.subscribe('unauthorized', this.onUnauthorized.bind(this));
     this.websocketService.subscribe('stats/proxy', this.onNewProxyStats.bind(this));
     this.websocketService.subscribe('stats/current-round', this.onNewUpstreamStats.bind(this));
+    this.websocketService.subscribe('stats/connection-stats', this.onNewUpstreamStats.bind(this));
     this.websocketService.subscribe('stats/historical', this.onNewUpstreamStats.bind(this));
   }
 
