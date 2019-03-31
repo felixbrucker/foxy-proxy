@@ -205,6 +205,9 @@ async function init() {
     eventBus.publish('log/info', 'Waiting 60 seconds for miners to submit nonces so we know all account ids before ' +
         'updating all historical stats ..');
     await new Promise(resolve => setTimeout(resolve, 60 * 1000));
+    await historicalStatsUpdater.updateHistoricalStats(proxies, true);
+  } else {
+    await new Promise(resolve => setTimeout(resolve, 60 * 1000));
     await historicalStatsUpdater.updateHistoricalStats(proxies);
   }
 }
