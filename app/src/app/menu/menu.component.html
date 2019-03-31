@@ -1,9 +1,19 @@
 <mat-toolbar color="primary" style="margin-bottom: 10px; background-color: #333">
   <mat-toolbar-row>
     <span style="margin-right: 14px"><img src="favicon.png" height="28" style="position: relative; top: 7px; margin-top: -7px"> BHD-Burst-Proxy</span>
-    <span *ngFor="let proxy of getProxies()">
-      <span>|</span>
-      <button mat-button (click)="currentlySelectedProxy = proxy" [ngClass]="{'mat-accent': currentlySelectedProxy === proxy}">{{proxy.name}}</button>
+    <span *ngIf="showSideBySide()" >
+      <span *ngFor="let proxy of getProxies()">
+        <span>|</span>
+        <button mat-button (click)="currentlySelectedProxy = proxy" [ngClass]="{'mat-accent': currentlySelectedProxy === proxy}">{{proxy.name}}</button>
+      </span>
+    </span>
+    <span *ngIf="!showSideBySide()">
+      <button mat-stroked-button class="mat-accent" [matMenuTriggerFor]="proxySelection">{{currentlySelectedProxy.name}}</button>
+      <mat-menu #proxySelection="matMenu" class="custom-menu">
+        <button mat-menu-item *ngFor="let proxy of getProxies()" (click)="currentlySelectedProxy = proxy">
+          {{ proxy.name }}
+        </button>
+      </mat-menu>
     </span>
     <span style="flex: 1 1 auto;"></span>
     <button mat-icon-button [matMenuTriggerFor]="menu">

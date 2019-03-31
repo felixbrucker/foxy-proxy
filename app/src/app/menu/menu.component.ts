@@ -43,4 +43,11 @@ export class MenuComponent implements OnInit {
     this.localStorageService.clearAuthData();
     await this.statsService.reconnect();
   }
+
+  showSideBySide() {
+    const usableSpace = window.innerWidth - 314;
+    const proxyCount = this.proxies.length;
+
+    return proxyCount * 120 <= usableSpace;
+  }
 }
