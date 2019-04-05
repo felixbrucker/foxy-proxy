@@ -24,7 +24,7 @@
     "commander": "^2.20.0",
     "grpc": "^1.19.0",
     "hdpool-api": "^1.2.0",
-    "js-yaml": "^3.13.0",
+    "js-yaml": "^3.13.1",
     "json-bigint": "^0.3.0",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
