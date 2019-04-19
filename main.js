@@ -2,6 +2,7 @@
 
 const bodyParser = require('koa-bodyparser');
 const http = require('http');
+const Integrations = require('@sentry/integrations');
 const IO = require('socket.io');
 const Koa = require('koa');
 const koaStatic = require('koa-static');
@@ -28,6 +29,12 @@ const {
 Sentry.init({
   dsn: 'https://2d4461f632f64ecc99e24c7d88dc1cea@sentry.io/1402474',
   release: `bhd-burst-proxy@${version}`,
+  attachStacktrace: true,
+  integrations: [
+      new Integrations.Dedupe(),
+      new Integrations.ExtraErrorData(),
+      new Integrations.Transaction(),
+  ],
 });
 
 process.on('unhandledRejection', (err) => {
