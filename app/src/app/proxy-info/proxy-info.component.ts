@@ -1,4 +1,4 @@
-import * as bytes from 'bytes';
+import * as Capacity from '../../../../shared/capacity';
 import * as moment from 'moment';
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable, Subscription, interval} from 'rxjs';
@@ -37,8 +37,8 @@ export class ProxyInfoComponent implements OnInit {
     });
   }
 
-  getCapacityString(capacityInBytes) {
-    return bytes(capacityInBytes);
+  getCapacityString(capacityInGiB) {
+    return (new Capacity(capacityInGiB)).toString();
   }
 
   getScanProgress() {
@@ -67,7 +67,7 @@ export class ProxyInfoComponent implements OnInit {
     }
     const elapsed = moment().diff(miner.startedAt, 'seconds');
 
-    return Math.min(1, elapsed/maxScanTime) * 100;
+    return Math.min(1, elapsed / maxScanTime) * 100;
   }
 
   getState(miner) {

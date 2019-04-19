@@ -1,4 +1,4 @@
-import * as bytes from 'bytes';
+import * as Capacity from '../../../../shared/capacity';
 import {Component, Input, OnInit} from '@angular/core';
 import * as moment from 'moment';
 import {Observable, Subscription, interval} from 'rxjs';
@@ -76,7 +76,7 @@ export class UpstreamInfoComponent implements OnInit {
   }
 
   getEstimatedCapacity() {
-    return bytes(this.estimatedCapacityInTB * Math.pow(1024, 4));
+    return Capacity.fromTiB(this.estimatedCapacityInTB).toString();
   }
 
   getBestDL() {
@@ -146,6 +146,6 @@ export class UpstreamInfoComponent implements OnInit {
     }
     const elapsed = moment().diff(miner.startedAt, 'seconds');
 
-    return Math.min(1, elapsed/maxScanTime) * 100;
+    return Math.min(1, elapsed / maxScanTime) * 100;
   }
 }
