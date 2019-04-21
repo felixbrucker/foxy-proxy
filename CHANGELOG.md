@@ -1,3 +1,10 @@
+1.13.0 / 2019-04-21
+==================
+
+* Add automatic HDPool fallback to ali3 and ali4.
+* Support big miners with capacities of up to 8 YiB.
+* Update all the dependencies.
+
 1.12.0 / 2019-03-31
 ==================
 
