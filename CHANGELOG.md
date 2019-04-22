@@ -1,3 +1,8 @@
+1.13.1 / 2019-04-22
+==================
+
+* Mark HDPool as online again after reconnecting.
+
 1.13.0 / 2019-04-21
 ==================
 
