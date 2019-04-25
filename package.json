@@ -1,6 +1,6 @@
 {
   "name": "bhd-burst-proxy",
-  "version": "1.13.1",
+  "version": "1.14.0",
   "description": "A BHD and Burst proxy which supports solo and pool mining upstreams.",
   "keywords": [
     "burst",
