@@ -6,6 +6,7 @@
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "build-prod": "ng build --optimization=true --prod=true --sourceMap=false",
+    "transpile-shared": "babel ../shared/capacity.js --out-file ../shared/capacity.es5.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -40,6 +41,9 @@
     "@angular/cli": "~7.3.8",
     "@angular/compiler-cli": "^7.2.14",
     "@angular/language-service": "~7.2.14",
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
     "@types/jasmine": "~3.3.12",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~11.13.7",
