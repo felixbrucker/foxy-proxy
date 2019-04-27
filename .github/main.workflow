@@ -3,7 +3,7 @@ workflow "Build, Audit and Publish" {
   resolves = [
     "Audit dependencies",
     "Build Web UI",
-    "Create Github Release",
+    "Post to Discord",
   ]
 }
 
@@ -50,4 +50,10 @@ action "Create Github Release" {
   needs = ["Publish to npm"]
   secrets = ["GITHUB_TOKEN"]
   args = ["--name", "BHD-Burst-Proxy"]
+}
+
+action "Post to Discord" {
+  uses = "felixbrucker/github-actions/post-release-in-discord@master"
+  needs = ["Create Github Release"]
+  secrets = ["WEBHOOK_ID", "WEBHOOK_TOKEN"]
 }
