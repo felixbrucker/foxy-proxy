@@ -1,3 +1,9 @@
+1.15.0 / 2019-04-27
+==================
+
+* Add support for HPools miner status upload.
+* HPool now has its own type for simplified configs.
+
 1.14.1 / 2019-04-26
 ==================
 
