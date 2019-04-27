@@ -47,7 +47,7 @@ action "Install Web UI dependencies" {
 
 action "Create Github Release" {
   uses = "felixbrucker/github-actions/publish-release@master"
-  needs = ["Tag"]
+  needs = ["Publish to npm"]
   secrets = ["GITHUB_TOKEN"]
   args = ["--name", "BHD-Burst-Proxy"]
 }
