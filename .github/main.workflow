@@ -1,9 +1,9 @@
 workflow "Build, Audit and Publish" {
   on = "push"
   resolves = [
-    "Publish to npm",
     "Audit dependencies",
     "Build Web UI",
+    "Create Github Release",
   ]
 }
 
@@ -43,4 +43,11 @@ action "Build Web UI" {
 action "Install Web UI dependencies" {
   uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
   args = "run install-web"
+}
+
+action "Create Github Release" {
+  uses = "felixbrucker/github-actions/publish-release@master"
+  needs = ["Tag"]
+  secrets = ["GITHUB_TOKEN"]
+  args = ["--name", "BHD-Burst-Proxy"]
 }
