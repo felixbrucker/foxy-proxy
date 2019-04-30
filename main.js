@@ -10,6 +10,7 @@ const program = require('commander');
 const Router = require('koa-router');
 const send = require('koa-send');
 const Sentry = require('@sentry/node');
+const blacklistedErrors = require('./lib/blacklisted-errors');
 const Config = require('./lib/config');
 const Dashboard = require('./lib/cli-dashboard');
 const database = require('./models');
@@ -85,6 +86,9 @@ async function init() {
   const app = new Koa();
   app.on('error', err => {
     eventBus.publish('log/error', `Error: ${err.message}`);
+    if (blacklistedErrors.indexOf(err.message) !== -1) {
+      return;
+    }
     Sentry.captureException(err);
   });
   app.use(koaStatic(`${__dirname}/app/dist`));
