@@ -1,3 +1,13 @@
+1.15.1 / 2019-04-30
+==================
+
+* Make current round stats bigger in the WebUI.
+* File logging is now enabled by default for new installs.
+* Possibly fix performance issues with unreliable/offline upstreams.
+* Fix startup waiting for offline upstreams.
+* Fix broken WebUI when an upstream never acquired miningInfo.
+* Reduce the info logging noise for flaky upstreams where some getMiningInfo requests timeout regularly.
+
 1.15.0 / 2019-04-27
 ==================
 
