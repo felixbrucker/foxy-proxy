@@ -1,3 +1,5 @@
+<img align="right" height="120" src="./app/src/assets/fox.svg">
+
 BHD-Burst-Proxy
 ======
 
