@@ -1,3 +1,8 @@
+1.15.2 / 2019-05-07
+==================
+
+* Fix possibly outdated miningInfo after hdpool reconnects.
+
 1.15.1 / 2019-04-30
 ==================
 
