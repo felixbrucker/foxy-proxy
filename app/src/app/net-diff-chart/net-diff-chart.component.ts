@@ -8,6 +8,14 @@ import {LocalStorageService} from '../local-storage.service';
   styleUrls: ['./net-diff-chart.component.scss']
 })
 export class NetDiffChartComponent implements OnInit, OnChanges {
+  static getScaledRounds(rounds) {
+    let scaledRounds = rounds;
+    while (scaledRounds.length > 1000) {
+      scaledRounds = scaledRounds.filter((round, index) => index % 10 !== 0);
+    }
+
+    return scaledRounds;
+  }
 
   @Input() historicalRounds;
   @Input() upstreamFullName: string;
@@ -18,12 +26,13 @@ export class NetDiffChartComponent implements OnInit, OnChanges {
   constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
+    const scaledRounds = NetDiffChartComponent.getScaledRounds(this.historicalRounds);
     this.netDiffChart = new Chart(this.netDiffChartRef.nativeElement, {
       type: 'line',
       data: {
-        labels: this.historicalRounds.map(round => round.blockHeight),
+        labels: scaledRounds.map(round => round.blockHeight),
         datasets: [{
-          data: this.historicalRounds.map(round => round.netDiff),
+          data: scaledRounds.map(round => round.netDiff),
           pointRadius: 0,
           backgroundColor: [
             'rgba(33, 224, 132, 0.5)',
@@ -59,8 +68,9 @@ export class NetDiffChartComponent implements OnInit, OnChanges {
     if (Object.keys(this.netDiffChart).length === 0) {
       return;
     }
-    this.netDiffChart.data.labels = changes.historicalRounds.currentValue.map(round => round.blockHeight);
-    this.netDiffChart.data.datasets[0].data = changes.historicalRounds.currentValue.map(round => round.netDiff);
+    const scaledRounds = NetDiffChartComponent.getScaledRounds(changes.historicalRounds.currentValue);
+    this.netDiffChart.data.labels = scaledRounds.map(round => round.blockHeight);
+    this.netDiffChart.data.datasets[0].data = scaledRounds.map(round => round.netDiff);
     this.netDiffChart.update();
   }
 
