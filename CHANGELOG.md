@@ -1,3 +1,11 @@
+1.16.0 / 2019-05-11
+==================
+
+* Add support for miner offline/recovered mail notifications.
+* Auto-scale netDiff web ui chart.
+* Increase timeouts for crappy slow chinese pools.
+* Allow changing the hpool url.
+
 1.15.2 / 2019-05-07
 ==================
 
