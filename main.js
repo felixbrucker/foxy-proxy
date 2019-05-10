@@ -20,6 +20,7 @@ const latestVersionService = require('./lib/services/latest-version-service');
 const logger = require('./lib/services/logger');
 const Proxy = require('./lib/proxy');
 const store = require('./lib/services/store');
+const mailService = require('./lib/services/mail-service');
 const version = require('./lib/version');
 const {
   HttpSinglePortTransport,
@@ -73,6 +74,8 @@ store.setLogDir(config.logDir);
 if (config.logToFile) {
   logger.enableFileLogging();
 }
+store.setMailSettings(config.config.mail);
+mailService.init();
 
 const proxyConfigs = config.proxies.map(proxyConfig => JSON.parse(JSON.stringify(proxyConfig)));
 
