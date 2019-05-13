@@ -1,0 +1,19 @@
+<div style="margin-top: -8px; margin-bottom: -8px">
+  <span>
+    Newer version {{ data.latestVersion }} is available!
+  </span>
+  <span *ngIf="showChangelog">
+    <br>
+    <br>
+    Changelog:
+    <br>
+    <span *ngFor="let changelog of data.changelog">
+      <br>
+      {{changelog}}
+    </span>
+    <br>
+  </span>
+  <button mat-button class="mat-simple-snackbar-action" (click)="toggleChangelog()">{{showChangelog ? 'Show less' : 'Show more'}}</button>
+  <button mat-button class="mat-simple-snackbar-action" (click)="dismiss()">OK</button>
+</div>
+

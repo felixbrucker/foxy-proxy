@@ -22,6 +22,7 @@ import { BlocksWonListComponent } from './blocks-won-list/blocks-won-list.compon
 import { LoginComponent } from './login/login.component';
 import {FormsModule} from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
+import { NewVersionSnackbarComponent } from './new-version-snackbar/new-version-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MenuComponent } from './menu/menu.component';
     ProxyInfoComponent,
     BlocksWonListComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    NewVersionSnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,9 @@ import { MenuComponent } from './menu/menu.component';
     FlexLayoutModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    NewVersionSnackbarComponent
+  ]
 })
 export class AppModule { }

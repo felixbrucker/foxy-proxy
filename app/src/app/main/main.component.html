@@ -1,4 +1,4 @@
-<app-menu [proxies]="getStats()" [(currentlySelectedProxy)]="currentProxy"></app-menu>
+<app-menu [proxies]="getStats()" [(currentlySelectedProxy)]="currentProxy" [runningVersion]="getRunningVersion()"></app-menu>
 <div *ngIf="!currentProxy">
   <mat-spinner [diameter]="40" style="margin:0 auto;"></mat-spinner>
 </div>

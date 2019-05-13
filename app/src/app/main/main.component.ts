@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {StatsService} from '../stats.service';
 import {MatSnackBar} from '@angular/material';
+import {NewVersionSnackbarComponent} from '../new-version-snackbar/new-version-snackbar.component';
 
 @Component({
   selector: 'app-main',
@@ -13,6 +14,7 @@ export class MainComponent implements OnInit {
   private stats = [];
   private _currentProxy: any;
   private latestVersion = null;
+  private runningVersion = null;
 
   constructor(
     private statsService: StatsService,
@@ -39,6 +41,7 @@ export class MainComponent implements OnInit {
 
   async detectVersionUpdate() {
     const versionInfo: any = await this.statsService.getVersionInfo();
+    this.runningVersion = versionInfo.runningVersion;
     if (this.latestVersion === versionInfo.latestVersion) {
       return;
     }
@@ -46,9 +49,11 @@ export class MainComponent implements OnInit {
     if (versionInfo.latestVersion === versionInfo.runningVersion) {
       return;
     }
-    this.snackBar.open(`Newer version ${versionInfo.latestVersion} is available!`, 'OK', {
+    this.snackBar.openFromComponent(NewVersionSnackbarComponent, {
       verticalPosition: 'top',
       horizontalPosition: 'right',
+      data: versionInfo,
+      panelClass: 'mat-simple-snackbar',
     });
   }
 
@@ -62,5 +67,9 @@ export class MainComponent implements OnInit {
 
   set currentProxy(proxy: any) {
     this._currentProxy = proxy;
+  }
+
+  getRunningVersion() {
+    return this.runningVersion;
   }
 }

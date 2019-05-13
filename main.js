@@ -177,6 +177,7 @@ async function init() {
     });
     client.on('version/info', (cb) => cb({
       latestVersion: latestVersionService.getLatestVersion(),
+      changelog: latestVersionService.getChangelog(),
       runningVersion: version,
     }));
     client.on('disconnect', () => {

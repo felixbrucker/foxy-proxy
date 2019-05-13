@@ -10,6 +10,7 @@ import {LocalStorageService} from '../local-storage.service';
 export class MenuComponent implements OnInit {
 
   @Input() proxies: any[];
+  @Input() runningVersion: any;
 
   @Input()
   get currentlySelectedProxy() {
@@ -45,9 +46,13 @@ export class MenuComponent implements OnInit {
   }
 
   showSideBySide() {
-    const usableSpace = window.innerWidth - 314;
+    const usableSpace = window.innerWidth - 355;
     const proxyCount = this.proxies.length;
 
     return proxyCount * 120 <= usableSpace;
+  }
+
+  getRunningVersion() {
+    return this.runningVersion;
   }
 }
