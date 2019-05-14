@@ -55,4 +55,10 @@ export class MenuComponent implements OnInit {
   getRunningVersion() {
     return this.runningVersion;
   }
+
+  getTitle() {
+    const showVersion = this.showSideBySide();
+    const versionAppend = this.runningVersion ? ` ${this.runningVersion}` : '';
+    return `BHD-Burst-Proxy${showVersion ? versionAppend : ''}`;
+  }
 }
