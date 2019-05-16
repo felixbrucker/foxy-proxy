@@ -1,3 +1,10 @@
+1.16.1 / 2019-05-17
+==================
+
+* Fix a bug that prevented 0 sec deadlines on HDPool to be submitted.
+* Show the running version in the web ui.
+* Add the changelog to new version notifications in the web ui.
+
 1.16.0 / 2019-05-11
 ==================
 
