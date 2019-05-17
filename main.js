@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const bodyParser = require('koa-bodyparser');
+const chalk = require('chalk');
 const http = require('http');
 const Integrations = require('@sentry/integrations');
 const IO = require('socket.io');
@@ -52,8 +53,12 @@ program
   .option('--db <db.sqlite>', 'The custom db.sqlite file path')
   .option('--live', 'Show a live dashboard with stats')
   .option('--update-historical-stats', 'Update all historical stats')
+  .option('--no-colors', 'Do not use colors in the cli output')
   .parse(process.argv);
 
+if (program.noColors) {
+  store.setUseColors(false);
+}
 if (program.config) {
   store.setConfigFilePath(program.config);
 }
@@ -210,7 +215,8 @@ async function init() {
 
   store.setProxies(proxies);
 
-  eventBus.publish('log/info', `BHD-Burst-Proxy ${version} initialized. The WebUI is reachable on http://${config.listenAddr}`);
+  const startupLine = `BHD-Burst-Proxy ${version} initialized. The WebUI is reachable on http://${config.listenAddr}`;
+  eventBus.publish('log/info', store.getUseColors() ? chalk.green(startupLine) : startupLine);
   if (dashboard) {
     await dashboard.initStats();
   }
@@ -218,7 +224,8 @@ async function init() {
   await latestVersionService.init();
   const latestVersion = latestVersionService.getLatestVersion();
   if (latestVersion && latestVersion !== version) {
-    eventBus.publish('log/info', `Newer version ${latestVersion} is available!`);
+    const newVersionLine = `Newer version ${latestVersion} is available!`;
+    eventBus.publish('log/info', store.getUseColors() ? chalk.magentaBright(newVersionLine) : newVersionLine);
   }
 
   if (program.updateHistoricalStats) {

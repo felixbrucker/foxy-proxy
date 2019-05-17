@@ -3,6 +3,7 @@ module.exports = {
     {
       name: 'bhd-burst-proxy',
       script: './main.js',
+      args: ['--no-colors'],
       watch: true,
       ignore_watch: ['db.sqlite', 'db.sqlite-journal', 'node_modules', '.git'],
     }
