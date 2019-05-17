@@ -1,6 +1,6 @@
 {
   "name": "bhd-burst-proxy",
-  "version": "1.16.2",
+  "version": "1.17.0",
   "description": "A BHD and Burst proxy which supports solo and pool mining upstreams.",
   "keywords": [
     "burst",
@@ -8,7 +8,9 @@
     "proxy",
     "multi-chain",
     "collision-free",
-    "web-ui"
+    "web-ui",
+    "foxyproxy",
+    "foxy"
   ],
   "repository": "https://github.com/felixbrucker/bhd-burst-proxy.git",
   "bugs": "https://github.com/felixbrucker/bhd-burst-proxy/issues",
