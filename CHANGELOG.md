@@ -1,3 +1,8 @@
+1.16.2 / 2019-05-17
+==================
+
+* Remove deprecated HDPool fallback endpoints.
+
 1.16.1 / 2019-05-17
 ==================
 
