@@ -21,8 +21,8 @@
     "@sentry/node": "^5.2.0",
     "big-integer": "^1.6.43",
     "bignumber.js": "^8.1.1",
-    "cli-table3": "^0.5.1",
     "chalk": "^2.4.2",
+    "cli-table3": "^0.5.1",
     "commander": "^2.20.0",
     "grpc": "^1.20.3",
     "hdpool-api": "^1.5.3",
@@ -43,7 +43,9 @@
     "sequelize": "^5.8.6",
     "socket.io": "^2.2.0",
     "sqlite3": "^4.0.8",
-    "superagent": "^5.0.5"
+    "superagent": "^5.0.5",
+    "universal-analytics": "^0.4.20",
+    "uuid": "^3.3.2"
   },
   "bin": {
     "bhd-burst-proxy": "./main.js"

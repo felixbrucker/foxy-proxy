@@ -23,6 +23,7 @@ const Proxy = require('./lib/proxy');
 const store = require('./lib/services/store');
 const mailService = require('./lib/services/mail-service');
 const version = require('./lib/version');
+const usageStatisticsService = require('./lib/services/usage-statistics-service');
 const {
   HttpSinglePortTransport,
   HttpMultiplePortsTransport,
@@ -226,6 +227,10 @@ async function init() {
   if (latestVersion && latestVersion !== version) {
     const newVersionLine = `Newer version ${latestVersion} is available!`;
     eventBus.publish('log/info', store.getUseColors() ? chalk.magentaBright(newVersionLine) : newVersionLine);
+  }
+
+  if (!config.config.disableAnonymousStatistics) {
+    await usageStatisticsService.init();
   }
 
   if (program.updateHistoricalStats) {
