@@ -71,6 +71,20 @@ This will download the proxy, install its dependencies and setup the default con
 Edit the created `config.yaml` file so that your desired proxy/proxies and upstream(s) are configured. More on the valid config options [here](https://github.com/felixbrucker/bhd-burst-proxy/wiki/Config-options).
 Make sure you do not break the yaml format or the file can not be read correctly.
 
+## Updating the proxy
+
+### NPM
+When installed via npm just run `npm update -g bhd-burst-proxy`
+
+### Docker
+When using docker just pull the latest image or tag you want to update to and replace the running container.
+This can be automated via [watchtower](https://github.com/v2tec/watchtower).
+
+### Git
+When installed as a git repository just `git pull`.
+If the changes have new dependencies required one needs to execute `npm ci` again as well before starting the proxy.
+
+
 ## CLI parameters
 
 The proxy can be setup with a custom config and db file path, see `--help` for more info:
@@ -98,18 +112,6 @@ This will only work when installed via git.
 
 Alternatively docker (tag) based deployments with automatic updates through [watchtower](https://github.com/v2tec/watchtower) can be used as well.
 
-## Updating the proxy
-
-### NPM
-When installed via npm just run `npm update -g bhd-burst-proxy`
-
-### Docker
-When using docker just pull the latest image or tag you want to update to and replace the running container.
-This can be automated via [watchtower](https://github.com/v2tec/watchtower).
-
-### Git
-When installed as a git repository just `git pull`.
-If the changes have new dependencies required one needs to execute `npm ci` again as well before starting the proxy.
 
 ## Per miner maxScanTime
 
