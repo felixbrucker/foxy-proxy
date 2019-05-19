@@ -1,3 +1,12 @@
+1.18.0 / 2019-05-19
+==================
+
+* Add support for updating the proxy through the web ui.
+* Add support for automatically updating the proxy on new versions.
+* Aggregate all new versions changelogs in the web ui.
+* Add anonymous usage statistics.
+* Allow customizing the color of many elements in the cli log.
+
 1.17.0 / 2019-05-17
 ==================
 
