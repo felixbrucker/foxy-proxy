@@ -79,6 +79,7 @@ store.setLogDir(config.logDir);
 if (config.logToFile) {
   logger.enableFileLogging();
 }
+store.setIsInstalledGlobally(!!config.config.isInstalledGlobally);
 store.setMailSettings(config.config.mail);
 mailService.init();
 

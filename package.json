@@ -27,7 +27,6 @@
     "cross-spawn": "^6.0.5",
     "grpc": "^1.20.3",
     "hdpool-api": "^1.5.3",
-    "is-installed-globally": "^0.2.0",
     "js-yaml": "^3.13.1",
     "json-bigint": "^0.3.0",
     "koa": "^2.7.0",
