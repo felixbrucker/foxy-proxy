@@ -49,11 +49,18 @@ export class MainComponent implements OnInit {
     if (versionInfo.latestVersion === versionInfo.runningVersion) {
       return;
     }
-    this.snackBar.openFromComponent(NewVersionSnackbarComponent, {
+    const snackBarRef = this.snackBar.openFromComponent(NewVersionSnackbarComponent, {
       verticalPosition: 'top',
       horizontalPosition: 'right',
       data: versionInfo,
       panelClass: 'mat-simple-snackbar',
+    });
+    snackBarRef.onAction().subscribe(() => {
+      this.statsService.updateProxy();
+      this.snackBar.open('Updating the proxy ..', '', {
+        verticalPosition: 'top',
+        horizontalPosition: 'right',
+      });
     });
   }
 

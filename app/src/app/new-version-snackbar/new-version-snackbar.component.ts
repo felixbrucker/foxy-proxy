@@ -19,6 +19,10 @@ export class NewVersionSnackbarComponent {
     this.snackBarRef.dismiss();
   }
 
+  update(): void {
+    this.snackBarRef.dismissWithAction();
+  }
+
   toggleChangelog() {
     this.showChangelog = !this.showChangelog;
   }

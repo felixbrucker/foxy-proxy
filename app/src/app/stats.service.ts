@@ -75,6 +75,10 @@ export class StatsService {
     return new Promise(resolve => this.websocketService.publish('version/info', (result) => resolve(result)));
   }
 
+  updateProxy() {
+    this.websocketService.publish('version/update');
+  }
+
   authenticate(username, passHash) {
     return new Promise(resolve => {
       this.websocketService.publish('authenticate', {
