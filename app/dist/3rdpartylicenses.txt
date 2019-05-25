@@ -89,6 +89,8 @@ THE SOFTWARE.
 
 @angular/material/card
 
+@angular/material/checkbox
+
 @angular/material/core
 
 @angular/material/divider
@@ -104,6 +106,8 @@ THE SOFTWARE.
 @angular/material/progress-bar
 
 @angular/material/progress-spinner
+
+@angular/material/radio
 
 @angular/material/snack-bar
 
