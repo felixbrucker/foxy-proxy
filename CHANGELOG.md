@@ -1,3 +1,11 @@
+1.19.0 / 2019-05-25
+==================
+
+* Allow overriding miner offline detection options.
+* Add web ui settings page.
+* Add startup ascii art.
+* Rename all the things to Foxy-Proxy.
+
 1.18.0 / 2019-05-19
 ==================
 
