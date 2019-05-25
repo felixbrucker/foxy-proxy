@@ -23,29 +23,12 @@ const store = require('./lib/services/store');
 const mailService = require('./lib/services/mail-service');
 const version = require('./lib/version');
 const usageStatisticsService = require('./lib/services/usage-statistics-service');
+const startupMessage = require('./lib/startup-message');
 const {
   HttpSinglePortTransport,
   HttpMultiplePortsTransport,
   SocketIoTransport,
 } = require('./lib/transports');
-
-Sentry.init({
-  dsn: 'https://2d4461f632f64ecc99e24c7d88dc1cea@sentry.io/1402474',
-  release: `bhd-burst-proxy@${version}`,
-  attachStacktrace: true,
-  integrations: [
-      new Integrations.Dedupe(),
-      new Integrations.ExtraErrorData(),
-      new Integrations.Transaction(),
-  ],
-});
-
-process.on('unhandledRejection', (err) => {
-  eventBus.publish('log/error', `Error: ${err.message}`);
-});
-process.on('uncaughtException', (err) => {
-  eventBus.publish('log/error', `Error: ${err.message}`);
-});
 
 program
   .version(version)
@@ -59,6 +42,8 @@ program
 if (program.noColors) {
   store.setUseColors(false);
 }
+startupMessage();
+
 if (program.config) {
   store.setConfigFilePath(program.config);
 }
@@ -73,6 +58,24 @@ if (program.live) {
 }
 
 const config = new Config();
+
+Sentry.init({
+  dsn: 'https://2d4461f632f64ecc99e24c7d88dc1cea@sentry.io/1402474',
+  release: `bhd-burst-proxy@${version}`,
+  attachStacktrace: true,
+  integrations: [
+    new Integrations.Dedupe(),
+    new Integrations.ExtraErrorData(),
+    new Integrations.Transaction(),
+  ],
+});
+
+process.on('unhandledRejection', (err) => {
+  eventBus.publish('log/error', `Error: ${err.message}`);
+});
+process.on('uncaughtException', (err) => {
+  eventBus.publish('log/error', `Error: ${err.message}`);
+});
 
 store.setLogLevel(config.logLevel || 'info');
 store.setLogDir(config.logDir);
