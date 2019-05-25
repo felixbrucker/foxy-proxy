@@ -126,6 +126,9 @@ An embedded web ui is available on the `listenAddr` address and port. Alternativ
 
 - Burst: BURST-N5P2-3ETU-7LXK-DTU3X
 - BHD: 382huZpCbisipKsLWTyQoPeWcpeeBRVdFF
+- ETH: 0xfEc6F48633A7c557b4ac5c37B4519C55CD701BEF
+- BTC: 14rbdLr2YXDkguVaqRKnPftTPX52tnv2x2
+- PP: https://www.paypal.me/felixbrucker
 
 ## Changelog
 
