@@ -1,0 +1,73 @@
+<mat-toolbar color="primary" style="margin-bottom: 10px; background-color: #333">
+  <mat-toolbar-row>
+    <span style="margin-right: 14px"><img src="assets/fox.svg" height="28" style="position: relative; top: 7px; margin-top: -7px">&nbsp;{{getTitle()}}&nbsp;&nbsp;|&nbsp;&nbsp;Settings</span>
+    <span style="flex: 1 1 auto;"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" class="custom-menu">
+      <button mat-menu-item routerLink="/" routerLinkActive="active">
+        <mat-icon>dashboard</mat-icon>
+        Dashboard
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+      <div mat-menu-item>
+        <mat-icon>info</mat-icon>
+        Version {{getRunningVersion()}}
+      </div>
+    </mat-menu>
+    <a mat-icon-button href="https://github.com/felixbrucker/bhd-burst-proxy#donate" target="_blank">
+      <mat-icon aria-label="Github" style="color: #b700b4">favorite</mat-icon>
+    </a>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="flex-container">
+  <div><br></div>
+  <div class="flex-container-row">
+    <div style="margin-right: 20px">Show Proxies:</div>
+    <div>
+      <div *ngFor="let proxy of getProxies()">
+        <mat-checkbox [ngModel]="showProxy(proxy)" (ngModelChange)="setShowProxy(proxy, $event)">
+          {{proxy.name}}
+        </mat-checkbox>
+      </div>
+    </div>
+  </div>
+  <div><br></div>
+  <div class="flex-container-row">
+    <div style="margin-right: 20px">Layout:</div>
+    <div>
+      <mat-radio-group [(ngModel)]="selectedLayout">
+        <mat-radio-button *ngFor="let layout of layouts" [value]="layout">
+          {{layout}}
+          &nbsp;
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div><br></div>
+  <div class="flex-container-row" *ngIf="hiddenCards.length > 0">
+    <div style="margin-right: 20px">Hidden cards:</div>
+    <div>
+      <div *ngFor="let card of hiddenCards">
+        <button mat-button (click)="clearHiddenCard(card)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        {{card.split('/').slice(1).join(' > ')}}
+      </div>
+    </div>
+  </div>
+  <div><br></div>
+  <div class="flex-container-row">
+    <div>
+      <button mat-raised-button color="primary" (click)="resetLocalConfig()">
+        <mat-icon>replay</mat-icon>
+        Reset the local configuration
+      </button>
+    </div>
+  </div>
+  <div><br></div>
+</div>

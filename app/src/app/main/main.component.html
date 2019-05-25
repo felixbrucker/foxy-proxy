@@ -1,7 +1,16 @@
-<app-menu [proxies]="getStats()" [(currentlySelectedProxy)]="currentProxy" [runningVersion]="getRunningVersion()"></app-menu>
+<app-menu [proxies]="layout === 'Condensed' ? [] : getStats()" [(currentlySelectedProxy)]="currentProxy" [runningVersion]="getRunningVersion()"></app-menu>
 <div *ngIf="!currentProxy">
   <mat-spinner [diameter]="40" style="margin:0 auto;"></mat-spinner>
 </div>
-<div class="flex-container" *ngIf="currentProxy">
-  <app-proxy [proxy]="currentProxy"></app-proxy>
+<div *ngIf="layout === 'Condensed'">
+  <div *ngFor="let proxy of getStats()">
+    <div class="flex-container" *ngIf="currentProxy">
+      <app-proxy [proxy]="proxy"></app-proxy>
+    </div>
+  </div>
+</div>
+<div *ngIf="layout === 'Default'">
+  <div class="flex-container" *ngIf="currentProxy">
+    <app-proxy [proxy]="currentProxy"></app-proxy>
+  </div>
 </div>

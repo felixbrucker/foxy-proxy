@@ -36,10 +36,6 @@ export class MenuComponent implements OnInit {
     return this.proxies;
   }
 
-  resetLocalConfig() {
-    this.localStorageService.clearHideItems();
-  }
-
   async logout() {
     this.localStorageService.clearAuthData();
     await this.statsService.reconnect();

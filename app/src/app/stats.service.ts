@@ -37,6 +37,9 @@ export class StatsService {
   init() {
     this.websocketService.publish('stats/init', (stats) => {
       this.stats.next(stats);
+      if (this.authenticated.getValue() === false) {
+        this.authenticated.next(true);
+      }
     });
   }
 

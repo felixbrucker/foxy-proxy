@@ -7,9 +7,20 @@ import { MainComponent } from './main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
-  MatCardModule, MatFormFieldModule,
-  MatIconModule, MatInputModule, MatListModule, MatMenuModule,
-  MatProgressBarModule, MatProgressSpinnerModule, MatSnackBarModule, MatTabsModule, MatToolbarModule, MatTooltipModule
+  MatCardModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule, MatRadioModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule
 } from '@angular/material';
 import { NetDiffChartComponent } from './net-diff-chart/net-diff-chart.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -23,6 +34,7 @@ import { LoginComponent } from './login/login.component';
 import {FormsModule} from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
 import { NewVersionSnackbarComponent } from './new-version-snackbar/new-version-snackbar.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +49,8 @@ import { NewVersionSnackbarComponent } from './new-version-snackbar/new-version-
     BlocksWonListComponent,
     LoginComponent,
     MenuComponent,
-    NewVersionSnackbarComponent
+    NewVersionSnackbarComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +71,8 @@ import { NewVersionSnackbarComponent } from './new-version-snackbar/new-version-
     FormsModule,
     MatProgressSpinnerModule,
     FlexLayoutModule,
+    MatCheckboxModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

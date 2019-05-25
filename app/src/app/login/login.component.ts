@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   password: '';
   hide = true;
   invalidAuth = false;
+  private runningVersion: any;
 
   constructor(
     private statsService: StatsService,
@@ -23,12 +24,23 @@ export class LoginComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+    this.updateRunningVersion();
     this.statsService.getAuthenticatedObservable().subscribe(async authenticated => {
       if (!authenticated) {
         return;
       }
       await this.router.navigate(['/']);
     });
+  }
+
+  async updateRunningVersion() {
+    const versionInfo: any = await this.statsService.getVersionInfo();
+    this.runningVersion = versionInfo.runningVersion;
+  }
+
+  getTitle() {
+    const versionAppend = this.runningVersion ? ` ${this.runningVersion}` : '';
+    return `BHD-Burst-Proxy${versionAppend}`;
   }
 
   async login() {

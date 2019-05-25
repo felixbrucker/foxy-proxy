@@ -20,9 +20,9 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu" class="custom-menu">
-      <button mat-menu-item (click)="resetLocalConfig()">
-        <mat-icon>replay</mat-icon>
-        Reset the local configuration
+      <button mat-menu-item routerLink="/settings" routerLinkActive="active">
+        <mat-icon>settings</mat-icon>
+        Settings
       </button>
       <button mat-menu-item (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>

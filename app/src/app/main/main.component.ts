@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {StatsService} from '../stats.service';
 import {MatSnackBar} from '@angular/material';
 import {NewVersionSnackbarComponent} from '../new-version-snackbar/new-version-snackbar.component';
+import {LocalStorageService} from '../local-storage.service';
 
 @Component({
   selector: 'app-main',
@@ -18,22 +19,24 @@ export class MainComponent implements OnInit {
 
   constructor(
     private statsService: StatsService,
+    private localStorageService: LocalStorageService,
     private snackBar: MatSnackBar
   ) { }
 
   async ngOnInit() {
     this.statsService.getStatsObservable().subscribe((stats => {
-      if (stats.length > 0) {
-        let selectProxy = stats[0];
+      const proxies = stats.filter(proxy => this.showProxy(proxy));
+      if (proxies.length > 0) {
+        let selectProxy = proxies[0];
         if (this.currentProxy) {
-          const foundProxy = stats.find(proxy => proxy.name === this.currentProxy.name);
+          const foundProxy = proxies.find(proxy => proxy.name === this.currentProxy.name);
           if (foundProxy) {
             selectProxy = foundProxy;
           }
         }
         this.currentProxy = selectProxy;
       }
-      this.stats = stats;
+      this.stats = proxies;
     }));
     this.detectVersionUpdate();
     setInterval(this.detectVersionUpdate.bind(this), 10 * 60 * 1000);
@@ -74,6 +77,14 @@ export class MainComponent implements OnInit {
 
   set currentProxy(proxy: any) {
     this._currentProxy = proxy;
+  }
+
+  showProxy(proxy) {
+    return this.localStorageService.showProxy(proxy.name);
+  }
+
+  get layout() {
+    return this.localStorageService.getItem('layout') || 'Default';
   }
 
   getRunningVersion() {
