@@ -1,7 +1,7 @@
 {
-  "name": "BHD-Burst-Proxy",
+  "name": "Foxy-Proxy",
   "description": "A BHD and Burst proxy which supports solo and pool mining upstreams.",
-  "logo": "https://raw.githubusercontent.com/felixbrucker/bhd-burst-proxy/master/app/src/favicon.png",
+  "logo": "https://raw.githubusercontent.com/felixbrucker/foxy-proxy/master/app/src/favicon.png",
   "keywords": [
     "burst",
     "bhd",

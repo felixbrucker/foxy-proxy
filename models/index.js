@@ -13,6 +13,7 @@ let isInitialized = false;
 function init() {
   const sqliteFilePath = store.getDbFilePath();
   migrateDbPath(sqliteFilePath);
+  migrateLegacyDbPath(sqliteFilePath);
   const databaseUrl = process.env.DATABASE_URL || `sqlite:${sqliteFilePath}`;
   const isPostgres = databaseUrl.indexOf('postgres') !== -1;
   let sequelizeConfig = {
@@ -58,6 +59,17 @@ function migrateDbPath(newPath) {
   util.ensureFilePathExists(newPath);
   fs.renameSync(oldPath, newPath);
   fs.rmdirSync('db');
+}
+
+function migrateLegacyDbPath(newPath) {
+  const oldPath = util.getLegacyFilePath('db.sqlite');
+  if (!fs.existsSync(oldPath)) {
+    return;
+  }
+
+  util.ensureFilePathExists(newPath);
+  fs.renameSync(oldPath, newPath);
+  fs.unlinkSync(oldPath);
 }
 
 db.Sequelize = Sequelize;

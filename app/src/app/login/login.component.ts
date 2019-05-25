@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   getTitle() {
     const versionAppend = this.runningVersion ? ` ${this.runningVersion}` : '';
-    return `BHD-Burst-Proxy${versionAppend}`;
+    return `Foxy-Proxy${versionAppend}`;
   }
 
   async login() {

@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'bhd-burst-proxy',
+      name: 'foxy-proxy',
       script: './main.js',
       args: ['--no-colors'],
       watch: true,

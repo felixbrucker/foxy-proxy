@@ -55,6 +55,6 @@ export class MenuComponent implements OnInit {
   getTitle() {
     const showVersion = this.showSideBySide();
     const versionAppend = this.runningVersion ? ` ${this.runningVersion}` : '';
-    return `BHD-Burst-Proxy${showVersion ? versionAppend : ''}`;
+    return `Foxy-Proxy${showVersion ? versionAppend : ''}`;
   }
 }

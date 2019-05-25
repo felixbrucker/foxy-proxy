@@ -1,5 +1,5 @@
 {
-  "name": "bhd-burst-proxy",
+  "name": "foxy-proxy",
   "version": "1.18.0",
   "description": "A BHD and Burst proxy which supports solo and pool mining upstreams.",
   "keywords": [
@@ -12,8 +12,8 @@
     "foxyproxy",
     "foxy"
   ],
-  "repository": "https://github.com/felixbrucker/bhd-burst-proxy.git",
-  "bugs": "https://github.com/felixbrucker/bhd-burst-proxy/issues",
+  "repository": "https://github.com/felixbrucker/foxy-proxy.git",
+  "bugs": "https://github.com/felixbrucker/foxy-proxy/issues",
   "license": "GPL-3.0",
   "dependencies": {
     "@grpc/proto-loader": "^0.5.1",
@@ -49,7 +49,8 @@
     "uuid": "^3.3.2"
   },
   "bin": {
-    "bhd-burst-proxy": "./main.js"
+    "bhd-burst-proxy": "./main.js",
+    "foxy-proxy": "./main.js"
   },
   "main": "main.js",
   "scripts": {

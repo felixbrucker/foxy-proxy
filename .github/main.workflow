@@ -49,7 +49,7 @@ action "Create Github Release" {
   uses = "felixbrucker/github-actions/publish-release@master"
   needs = ["Publish to npm"]
   secrets = ["GITHUB_TOKEN"]
-  args = ["--name", "BHD-Burst-Proxy"]
+  args = ["--name", "Foxy-Proxy"]
 }
 
 action "Post to Discord" {

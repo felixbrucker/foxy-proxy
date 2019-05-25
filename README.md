@@ -1,28 +1,28 @@
 <img align="right" height="120" src="./app/src/assets/fox.svg">
 
-BHD-Burst-Proxy
+Foxy-Proxy
 ======
 
 [![Software License](https://img.shields.io/badge/license-GPL--3.0-brightgreen.svg?style=flat-square)](LICENSE)
-[![npm](https://img.shields.io/npm/v/bhd-burst-proxy.svg?style=flat-square)](https://www.npmjs.com/package/bhd-burst-proxy)
-[![npm weekly downloads](https://img.shields.io/npm/dw/bhd-burst-proxy.svg?style=flat-square)](https://www.npmjs.com/package/bhd-burst-proxy)
-[![docker pulls](https://img.shields.io/docker/pulls/felixbrucker/bhd-burst-proxy.svg?style=flat-square)](https://hub.docker.com/r/felixbrucker/bhd-burst-proxy)
+[![npm](https://img.shields.io/npm/v/foxy-proxy.svg?style=flat-square)](https://www.npmjs.com/package/foxy-proxy)
+[![npm weekly downloads](https://img.shields.io/npm/dw/foxy-proxy.svg?style=flat-square)](https://www.npmjs.com/package/foxy-proxy)
+[![docker pulls](https://img.shields.io/docker/pulls/felixbrucker/foxy-proxy.svg?style=flat-square)](https://hub.docker.com/r/felixbrucker/foxy-proxy)
 
 ## Prerequisites
 
-- nodejs >= 10, see [here](https://github.com/felixbrucker/bhd-burst-proxy/wiki/Installing-nodejs) how to install it
+- nodejs >= 10, see [here](https://github.com/felixbrucker/foxy-proxy/wiki/Installing-nodejs) how to install it
 
 ## Getting started
 
-If you are unsure on how to proceed check this [Getting started](https://github.com/felixbrucker/bhd-burst-proxy/wiki/Getting-started) guide.
+If you are unsure on how to proceed check this [Getting started](https://github.com/felixbrucker/foxy-proxy/wiki/Getting-started) guide.
 
 ## Setup
 
 ### With npm
 
 ```bash
-npm i -g bhd-burst-proxy
-bhd-burst-proxy
+npm i -g foxy-proxy
+foxy-proxy
 ```
 
 ### With docker
@@ -31,13 +31,13 @@ A docker image based on alpine linux is built automatically on every commit to m
 
 ```bash
 latest : Latest master build of the proxy
-1.3.0, 1.3, 1 : Version 1.3.0 of the proxy
+1.19.0, 1.19, 1 : Version 1.19.0 of the proxy
 ```
 
 To run the proxy on the fly use:
 
 ```bash
-docker run --volume /path/to/conf/dir:/conf -p 12345:12345 --name bhd-burst-proxy --rm felixbrucker/bhd-burst-proxy
+docker run --volume /path/to/conf/dir:/conf -p 12345:12345 --name foxy-proxy --rm felixbrucker/foxy-proxy
 ```
 
 Or set it up via compose as a service:
@@ -46,7 +46,7 @@ Or set it up via compose as a service:
 version: '2'
 services:
   app:
-    image: felixbrucker/bhd-burst-proxy
+    image: felixbrucker/foxy-proxy
     restart: always
     volumes:
       - /path/to/conf/dir:/conf
@@ -59,8 +59,8 @@ Be sure to edit the `config.yaml` to listen on `0.0.0.0` for docker.
 ### With git
 
 ```bash
-git clone https://github.com/felixbrucker/bhd-burst-proxy
-cd bhd-burst-proxy
+git clone https://github.com/felixbrucker/foxy-proxy
+cd foxy-proxy
 npm ci
 npm start
 ```
@@ -68,13 +68,13 @@ npm start
 ----
 
 This will download the proxy, install its dependencies and setup the default config with some example upstream configs.
-Edit the created `config.yaml` file so that your desired proxy/proxies and upstream(s) are configured. More on the valid config options [here](https://github.com/felixbrucker/bhd-burst-proxy/wiki/Config-options).
+Edit the created `config.yaml` file so that your desired proxy/proxies and upstream(s) are configured. More on the valid config options [here](https://github.com/felixbrucker/foxy-proxy/wiki/Config-options).
 Make sure you do not break the yaml format or the file can not be read correctly.
 
 ## Updating the proxy
 
 ### NPM
-When installed via npm just run `npm update -g bhd-burst-proxy`
+When installed via npm just run `npm update -g foxy-proxy`
 
 ### Docker
 When using docker just pull the latest image or tag you want to update to and replace the running container.
@@ -101,7 +101,7 @@ Options:
 
 ## Config examples
 
-Some config examples can be found in the [wiki](https://github.com/felixbrucker/bhd-burst-proxy/wiki/Config-examples)
+Some config examples can be found in the [wiki](https://github.com/felixbrucker/foxy-proxy/wiki/Config-examples)
 
 ## Running the proxy in production
 
@@ -132,7 +132,7 @@ An embedded web ui is available on the `listenAddr` address and port. Alternativ
 
 ## Changelog
 
-A Changelog can be found [here](https://github.com/felixbrucker/bhd-burst-proxy/blob/master/CHANGELOG.md)
+A Changelog can be found [here](https://github.com/felixbrucker/foxy-proxy/blob/master/CHANGELOG.md)
 
 ## Heroku
 
@@ -142,4 +142,4 @@ One can deploy the proxy to Heroku, though you'll want the config to contain the
 
 ## License
 
-GNU GPLv3 (see [LICENSE](https://github.com/felixbrucker/bhd-burst-proxy/blob/master/LICENSE))
+GNU GPLv3 (see [LICENSE](https://github.com/felixbrucker/foxy-proxy/blob/master/LICENSE))

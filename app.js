@@ -61,7 +61,7 @@ const config = new Config();
 
 Sentry.init({
   dsn: 'https://2d4461f632f64ecc99e24c7d88dc1cea@sentry.io/1402474',
-  release: `bhd-burst-proxy@${version}`,
+  release: `foxy-proxy@${version}`,
   attachStacktrace: true,
   integrations: [
     new Integrations.Dedupe(),
@@ -226,7 +226,7 @@ const proxyConfigs = config.proxies.map(proxyConfig => JSON.parse(JSON.stringify
 
   store.setProxies(proxies);
 
-  const startupLine = `BHD-Burst-Proxy ${version} initialized. The WebUI is reachable on http://${config.listenAddr}`;
+  const startupLine = `Foxy-Proxy ${version} initialized. The WebUI is reachable on http://${config.listenAddr}`;
   eventBus.publish('log/info', store.getUseColors() ? chalk.green(startupLine) : startupLine);
   if (dashboard) {
     await dashboard.initStats();
