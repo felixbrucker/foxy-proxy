@@ -69,7 +69,6 @@ function migrateLegacyDbPath(newPath) {
 
   util.ensureFilePathExists(newPath);
   fs.renameSync(oldPath, newPath);
-  fs.unlinkSync(oldPath);
 }
 
 db.Sequelize = Sequelize;
