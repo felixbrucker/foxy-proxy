@@ -82,7 +82,7 @@ This can be automated via [watchtower](https://github.com/v2tec/watchtower).
 
 ### Git
 When installed as a git repository just `git pull`.
-If the changes have new dependencies required one needs to execute `npm ci` again as well before starting the proxy.
+If the changes have new dependencies required one needs to execute `npm update --no-save` as well before starting the proxy.
 
 
 ## CLI parameters
