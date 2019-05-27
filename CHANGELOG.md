@@ -1,3 +1,9 @@
+1.20.0 / 2019-05-27
+==================
+
+* Add support for FoxyPool's socket.io protocol for faster retrieval of new round info.
+* Fix `--help` cli option.
+
 1.19.1 / 2019-05-25
 ==================
 
