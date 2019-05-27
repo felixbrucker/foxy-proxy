@@ -96,6 +96,7 @@ Options:
   --db <db.sqlite>           The custom db.sqlite file path
   --live                     Show a live dashboard with stats
   --update-historical-stats  Update all historical stats
+  --no-colors                Do not use colors in the cli output
   -h, --help                 output usage information
 ```
 

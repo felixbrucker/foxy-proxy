@@ -8,7 +8,7 @@ class FoxyProxy {
   }
 
   start() {
-    this.app = fork(`${__dirname}/app.js`, process.argv.slice(1), {
+    this.app = fork(`${__dirname}/app.js`, process.argv.slice(2), {
       cwd: process.cwd(),
     });
     this.app.on('message', this.onMessage.bind(this));
