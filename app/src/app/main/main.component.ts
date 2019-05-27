@@ -37,8 +37,8 @@ export class MainComponent implements OnInit {
         this.currentProxy = selectProxy;
       }
       this.stats = proxies;
+      this.detectVersionUpdate();
     }));
-    this.detectVersionUpdate();
     setInterval(this.detectVersionUpdate.bind(this), 10 * 60 * 1000);
   }
 
