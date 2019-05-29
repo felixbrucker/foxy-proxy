@@ -17,6 +17,10 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "core-js/es6/*": ["node_modules/core-js/es"],
+      "core-js/es7/string": ["node_modules/core-js/es/string"]
+    }
   }
 }

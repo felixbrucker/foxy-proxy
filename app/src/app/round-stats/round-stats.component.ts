@@ -15,7 +15,7 @@ export class RoundStatsComponent implements OnInit {
   @Input() roundsWon: number;
   @Input() upstreamFullName: string;
 
-  @ViewChild('roundsSubmittedChart') private roundsSubmittedChartRef;
+  @ViewChild('roundsSubmittedChart', {static: true}) private roundsSubmittedChartRef;
   private roundsSubmittedChart = [];
 
   constructor(private localStorageService: LocalStorageService) { }

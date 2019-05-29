@@ -20,7 +20,7 @@ export class NetDiffChartComponent implements OnInit, OnChanges {
   @Input() historicalRounds;
   @Input() upstreamFullName: string;
 
-  @ViewChild('netDiffChart') private netDiffChartRef;
+  @ViewChild('netDiffChart', {static: true}) private netDiffChartRef;
   private netDiffChart:any = {};
 
   constructor(private localStorageService: LocalStorageService) { }
