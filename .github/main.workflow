@@ -3,8 +3,7 @@ workflow "Build, Audit and Publish" {
   resolves = [
     "Audit dependencies",
     "Build Web UI",
-    "Post to BHD Discord",
-    "Post to Foxy Discord",
+    "Post to Discord",
   ]
 }
 
@@ -53,14 +52,8 @@ action "Create Github Release" {
   args = ["--name", "Foxy-Proxy"]
 }
 
-action "Post to BHD Discord" {
+action "Post to Discord" {
   uses = "felixbrucker/github-actions/post-release-in-discord@master"
   needs = ["Create Github Release"]
-  secrets = ["WEBHOOK_ID", "WEBHOOK_TOKEN"]
-}
-
-action "Post to Foxy Discord" {
-  uses = "felixbrucker/github-actions/post-release-in-discord@master"
-  needs = ["Create Github Release"]
-  secrets = ["FOXY_WEBHOOK_ID", "FOXY_WEBHOOK_TOKEN"]
+  secrets = ["BHD_DISCORD_WEBHOOK_ID", "BHD_DISCORD_WEBHOOK_TOKEN", "FOXY_DISCORD_WEBHOOK_ID", "FOXY_DISCORD_WEBHOOK_TOKEN"]
 }
