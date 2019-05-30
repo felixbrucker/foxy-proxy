@@ -1,3 +1,14 @@
+1.21.0 / 2019-05-30
+==================
+
+* Improve self updating through git.
+* Add support for humanized DL formatting in the cli log.
+* Allow hiding the upstream name in the cli log.
+* Add support for dynamic DL colors.
+* Update the web-ui to angular 8 for improved performance.
+* Fix possibly outdated miningInfo after reconnecting through socket.io.
+* Fix web-ui showing the old version after updating without refreshing it.
+
 1.20.0 / 2019-05-27
 ==================
 
