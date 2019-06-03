@@ -119,8 +119,9 @@ const proxyConfigs = config.proxies.map(proxyConfig => JSON.parse(JSON.stringify
 
     return proxy;
   }));
-  let transport = null;
-  if (config.transport === 'http') {
+
+  if (config.transports.indexOf('http') !== -1) {
+    let transport = null;
     if (config.useMultiplePorts) {
       transport = new HttpMultiplePortsTransport(config.listenHost, config.listenPort);
     } else {
@@ -142,8 +143,8 @@ const proxyConfigs = config.proxies.map(proxyConfig => JSON.parse(JSON.stringify
   const server = http.createServer(app.callback());
   const io = IO(server);
 
-  if (config.transport === 'socket.io') {
-    transport = new SocketIoTransport(io, config.listenAddr);
+  if (config.transports.indexOf('socket.io') !== -1) {
+    const transport = new SocketIoTransport(io, config.listenAddr);
     transport.addProxies(proxies);
   }
 
