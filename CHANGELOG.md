@@ -1,3 +1,11 @@
+1.22.0 / 2019-06-04
+==================
+
+* Add support for multiple transports concurrently.
+* Add support for socket.io transport for Foxy-Miner.
+* Add support for minerAlias header/option.
+* Add support for dynamic EC calculation.
+
 1.21.0 / 2019-05-30
 ==================
 
