@@ -33,7 +33,7 @@
     "rxjs": "^6.5.2",
     "rxjs-compat": "^6.5.2",
     "socket.io-client": "^2.2.0",
-    "tslib": "^1.9.3",
+    "tslib": "^1.10.0",
     "zone.js": "^0.9.1"
   },
   "devDependencies": {
