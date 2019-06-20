@@ -248,12 +248,9 @@ const proxyConfigs = config.proxies.map(proxyConfig => JSON.parse(JSON.stringify
   }
 
   if (program.updateHistoricalStats) {
-    eventBus.publish('log/info', 'Waiting 60 seconds for miners to submit nonces so we know all account ids before ' +
+    eventBus.publish('log/info', 'Waiting 180 seconds for miners to submit nonces so we know all account ids before ' +
         'updating all historical stats ..');
-    await new Promise(resolve => setTimeout(resolve, 60 * 1000));
-    await historicalStatsUpdater.updateHistoricalStats(proxies, true);
-  } else {
-    await new Promise(resolve => setTimeout(resolve, 60 * 1000));
-    await historicalStatsUpdater.updateHistoricalStats(proxies);
   }
+  await new Promise(resolve => setTimeout(resolve, 180 * 1000));
+  await historicalStatsUpdater.updateHistoricalStats(proxies, !!program.updateHistoricalStats);
 })();
