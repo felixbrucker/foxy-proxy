@@ -1,3 +1,11 @@
+1.23.0 / 2019-06-25
+==================
+
+* Add support for custom estimated capacity intervals.
+* Encode minerName and minerAlias if UTF-8 symbols are detected for http upstreams.
+* Increase block winner retrieval retries.
+* Fix dynamic deadline color for very low deadlines.
+
 1.22.0 / 2019-06-04
 ==================
 
