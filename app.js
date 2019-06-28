@@ -85,7 +85,9 @@ store.setIsInstalledGlobally(!!config.config.isInstalledGlobally);
 store.setMailSettings(config.config.mail);
 mailService.init();
 
-const proxyConfigs = config.proxies.map(proxyConfig => JSON.parse(JSON.stringify(proxyConfig)));
+const proxyConfigs = config.proxies
+  .map(proxyConfig => JSON.parse(JSON.stringify(proxyConfig)))
+  .filter(proxyConfig => !proxyConfig.disabled);
 
 (async () => {
   // sync() creates missing tables
