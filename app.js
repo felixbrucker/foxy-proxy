@@ -20,6 +20,7 @@ const logger = require('./lib/services/logger');
 const Proxy = require('./lib/proxy');
 const store = require('./lib/services/store');
 const mailService = require('./lib/services/mail-service');
+const profitabilityService = require('./lib/services/profitability-service');
 const version = require('./lib/version');
 const usageStatisticsService = require('./lib/services/usage-statistics-service');
 const startupMessage = require('./lib/startup-message');
@@ -108,6 +109,10 @@ const proxyConfigs = config.proxies
   if (proxiesWithUpstreams.length === 0) {
     eventBus.publish('log/error', 'No proxies with upstreams configured, exiting ..');
     process.exit(1);
+  }
+
+  if (proxiesWithUpstreams.some(proxyConfig => proxyConfig.useProfitability)) {
+    await profitabilityService.init();
   }
 
   const proxies = await Promise.all(proxiesWithUpstreams.map(async (proxyConfig) => {
