@@ -55,5 +55,5 @@ action "Create Github Release" {
 action "Post to Discord" {
   uses = "felixbrucker/github-actions/post-release-in-discord@master"
   needs = ["Create Github Release"]
-  secrets = ["BHD_DISCORD_WEBHOOK_ID", "BHD_DISCORD_WEBHOOK_TOKEN", "FOXY_DISCORD_WEBHOOK_ID", "FOXY_DISCORD_WEBHOOK_TOKEN"]
+  secrets = ["FOXY_DISCORD_WEBHOOK_ID", "FOXY_DISCORD_WEBHOOK_TOKEN"]
 }
