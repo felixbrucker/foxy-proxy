@@ -1,3 +1,16 @@
+1.24.0 / 2019-07-02
+==================
+
+* Add support for per miner and accountId colors.
+* Add support for showing all deadlines received.
+* Add support for disabling proxies and upstreams.
+* Add support for dynamic prio's based on profitability.
+* Add support for BRS >= 2.4.0 grpc api.
+* Remove support for BRS < 2.4.0 grpc api.
+* Remove support for sending all deadlines received.
+* Fix displaying of errors from BURST or BOOM wallets in the log.
+* Fix waiting for miningInfo on startup for socket.io based upstreams.
+
 1.23.0 / 2019-06-25
 ==================
 
