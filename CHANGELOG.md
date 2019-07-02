@@ -1,3 +1,10 @@
+1.25.0 / 2019-07-02
+==================
+
+* Add support for manual updates through the web ui via update button.
+* Fix retrieval of latest releases from github.
+* Rename prio to weight in config to clarify precedence. 
+
 1.24.0 / 2019-07-02
 ==================
 
