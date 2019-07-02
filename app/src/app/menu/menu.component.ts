@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {StatsService} from '../stats.service';
 import {LocalStorageService} from '../local-storage.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-menu',
@@ -26,7 +27,8 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private statsService: StatsService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -39,6 +41,14 @@ export class MenuComponent implements OnInit {
   async logout() {
     this.localStorageService.clearAuthData();
     await this.statsService.reconnect();
+  }
+
+  update() {
+    this.statsService.updateProxy();
+    this.snackBar.open('Updating the proxy ..', '', {
+      verticalPosition: 'top',
+      horizontalPosition: 'right',
+    });
   }
 
   showSideBySide() {

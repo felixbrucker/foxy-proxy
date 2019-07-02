@@ -28,6 +28,12 @@
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
       </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="update()">
+        <mat-icon>update</mat-icon>
+        <span>Update the Proxy</span>
+      </button>
+      <mat-divider></mat-divider>
       <div mat-menu-item>
         <mat-icon>info</mat-icon>
         Version {{getRunningVersion()}}
