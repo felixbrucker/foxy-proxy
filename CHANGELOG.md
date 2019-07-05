@@ -1,3 +1,10 @@
+1.26.0 / 2019-07-05
+==================
+
+* Add support for maxNumberOfChains.
+* Add support for block winner accountId retrieval through socket.io
+* Fix debug message on failed latest version checks.
+
 1.25.0 / 2019-07-02
 ==================
 
