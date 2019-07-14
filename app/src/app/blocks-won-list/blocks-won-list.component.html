@@ -32,7 +32,8 @@
         <mat-list-item style="color: #cfd0d1; margin-left: -14px" class="scalable-item">
           <div style="width: 100%; display: flex; justify-content: space-between">
             <div>
-              <a style="color: #cfd0d1" href="{{isBHD ? 'https://www.btchd.org/explorer/block/' : 'https://explorer.burstcoin.network/?action=block_inspect&height='}}{{round.blockHeight}}" target="_blank">{{round.blockHeight}}</a>
+              <a *ngIf="getBlockExplorerLink(round.blockHeight)" style="color: #cfd0d1" href="{{getBlockExplorerLink(round.blockHeight)}}" target="_blank">{{round.blockHeight}}</a>
+              <span *ngIf="!getBlockExplorerLink(round.blockHeight)">{{round.blockHeight}}</span>
             </div>
             <div>
               {{getTimeDiff(round.createdAt)}}

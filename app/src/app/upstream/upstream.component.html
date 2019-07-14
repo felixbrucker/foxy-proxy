@@ -25,6 +25,7 @@
   <app-blocks-won-list *ngIf="showCard('blocks-won-list')"
     [historicalRounds]="upstream.historicalRounds"
     [isBHD]="upstream.isBHD"
+    [coin]="upstream.coin"
     [upstreamFullName]="upstream.fullName">
   </app-blocks-won-list>
   <app-net-diff-chart *ngIf="showCard('net-diff-chart')"
