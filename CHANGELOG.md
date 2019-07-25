@@ -1,3 +1,18 @@
+1.27.0 / 2019-07-25
+==================
+
+* Add support for multi coin block explorer links (via `coin` option).
+* Add support for mismatching height and deadline detection.
+* Add support for BOOM rates.
+* Add support for self-signed certificates for mail transports.
+* Add support for special snowflake pool "poolx".
+* Automatically add '/mining' to Foxy-Pool URLs if missing.
+* Fix logLevel being ignored for file logging.
+* Fix solo mining wallet error not shown correctly for BURST wallets and similar.
+* Fix submitted deadlines not persisted with `submitProbability` option.
+* Fix data dir not created with local config.yaml present.
+* Fix docker images including git dir.
+
 1.26.0 / 2019-07-05
 ==================
 
