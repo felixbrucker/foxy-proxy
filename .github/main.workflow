@@ -8,18 +8,18 @@ workflow "Build, Audit and Publish" {
 }
 
 action "Install dependencies" {
-  uses = "actions/npm@e7aaefed7c9f2e83d493ff810f17fa5ccd7ed437"
+  uses = "actions/npm@master"
   args = "ci"
 }
 
 action "Audit dependencies" {
-  uses = "actions/npm@e7aaefed7c9f2e83d493ff810f17fa5ccd7ed437"
+  uses = "actions/npm@master"
   args = "audit"
   needs = ["Install dependencies"]
 }
 
 action "Tag" {
-  uses = "actions/bin/filter@9d4ef995a71b0771f438dd7438851858f4a55d0c"
+  uses = "actions/bin/filter@master"
   needs = [
     "Audit dependencies",
     "Build Web UI",
@@ -28,20 +28,20 @@ action "Tag" {
 }
 
 action "Publish to npm" {
-  uses = "actions/npm@3c8332795d5443adc712d30fa147db61fd520b5a"
+  uses = "actions/npm@master"
   needs = ["Tag"]
   args = "publish --access public"
   secrets = ["NPM_AUTH_TOKEN"]
 }
 
 action "Build Web UI" {
-  uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
+  uses = "actions/npm@master"
   args = "run build-web"
   needs = ["Install Web UI dependencies"]
 }
 
 action "Install Web UI dependencies" {
-  uses = "actions/npm@4633da3702a5366129dca9d8cc3191476fc3433c"
+  uses = "actions/npm@master"
   args = "run install-web"
 }
 
