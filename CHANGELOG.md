@@ -1,4 +1,4 @@
-1.27.0 / 2019-07-25
+1.27.1 / 2019-07-26
 ==================
 
 * Fix special snowflake chinese pool height compares.
