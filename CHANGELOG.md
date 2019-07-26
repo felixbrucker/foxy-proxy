@@ -1,6 +1,11 @@
 1.27.0 / 2019-07-25
 ==================
 
+* Fix special snowflake chinese pool height compares.
+
+1.27.0 / 2019-07-25
+==================
+
 * Add support for multi coin block explorer links (via `coin` option).
 * Add support for mismatching height and deadline detection.
 * Add support for BOOM rates.
