@@ -1,10 +1,13 @@
 {
   "name": "foxy-proxy",
   "version": "1.27.1",
-  "description": "A BHD and Burst proxy which supports solo and pool mining upstreams.",
+  "description": "A BHD, LHD, DISC, BOOM and BURST proxy which supports solo and pool mining upstreams.",
   "keywords": [
     "burst",
     "bhd",
+    "lhd",
+    "boom",
+    "disc'",
     "proxy",
     "multi-chain",
     "collision-free",
