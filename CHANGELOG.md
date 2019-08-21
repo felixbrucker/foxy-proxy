@@ -1,3 +1,18 @@
+1.28.0 / 2019-08-21
+==================
+
+**Note**: this release includes updated native modules, please install it manually on windows
+
+* Add support for excluding accountIds per upstream.
+* Add LHD explorer links.
+* Add debug log line for proxy switches.
+* Add proxy and upstream colors to the cli dashboard.
+* Show an error when submitting solo submissions to pool upstreams.
+* Show fallback weight in case of no profitability data.
+* Fix HDPool showing as not connected in the web-ui.
+* Fix possible race condition when persisting rounds.
+* Remove system details from usage statistics.
+
 1.27.1 / 2019-07-26
 ==================
 
