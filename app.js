@@ -39,7 +39,7 @@ program
   .option('--no-colors', 'Do not use colors in the cli output')
   .parse(process.argv);
 
-if (program.noColors) {
+if (!program.colors) {
   store.setUseColors(false);
 }
 startupMessage();
