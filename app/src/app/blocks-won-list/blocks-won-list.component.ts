@@ -46,6 +46,8 @@ export class BlocksWonListComponent implements OnInit {
         return `https://explorer.burstcoin.network/?action=block_inspect&height=${height}`;
       case 'BOOM':
         return `https://explorer.boomcoin.org/block/${height}`;
+      case 'LHD':
+        return `https://ltchd.io/explorer/block/${height}`;
       default:
         return null;
     }
