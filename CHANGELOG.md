@@ -1,3 +1,9 @@
+1.29.0 / 2019-08-22
+==================
+
+* Add disc profitability data based on otc.poolx.com.
+* Fix possible sqlite database lock issues.
+
 1.28.0 / 2019-08-21
 ==================
 
