@@ -1,3 +1,8 @@
+1.29.2 / 2019-08-24
+==================
+
+* Fix submit probability capacity calculation.
+
 1.29.1 / 2019-08-23
 ==================
 
