@@ -1,3 +1,8 @@
+1.29.1 / 2019-08-23
+==================
+
+* Hopefully fix sqlite timeout errors on super slow systems.
+
 1.29.0 / 2019-08-22
 ==================
 
