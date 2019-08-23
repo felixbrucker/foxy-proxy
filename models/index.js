@@ -29,6 +29,9 @@ function init() {
       dialect: 'sqlite',
       storage: sqliteFilePath,
       logging: false,
+      retry: {
+        max: 10,
+      },
       pool: {
         max: 1,
         min: 0,
