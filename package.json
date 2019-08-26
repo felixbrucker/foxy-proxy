@@ -50,7 +50,7 @@
     "sqlite3": "^4.1.0",
     "superagent": "^5.1.0",
     "universal-analytics": "^0.4.20",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.3"
   },
   "bin": {
     "bhd-burst-proxy": "./main.js",
