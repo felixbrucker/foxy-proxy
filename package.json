@@ -29,7 +29,7 @@
     "cli-table3": "^0.5.1",
     "commander": "^3.0.0",
     "cross-spawn": "^6.0.5",
-    "grpc": "^1.22.2",
+    "grpc": "^1.23.3",
     "hdpool-api": "^1.5.3",
     "js-yaml": "^3.13.1",
     "json-bigint": "^0.3.0",
