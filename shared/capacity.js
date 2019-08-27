@@ -3,6 +3,10 @@ class Capacity {
         this.capacityInGiB = capacityInGiB;
     }
 
+    static fromGiB(capacityInGiB) {
+        return new Capacity(capacityInGiB);
+    }
+
     static fromTiB(capacityInTiB) {
         return new Capacity(capacityInTiB * 1024);
     }
