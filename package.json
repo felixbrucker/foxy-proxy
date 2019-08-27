@@ -21,7 +21,7 @@
   "dependencies": {
     "@grpc/proto-loader": "^0.5.1",
     "@sentry/integrations": "^5.6.1",
-    "@sentry/node": "^5.6.1",
+    "@sentry/node": "^5.6.2",
     "async": "^3.1.0",
     "big-integer": "^1.6.44",
     "bignumber.js": "^9.0.0",
@@ -29,7 +29,7 @@
     "cli-table3": "^0.5.1",
     "commander": "^3.0.0",
     "cross-spawn": "^6.0.5",
-    "grpc": "^1.22.2",
+    "grpc": "^1.23.3",
     "hdpool-api": "^1.5.3",
     "js-yaml": "^3.13.1",
     "json-bigint": "^0.3.0",
@@ -45,12 +45,12 @@
     "pg": "^7.12.1",
     "rotating-file-stream": "^1.4.3",
     "semver": "^6.3.0",
-    "sequelize": "^5.15.1",
+    "sequelize": "^5.16.0",
     "socket.io": "^2.2.0",
     "sqlite3": "^4.1.0",
     "superagent": "^5.1.0",
     "universal-analytics": "^0.4.20",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.3"
   },
   "bin": {
     "bhd-burst-proxy": "./main.js",
