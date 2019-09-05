@@ -112,7 +112,7 @@ const proxyConfigs = config.proxies
   }
 
   if (proxiesWithUpstreams.some(proxyConfig => proxyConfig.useProfitability)) {
-    await profitabilityService.init();
+    await profitabilityService.init(config.useEcoBlockRewardsForProfitability);
   }
 
   const proxies = await Promise.all(proxiesWithUpstreams.map(async (proxyConfig) => {
