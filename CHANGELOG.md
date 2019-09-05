@@ -1,3 +1,14 @@
+1.30.0 / 2019-09-05
+==================
+
+**Note**: this release includes updated native modules, please install it manually
+
+* Add config switch to toggle full/eco block rewards for profitability calculation.
+* Add LHD to profitability calculation.
+* Adapt profitability calculation to use new BHD block rewards.
+* Show netDiff formatted in the cli.
+* Fix wallet responses with big numbers.
+
 1.29.2 / 2019-08-24
 ==================
 
