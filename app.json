@@ -1,14 +1,19 @@
 {
   "name": "Foxy-Proxy",
-  "description": "A BHD and Burst proxy which supports solo and pool mining upstreams.",
-  "logo": "https://raw.githubusercontent.com/felixbrucker/foxy-proxy/master/app/src/favicon.png",
+  "description": "A BHD, LHD, DISC, BOOM and BURST proxy which supports solo and pool mining upstreams.",
+  "logo": "https://raw.githubusercontent.com/felixbrucker/foxy-proxy/master/app/src/assets/favicon-310.png",
   "keywords": [
     "burst",
     "bhd",
+    "lhd",
+    "boom",
+    "disc",
     "proxy",
     "multi-chain",
     "collision-free",
-    "web-ui"
+    "web-ui",
+    "foxyproxy",
+    "foxy"
   ],
   "env": {
     "CONFIG": {
