@@ -23,7 +23,7 @@
     "@sentry/integrations": "^5.6.1",
     "@sentry/node": "^5.6.2",
     "async": "^3.1.0",
-    "big-integer": "^1.6.44",
+    "big-integer": "^1.6.45",
     "bignumber.js": "^9.0.0",
     "chalk": "^2.4.2",
     "cli-table3": "^0.5.1",
