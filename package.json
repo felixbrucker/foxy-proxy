@@ -32,7 +32,7 @@
     "grpc": "^1.23.3",
     "js-yaml": "^3.13.1",
     "json-bigint": "^0.3.0",
-    "koa": "^2.8.1",
+    "koa": "^2.8.2",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "koa-send": "^5.0.0",
