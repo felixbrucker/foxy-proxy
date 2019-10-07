@@ -1,3 +1,15 @@
+1.32.0 / 2019-10-07
+==================
+
+* Drop hdpool support.
+* Add support for HDD.
+* Show the dynamic targetDL when using `submitProbability` in debug log.
+* Remove `Foxy-Proxy` prefix from miner name.
+* Auto remove trailing slash in foxypool url if detected.
+* Fix LHD EC calculation.
+* Fix BHD rate for profitability based switching.
+* Fix dynamic TargetDL for LHD.
+
 1.31.0 / 2019-09-07
 ==================
 
