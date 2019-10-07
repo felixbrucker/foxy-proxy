@@ -1,0 +1,44 @@
+on: push
+name: Audit and Publish
+jobs:
+  auditAndPublish:
+    name: Audit and Publish
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Install dependencies
+      uses: actions/npm@master
+      with:
+        args: ci
+    - name: Audit dependencies
+      uses: actions/npm@master
+      with:
+        args: audit
+    - name: Install Web UI dependencies
+      uses: actions/npm@master
+      with:
+        args: run install-web
+    - name: Build Web UI
+      uses: actions/npm@master
+      with:
+        args: run build-web
+    - name: Publish to npm
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: actions/npm@master
+      env:
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      with:
+        args: publish --access public
+    - name: Create Github Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: felixbrucker/github-actions/publish-release@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        args: --name Foxy-Proxy
+    - name: Post to Discord
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: felixbrucker/github-actions/post-release-in-discord@master
+      env:
+        FOXY_DISCORD_WEBHOOK_ID: ${{ secrets.FOXY_DISCORD_WEBHOOK_ID }}
+        FOXY_DISCORD_WEBHOOK_TOKEN: ${{ secrets.FOXY_DISCORD_WEBHOOK_TOKEN }}
