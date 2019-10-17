@@ -1,3 +1,10 @@
+1.33.0 / 2019-10-17
+==================
+
+* Allow setting distributionRatio via a config option for foxy-pools.
+* Prevent an error when setting `submitProbability` greater or equal to 100%
+* Fix netDiff and EC for BHD.
+
 1.32.0 / 2019-10-07
 ==================
 
