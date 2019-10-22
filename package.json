@@ -25,6 +25,7 @@
     "async": "^3.1.0",
     "big-integer": "^1.6.47",
     "bignumber.js": "^9.0.0",
+    "bitmart-api": "^1.1.1",
     "chalk": "^2.4.2",
     "cli-table3": "^0.5.1",
     "commander": "^3.0.2",
