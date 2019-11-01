@@ -101,7 +101,9 @@ const proxyConfigs = config.proxies
   app.on('error', err => {
     eventBus.publish('log/error', `Error: ${err.message}`);
   });
-  app.use(koaStatic(`${__dirname}/app/dist`));
+  app.use(koaStatic(`${__dirname}/app/dist`, {
+    maxage: 3 * 24 * 60 * 60 * 1000, // 3 days
+  }));
   const router = new Router();
   app.use(bodyParser());
 
