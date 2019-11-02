@@ -4,7 +4,7 @@ const http = require('http');
 const Integrations = require('@sentry/integrations');
 const IO = require('socket.io');
 const Koa = require('koa');
-const koaStatic = require('koa-static');
+const staticCache = require('koa-static-cache');
 const program = require('commander');
 const Router = require('koa-router');
 const send = require('koa-send');
@@ -101,8 +101,13 @@ const proxyConfigs = config.proxies
   app.on('error', err => {
     eventBus.publish('log/error', `Error: ${err.message}`);
   });
-  app.use(koaStatic(`${__dirname}/app/dist`, {
-    maxage: 3 * 24 * 60 * 60 * 1000, // 3 days
+  app.use(staticCache(`${__dirname}/app/dist`, {
+    maxAge: 365 * 24 * 60 * 60, // 1 year
+    files: {
+      '/index.html' : {
+        maxAge: 0,
+      },
+    },
   }));
   const router = new Router();
   app.use(bodyParser());
