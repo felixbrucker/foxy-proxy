@@ -30,7 +30,7 @@
     "cli-table3": "^0.5.1",
     "commander": "^3.0.2",
     "cross-spawn": "^6.0.5",
-    "grpc": "^1.24.1",
+    "grpc": "^1.24.2",
     "js-yaml": "^3.13.1",
     "json-bigint": "^0.3.0",
     "koa": "^2.11.0",
