@@ -48,6 +48,12 @@ export class BlocksWonListComponent implements OnInit {
         return `https://explorer.boomcoin.org/block/${height}`;
       case 'LHD':
         return `https://ltchd.io/explorer/block/${height}`;
+      case 'HDD':
+        return `https://www.hdd.cash/block.html?height=${height}`;
+      case 'XHD':
+        return `https://explorer.xrphd.org/block/${height}`;
+      case 'LAVA':
+        return `http://explorer.lavatech.org/block-height/${height}`;
       default:
         return null;
     }

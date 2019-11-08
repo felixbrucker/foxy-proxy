@@ -36,6 +36,11 @@ function () {
       return "".concat(capacity.toFixed(precision), " ").concat(units[unit]);
     }
   }], [{
+    key: "fromGiB",
+    value: function fromGiB(capacityInGiB) {
+      return new Capacity(capacityInGiB);
+    }
+  }, {
     key: "fromTiB",
     value: function fromTiB(capacityInTiB) {
       return new Capacity(capacityInTiB * 1024);
