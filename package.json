@@ -21,7 +21,7 @@
   "dependencies": {
     "@grpc/proto-loader": "^0.5.3",
     "@sentry/integrations": "^5.8.0",
-    "@sentry/node": "^5.9.0",
+    "@sentry/node": "^5.10.1",
     "async": "^3.1.0",
     "big-integer": "^1.6.48",
     "bignumber.js": "^9.0.0",
