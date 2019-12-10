@@ -126,11 +126,7 @@ An embedded web ui is available on the `listenAddr` address and port. Alternativ
 ## Donate
 
 - BHD: 33fKEwAHxVwnrhisREFdSNmZkguo76a2ML
-- LHD: 35NfQXpTdqAEGYpJyqteh8Lmn9RXrjN2Jp
-- BOOM: BOOM-BVUD-7VWE-HD7F-6RX4P
 - BURST: BURST-BVUD-7VWE-HD7F-6RX4P
-- DISC: 1F9nVpiA7iKcrpyHCGw6AeqMdU9EebZmrw
-- HDD: 34woZ2UCkJMbMa3RUdA846x2Byg8mM61S3
 - ETH: 0xfEc6F48633A7c557b4ac5c37B4519C55CD701BEF
 - BTC: 14rbdLr2YXDkguVaqRKnPftTPX52tnv2x2
 - PP: https://www.paypal.me/felixbrucker
