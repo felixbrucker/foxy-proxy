@@ -33,7 +33,7 @@
     "json-bigint": "^0.3.0",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
-    "koa-router": "^7.4.0",
+    "koa-router": "^8.0.6",
     "koa-send": "^5.0.0",
     "koa-static-cache": "^5.1.2",
     "log-update": "^3.4.0",
