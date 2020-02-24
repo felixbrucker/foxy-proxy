@@ -22,7 +22,7 @@
     "@grpc/proto-loader": "^0.5.3",
     "@sentry/integrations": "^5.12.0",
     "@sentry/node": "^5.12.3",
-    "async": "^3.1.1",
+    "async": "^3.2.0",
     "bignumber.js": "^9.0.0",
     "bitmart-api": "^1.1.1",
     "chalk": "^3.0.0",
