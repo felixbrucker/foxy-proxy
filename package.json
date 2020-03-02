@@ -21,7 +21,7 @@
   "dependencies": {
     "@grpc/proto-loader": "^0.5.3",
     "@sentry/integrations": "^5.12.4",
-    "@sentry/node": "^5.12.4",
+    "@sentry/node": "^5.13.1",
     "async": "^3.2.0",
     "bignumber.js": "^9.0.0",
     "bitmart-api": "^1.1.1",
