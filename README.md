@@ -10,11 +10,11 @@ Foxy-Proxy
 
 ## Prerequisites
 
-- nodejs >= 10, see [here](https://github.com/felixbrucker/foxy-proxy/wiki/Installing-nodejs) how to install it
+- nodejs >= 10, see [here](https://docs.foxypool.cf/installing-nodejs) how to install it
 
 ## Getting started
 
-If you are unsure on how to proceed check this [Getting started](https://github.com/felixbrucker/foxy-proxy/wiki/Getting-started) guide.
+If you are unsure on how to proceed check the [Docs](https://docs.foxypool.cf/foxy-proxy).
 
 ## Setup
 
