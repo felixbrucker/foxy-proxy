@@ -1,3 +1,8 @@
+1.34.1 / 2020-04-03
+==================
+
+* Fallback to regular foxy-pool connection if no coin set
+
 1.34.0 / 2020-04-03
 ==================
 
