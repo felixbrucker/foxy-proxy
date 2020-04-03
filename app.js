@@ -9,6 +9,8 @@ const program = require('commander');
 const Router = require('koa-router');
 const send = require('koa-send');
 const Sentry = require('@sentry/node');
+const { flatten } = require('lodash');
+
 const Config = require('./lib/config');
 const Dashboard = require('./lib/cli-dashboard');
 const database = require('./models');
@@ -23,6 +25,7 @@ const mailService = require('./lib/services/mail-service');
 const profitabilityService = require('./lib/services/profitability-service');
 const version = require('./lib/version');
 const usageStatisticsService = require('./lib/services/usage-statistics-service');
+const foxyPoolGateway = require('./lib/services/foxy-pool-gateway');
 const startupMessage = require('./lib/startup-message');
 const {
   HttpSinglePortTransport,
@@ -120,6 +123,17 @@ const proxyConfigs = config.proxies
 
   if (proxiesWithUpstreams.some(proxyConfig => proxyConfig.useProfitability)) {
     await profitabilityService.init(config.useEcoBlockRewardsForProfitability);
+  }
+
+  const coins = [...new Set(flatten(proxiesWithUpstreams.map((proxyConfig) =>
+    proxyConfig.upstreams
+      .filter(upstreamConfig => !upstreamConfig.disabled)
+      .filter(upstreamConfig => upstreamConfig.type === 'foxypool' && upstreamConfig.coin && !upstreamConfig.url)
+      .map(upstreamConfig => upstreamConfig.coin.toUpperCase())
+  )))];
+  if (coins.length > 0) {
+    foxyPoolGateway.coins = coins;
+    await foxyPoolGateway.init();
   }
 
   const proxies = await Promise.all(proxiesWithUpstreams.map(async (proxyConfig) => {
