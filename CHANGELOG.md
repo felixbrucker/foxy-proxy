@@ -1,3 +1,12 @@
+1.34.0 / 2020-04-03
+==================
+
+* Add support for single connection foxy-pool upstreams which do not require an url to be configured
+* Add support for node 12
+* Use `x-forwarded-for` header as ip if present
+* Drop grpc support
+* Update all the dependencies
+
 1.33.0 / 2019-10-17
 ==================
 
