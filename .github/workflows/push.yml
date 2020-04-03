@@ -10,10 +10,10 @@ jobs:
       uses: felixbrucker/npm@master
       with:
         args: ci
-    - name: Audit dependencies
-      uses: felixbrucker/npm@master
-      with:
-        args: audit
+#    - name: Audit dependencies
+#      uses: felixbrucker/npm@master
+#      with:
+#        args: audit
     - name: Install Web UI dependencies
       uses: felixbrucker/npm@master
       with:
