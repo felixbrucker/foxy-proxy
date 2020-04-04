@@ -1,3 +1,8 @@
+1.34.2 / 2020-04-04
+==================
+
+* Favor configured weight over profitability based weight
+
 1.34.1 / 2020-04-03
 ==================
 
