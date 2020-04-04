@@ -68,7 +68,7 @@ npm start
 ----
 
 This will download the proxy, install its dependencies and setup the default config with some example upstream configs.
-Edit the created `config.yaml` file so that your desired proxy/proxies and upstream(s) are configured. More on the valid config options [here](https://github.com/felixbrucker/foxy-proxy/wiki/Config-options).
+Edit the created `config.yaml` file so that your desired proxy/proxies and upstream(s) are configured. More on the valid config options [here](https://docs.foxypool.cf/foxy-proxy/configuration/#configuration-options).
 Make sure you do not break the yaml format or the file can not be read correctly.
 
 ## Updating the proxy
@@ -100,9 +100,9 @@ Options:
   -h, --help                 output usage information
 ```
 
-## Config examples
+## Config example
 
-Some config examples can be found in the [wiki](https://github.com/felixbrucker/foxy-proxy/wiki/Config-examples)
+A config example can be found [here](https://docs.foxypool.cf/foxy-proxy/configuration/#configuration-example)
 
 ## Running the proxy in production
 
