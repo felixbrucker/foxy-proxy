@@ -16,7 +16,7 @@
   "bugs": "https://github.com/felixbrucker/foxy-proxy/issues",
   "license": "GPL-3.0",
   "dependencies": {
-    "@grpc/proto-loader": "^0.5.3",
+    "@grpc/proto-loader": "^0.5.4",
     "@sentry/integrations": "^5.15.4",
     "@sentry/node": "^5.15.4",
     "async": "^3.2.0",
