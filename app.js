@@ -71,6 +71,9 @@ Sentry.init({
     new Integrations.ExtraErrorData(),
     new Integrations.Transaction(),
   ],
+  ignoreErrors: [
+    /ENOSYS/
+  ],
 });
 
 process.on('unhandledRejection', (err) => {
