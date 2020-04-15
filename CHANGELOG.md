@@ -1,3 +1,9 @@
+1.34.3 / 2020-04-15
+==================
+
+* Fix "SQLITE_BUSY" errors
+* Update all the dependencies
+
 1.34.2 / 2020-04-04
 ==================
 
