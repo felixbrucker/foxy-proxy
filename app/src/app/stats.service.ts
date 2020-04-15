@@ -3,7 +3,7 @@ import {WebsocketService} from './websocket.service';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {LocalStorageService} from './local-storage.service';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class StatsService {
     private websocketService: WebsocketService,
     private localStorageService: LocalStorageService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) {
     this.statsObservable = this.stats.asObservable();
     this.authenticatedObservable = this.authenticated.asObservable();

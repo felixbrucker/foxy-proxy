@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {StatsService} from '../stats.service';
-import {MatSnackBar} from '@angular/material';
 import {NewVersionSnackbarComponent} from '../new-version-snackbar/new-version-snackbar.component';
 import {LocalStorageService} from '../local-storage.service';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-main',
@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
   constructor(
     private statsService: StatsService,
     private localStorageService: LocalStorageService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) { }
 
   async ngOnInit() {
