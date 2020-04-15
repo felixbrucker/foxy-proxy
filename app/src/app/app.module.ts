@@ -74,8 +74,5 @@ import {MatRadioModule} from "@angular/material/radio";
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [
-    NewVersionSnackbarComponent
-  ]
 })
 export class AppModule { }
