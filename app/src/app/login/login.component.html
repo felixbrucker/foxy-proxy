@@ -26,7 +26,7 @@
           <mat-form-field>
             <input matInput [(ngModel)]="password" name="password" [type]="hide ? 'password' : 'text'" (ngModelChange)="clearInvalidAuth()" required>
             <mat-placeholder class="placeholder">Enter your password</mat-placeholder>
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </mat-form-field>
         </div>
         <button mat-stroked-button
