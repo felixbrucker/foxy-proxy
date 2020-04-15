@@ -1,6 +1,7 @@
-1.34.4 / 2020-04-15
+1.35.0 / 2020-04-15
 ==================
 
+* Add upstream config option `minerPassthrough`
 * Remove hpool upstream type
 
 1.34.3 / 2020-04-15
