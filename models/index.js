@@ -4,7 +4,6 @@ const Sequelize = require('sequelize');
 const store = require('../lib/services/store');
 const util = require('../lib/util');
 
-const useSSL = process.env.NODE_ENV === 'production';
 const basename = path.basename(module.filename);
 const db = {};
 
@@ -20,7 +19,9 @@ function init() {
     dialect: 'postgres',
     protocol: 'postgres',
     dialectOptions: {
-      ssl: useSSL,
+      ssl: {
+        rejectUnauthorized: false,
+      },
     },
     logging: false,
   };
