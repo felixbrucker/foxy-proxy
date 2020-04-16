@@ -1,3 +1,8 @@
+1.35.1 / 2020-04-16
+==================
+
+* Fix self signed certificate connections with postgres
+
 1.35.0 / 2020-04-15
 ==================
 
