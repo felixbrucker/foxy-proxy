@@ -62,6 +62,10 @@ if (program.live) {
 
 const config = new Config();
 
+if (dashboard && config.config.dashboardLogLines) {
+  dashboard.maxLogLines = config.config.dashboardLogLines;
+}
+
 Sentry.init({
   dsn: 'https://2d4461f632f64ecc99e24c7d88dc1cea@sentry.io/1402474',
   release: `foxy-proxy@${version}`,
