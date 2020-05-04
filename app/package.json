@@ -29,7 +29,7 @@
     "core-js": "^3.6.5",
     "hammerjs": "^2.0.8",
     "hash.js": "^1.1.7",
-    "moment": "^2.24.0",
+    "moment": "^2.25.1",
     "rxjs": "^6.5.5",
     "rxjs-compat": "^6.5.5",
     "socket.io-client": "^2.3.0",
