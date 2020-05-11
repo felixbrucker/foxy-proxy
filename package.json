@@ -35,7 +35,7 @@
     "lodash": "^4.17.15",
     "log-update": "^4.0.0",
     "mkdirp": "^1.0.4",
-    "moment": "^2.25.1",
+    "moment": "^2.25.3",
     "nodemailer": "^6.4.6",
     "pg": "^8.0.3",
     "rotating-file-stream": "^2.1.0",
