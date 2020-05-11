@@ -37,7 +37,7 @@
     "mkdirp": "^1.0.4",
     "moment": "^2.25.3",
     "nodemailer": "^6.4.6",
-    "pg": "^8.0.3",
+    "pg": "^8.1.0",
     "rotating-file-stream": "^2.1.0",
     "semver": "^7.3.2",
     "sequelize": "^5.21.8",
