@@ -41,7 +41,7 @@
     "@angular/cli": "^9.1.7",
     "@angular/compiler-cli": "^9.1.1",
     "@angular/language-service": "^9.1.9",
-    "@babel/cli": "^7.8.4",
+    "@babel/cli": "^7.10.1",
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@types/jasmine": "^3.5.10",
