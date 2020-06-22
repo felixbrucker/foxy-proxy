@@ -27,7 +27,7 @@
     "cross-spawn": "^7.0.3",
     "js-yaml": "^3.14.0",
     "json-bigint": "^0.3.0",
-    "koa": "^2.12.1",
+    "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^8.0.8",
     "koa-send": "^5.0.0",
