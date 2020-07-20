@@ -17,7 +17,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@sentry/integrations": "^5.19.2",
-    "@sentry/node": "^5.17.0",
+    "@sentry/node": "^5.19.2",
     "async": "^3.2.0",
     "bignumber.js": "^9.0.0",
     "bitmart-api": "^1.1.1",
