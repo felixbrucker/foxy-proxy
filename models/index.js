@@ -1,10 +1,11 @@
 const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
+
 const store = require('../lib/services/store');
 const util = require('../lib/util');
+const configModel = require('./config');
+const roundModel = require('./round');
 
-const basename = path.basename(module.filename);
 const db = {};
 
 let isInitialized = false;
@@ -43,19 +44,8 @@ function init() {
   }
   const sequelize = new Sequelize(databaseUrl, sequelizeConfig);
 
-  // Load all models
-  fs.readdirSync(__dirname)
-    .filter(file => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
-    .forEach((file) => {
-      const model = sequelize.import(path.join(__dirname, file));
-      db[model.name] = model;
-    });
-
-  Object.keys(db).forEach((modelName) => {
-    if (db[modelName].associate) {
-      db[modelName].associate(db);
-    }
-  });
+  db.config = configModel(sequelize, DataTypes);
+  db.round = roundModel(sequelize, DataTypes);
 
   db.sequelize = sequelize;
 }
