@@ -1,6 +1,6 @@
 {
   "name": "foxy-proxy",
-  "version": "1.35.1",
+  "version": "1.35.2",
   "description": "A Proof of Capacity proxy which supports solo and pool mining upstreams.",
   "keywords": [
     "burst",

@@ -1,3 +1,8 @@
+1.35.2 / 2020-07-26
+==================
+
+* Fix obscure connection issues with the miner-gateway and websocket transports
+
 1.35.1 / 2020-04-16
 ==================
 
