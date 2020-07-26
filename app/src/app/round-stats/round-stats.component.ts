@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import { Chart } from 'chart.js';
+import Chart from 'chart.js';
 import {LocalStorageService} from '../local-storage.service';
 
 @Component({

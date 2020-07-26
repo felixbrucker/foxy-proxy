@@ -1,4 +1,4 @@
-import * as Capacity from '../../shared/capacity.es5';
+import * as Capacity from '../../../../shared/capacity';
 import * as moment from 'moment';
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable, Subscription, interval} from 'rxjs';

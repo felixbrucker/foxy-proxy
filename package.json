@@ -56,7 +56,7 @@
   "scripts": {
     "start": "node main.js",
     "install-web": "cd app && npm ci",
-    "build-web": "cd app && npm run transpile-shared && npm run build-prod",
+    "build-web": "cd app && npm run build:prod",
     "audit-web": "cd app && npm audit"
   },
   "engines": {
