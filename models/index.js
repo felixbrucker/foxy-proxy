@@ -5,6 +5,7 @@ const store = require('../lib/services/store');
 const util = require('../lib/util');
 const configModel = require('./config');
 const roundModel = require('./round');
+const plotterModel = require('./plotter');
 
 const db = {};
 
@@ -46,6 +47,7 @@ function init() {
 
   db.config = configModel(sequelize, DataTypes);
   db.round = roundModel(sequelize, DataTypes);
+  db.plotter = plotterModel(sequelize, DataTypes);
 
   db.sequelize = sequelize;
 }

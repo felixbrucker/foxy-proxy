@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => sequelize.define('round', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  blockHash: {
+    type: DataTypes.STRING,
+  },
   baseTarget: {
     type: DataTypes.INTEGER,
   },
@@ -33,14 +36,9 @@ module.exports = (sequelize, DataTypes) => sequelize.define('round', {
 }, {
   indexes: [
     {
-      name: 'roundUpstreamIndex',
+      name: 'roundUpstreamBlockHeightIndex',
       unique: false,
-      fields: ['upstream'],
-    },
-    {
-      name: 'roundBlockHeightIndex',
-      unique: false,
-      fields: ['blockHeight'],
+      fields: ['upstream', 'blockHeight'],
     },
   ],
 });
