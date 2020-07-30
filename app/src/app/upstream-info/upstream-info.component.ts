@@ -26,7 +26,7 @@ export class UpstreamInfoComponent implements OnInit {
 
   private counter: Observable<Duration>;
   private subscription: Subscription;
-  private elapsedSinceStart: string = '00:00:00';
+  private elapsedSinceStart = '00:00:00';
   public scanProgress = 100;
 
   constructor() { }
