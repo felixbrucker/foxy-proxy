@@ -11,7 +11,10 @@
       [miners]="miners"
       [maxScanTime]="maxScanTime"
       [connected]="upstream.connected"
-      [connectionQuality]="upstream.connectionQuality">
+      [connectionQuality]="upstream.connectionQuality"
+      [coin]="upstream.coin"
+      [url]="upstream.url"
+      [isFoxyPool]="upstream.isFoxyPool">
     </app-upstream-info>
   </div>
   <app-round-stats *ngIf="showCard('round-stats')"

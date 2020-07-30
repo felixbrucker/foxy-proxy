@@ -23,6 +23,9 @@ export class UpstreamInfoComponent implements OnInit {
   @Input() maxScanTime: number;
   @Input() connected: number;
   @Input() connectionQuality: number;
+  @Input() coin: string;
+  @Input() url: string;
+  @Input() isFoxyPool: boolean;
 
   private counter: Observable<Duration>;
   private subscription: Subscription;
@@ -37,6 +40,18 @@ export class UpstreamInfoComponent implements OnInit {
         this.elapsedSinceStart = `${duration.hours().toString().padStart(2, '0')}:${duration.minutes().toString().padStart(2, '0')}:${duration.seconds().toString().padStart(2, '0')}`;
         this.scanProgress = this.getScanProgress();
     });
+  }
+
+  get poolUrl() {
+    if (this.url) {
+      return this.url
+        .replace('http://', 'https://')
+        .replace('miner.', '')
+        .replace(/:[0-9]+/, '')
+        .replace('/mining', '');
+    }
+
+    return `https://${this.coin.toLowerCase()}.foxypool.cf`;
   }
 
   getStartTime() {

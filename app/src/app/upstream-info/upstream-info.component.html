@@ -7,7 +7,14 @@
               [attr.intermediary]="!connected && connectionQuality < 99.4 && connectionQuality >= 94 ? true: null"
               [attr.negative]="!connected && connectionQuality < 94 ? true: null">
         </span>
-        {{name}}
+        <span *ngIf="isFoxyPool">
+          <a href="{{poolUrl}}" target="_blank" style="color: #cfd0d1; text-decoration: none">
+            {{name}}
+          </a>
+        </span>
+        <span *ngIf="!isFoxyPool">
+          {{name}}
+        </span>
       </span>
       <span style="display: flex; margin-top: 6px">
         <mat-progress-bar
