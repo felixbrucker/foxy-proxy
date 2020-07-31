@@ -1,13 +1,24 @@
 module.exports = (sequelize, DataTypes) => sequelize.define('plotter', {
   id: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
+  },
+  pid: {
+    type: DataTypes.STRING,
   },
   upstream: {
     type: DataTypes.STRING,
-    primaryKey: true,
   },
   lastSubmitHeight: {
     type: DataTypes.INTEGER,
   },
+}, {
+  indexes: [
+    {
+      name: 'plotterUpstreamIndex',
+      unique: false,
+      fields: ['id', 'upstream'],
+    },
+  ],
 });
