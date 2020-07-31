@@ -85,8 +85,9 @@ process.on('uncaughtException', (err) => {
   eventBus.publish('log/error', `Error: ${err.message}`);
 });
 
-store.setLogLevel(config.logLevel || 'info');
-store.setLogDir(config.logDir);
+store.logging.level = config.logLevel || store.logging.level;
+store.logging.dir = config.logDir;
+store.logging.maxFiles = config.logMaxFiles || store.logging.maxFiles;
 if (config.logToFile) {
   logger.enableFileLogging();
 }
