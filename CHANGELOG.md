@@ -1,3 +1,8 @@
+1.36.3 / 2020-08-01
+==================
+
+* Fix the wallet block info retrieval when many rounds are missing block info
+
 1.36.2 / 2020-08-01
 ==================
 
