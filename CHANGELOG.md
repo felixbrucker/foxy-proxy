@@ -1,3 +1,10 @@
+1.36.2 / 2020-08-01
+==================
+
+* Add error message to failed block info requests
+* Fix wallet block info retrieval for slow wallets
+* Bump the minimum node version to v10.12 because of sequelize
+
 1.36.1 / 2020-08-01
 ==================
 
