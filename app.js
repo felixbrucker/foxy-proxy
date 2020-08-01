@@ -87,7 +87,7 @@ process.on('uncaughtException', (err) => {
 
 store.logging.level = config.logLevel || store.logging.level;
 store.logging.dir = config.logDir;
-store.logging.maxFiles = config.logMaxFiles || store.logging.maxFiles;
+store.logging.maxFiles = config.logMaxFiles;
 if (config.logToFile) {
   logger.enableFileLogging();
 }
