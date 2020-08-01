@@ -60,6 +60,6 @@
     "audit-web": "cd app && npm audit"
   },
   "engines": {
-    "node": "^10 || ^12"
+    "node": "^10.12 || ^12"
   }
 }
