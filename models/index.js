@@ -35,12 +35,6 @@ function init() {
       retry: {
         max: 10,
       },
-      pool: {
-        max: 1,
-        min: 0,
-        acquire: 30000,
-        idle: 10000,
-      },
     };
   }
   const sequelize = new Sequelize(databaseUrl, sequelizeConfig);
