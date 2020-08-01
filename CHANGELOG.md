@@ -1,3 +1,12 @@
+1.36.0 / 2020-08-01
+==================
+
+* Add support for sodium deadlines and netDiff
+* Add support for connecting without a proxy name when using a single proxy
+* Add support for limiting the maximum rotated log files via `logMaxFiles` config option
+* Add support for clickable Foxy-Pool upstream names on the web ui
+* Improve historical stats collection. Requires `walletUrl` (or `url` for solo) and `coin` config option to be set.
+
 1.35.2 / 2020-07-26
 ==================
 
