@@ -10,11 +10,11 @@ Foxy-Proxy
 
 ## Prerequisites
 
-- nodejs >= 12, see [here](https://docs.foxypool.cf/general/installing-nodejs) how to install it
+- nodejs >= 12, see [here](https://docs.foxypool.io/general/installing-nodejs) how to install it
 
 ## Getting started
 
-If you are unsure on how to proceed check the [Docs](https://docs.foxypool.cf/foxy-proxy).
+If you are unsure on how to proceed check the [Docs](https://docs.foxypool.io/foxy-proxy).
 
 ## Setup
 
@@ -68,7 +68,7 @@ npm start
 ----
 
 This will download the proxy, install its dependencies and setup the default config with some example upstream configs.
-Edit the created `config.yaml` file so that your desired proxy/proxies and upstream(s) are configured. More on the valid config options [here](https://docs.foxypool.cf/foxy-proxy/configuration/#configuration-options).
+Edit the created `config.yaml` file so that your desired proxy/proxies and upstream(s) are configured. More on the valid config options [here](https://docs.foxypool.io/foxy-proxy/configuration/#configuration-options).
 Make sure you do not break the yaml format or the file can not be read correctly.
 
 ## Updating the proxy
@@ -102,7 +102,7 @@ Options:
 
 ## Config example
 
-A config example can be found [here](https://docs.foxypool.cf/foxy-proxy/configuration/#configuration-example)
+A config example can be found [here](https://docs.foxypool.io/foxy-proxy/configuration/#configuration-example)
 
 ## Running the proxy in production
 

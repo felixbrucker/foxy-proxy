@@ -51,7 +51,7 @@ export class UpstreamInfoComponent implements OnInit {
         .replace('/mining', '');
     }
 
-    return `https://${this.coin.toLowerCase()}.foxypool.cf`;
+    return `https://${this.coin.toLowerCase()}.foxypool.io`;
   }
 
   getStartTime() {
