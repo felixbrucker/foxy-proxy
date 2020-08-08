@@ -1,3 +1,10 @@
+1.37.0 / 2020-08-08
+==================
+
+* Use fixed indexes for multi proxy setups with the `useMultiplePorts` option. This means if you run a multi proxy setup with the `useMultiplePorts` option and have one proxy disabled the other proxy ports are still counted as if it were enabled, the port is just skipped. This can be a breaking change, please adjust your miner config accordingly.
+* Remove DISC, BOOM and LAVA from the probability service
+* Use the foxypool.io domain
+
 1.36.3 / 2020-08-01
 ==================
 
