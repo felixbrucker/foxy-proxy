@@ -97,6 +97,10 @@ mailService.init();
 
 const proxyConfigs = config.proxies
   .map(proxyConfig => JSON.parse(JSON.stringify(proxyConfig)))
+  .map((proxyConfig, index) => ({
+    ...proxyConfig,
+    index,
+  }))
   .filter(proxyConfig => !proxyConfig.disabled);
 
 (async () => {
@@ -150,7 +154,7 @@ const proxyConfigs = config.proxies
   }));
 
   if (config.transports.indexOf('http') !== -1) {
-    let transport = null;
+    let transport;
     if (config.useMultiplePorts) {
       transport = new HttpMultiplePortsTransport(config.listenHost, config.listenPort);
     } else {
