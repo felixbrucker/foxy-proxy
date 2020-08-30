@@ -1,3 +1,8 @@
+1.38.0 / 2020-08-30
+==================
+
+* Add default wallet urls for BHD and BURST to detect won rounds
+
 1.37.0 / 2020-08-08
 ==================
 
