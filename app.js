@@ -78,6 +78,7 @@ Sentry.init({
     /ENOSYS/,
     /SequelizeUniqueConstraintError/,
     /SQLITE_BUSY/,
+    /Please install sqlite3 package manually/,
   ],
 });
 
