@@ -10,6 +10,7 @@ const Router = require('koa-router');
 const send = require('koa-send');
 const Sentry = require('@sentry/node');
 const { flatten } = require('lodash');
+const { arch, platform, release } = require('os');
 
 const Config = require('./lib/config');
 const Dashboard = require('./lib/cli-dashboard');
@@ -66,7 +67,7 @@ if (dashboard && config.config.dashboardLogLines) {
 
 Sentry.init({
   dsn: 'https://2d4461f632f64ecc99e24c7d88dc1cea@sentry.io/1402474',
-  release: `foxy-proxy@${version}`,
+  release: `Foxy-Proxy@${version}`,
   attachStacktrace: true,
   integrations: [
     new Integrations.Dedupe(),
@@ -76,6 +77,12 @@ Sentry.init({
   ignoreErrors: [
     /ENOSYS/
   ],
+});
+
+Sentry.configureScope((scope) => {
+  scope.setTag('os.arch', arch());
+  scope.setTag('os.platform', platform());
+  scope.setTag('os.release', release());
 });
 
 process.on('unhandledRejection', (err) => {
