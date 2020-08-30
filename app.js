@@ -75,7 +75,9 @@ Sentry.init({
     new Integrations.Transaction(),
   ],
   ignoreErrors: [
-    /ENOSYS/
+    /ENOSYS/,
+    /SequelizeUniqueConstraintError/,
+    /SQLITE_BUSY/,
   ],
 });
 
