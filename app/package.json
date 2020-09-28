@@ -27,7 +27,7 @@
     "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
     "hash.js": "^1.1.7",
-    "moment": "^2.28.0",
+    "moment": "^2.29.0",
     "rxjs": "^6.6.3",
     "rxjs-compat": "^6.6.3",
     "socket.io-client": "^2.3.0",
