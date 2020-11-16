@@ -30,7 +30,7 @@
     "moment": "^2.29.1",
     "rxjs": "^6.6.3",
     "rxjs-compat": "^6.6.3",
-    "socket.io-client": "^2.3.1",
+    "socket.io-client": "^3.0.1",
     "tslib": "^2.0.3",
     "zone.js": "~0.10.3"
   },
