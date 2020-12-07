@@ -39,7 +39,7 @@
     "nodemailer": "^6.4.16",
     "pg": "^8.5.1",
     "rotating-file-stream": "^2.1.3",
-    "semver": "^7.3.2",
+    "semver": "^7.3.4",
     "sequelize": "^6.3.5",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.1",
