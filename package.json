@@ -25,7 +25,7 @@
     "cli-table3": "^0.6.0",
     "commander": "^6.2.1",
     "cross-spawn": "^7.0.3",
-    "js-yaml": "^3.14.1",
+    "js-yaml": "^4.0.0",
     "json-bigint": "^1.0.0",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
