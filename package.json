@@ -32,7 +32,7 @@
     "koa-router": "^9.4.0",
     "koa-send": "^5.0.1",
     "koa-static-cache": "^5.1.4",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "log-update": "^4.0.0",
     "mkdirp": "^1.0.4",
     "moment": "^2.29.1",
