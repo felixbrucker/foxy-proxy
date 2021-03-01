@@ -28,7 +28,7 @@
     "core-js": "^3.8.2",
     "hash.js": "^1.1.7",
     "moment": "^2.29.1",
-    "rxjs": "^6.6.3",
+    "rxjs": "^6.6.6",
     "rxjs-compat": "^6.6.3",
     "socket.io-client": "^2.3.1",
     "tslib": "^2.0.3",
