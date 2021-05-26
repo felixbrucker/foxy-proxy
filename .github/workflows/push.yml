@@ -1,8 +1,8 @@
 on: push
-name: Audit and Publish
+name: Build and Publish
 jobs:
   auditAndPublish:
-    name: Audit and Publish
+    name: Build and Publish
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -10,10 +10,6 @@ jobs:
       uses: felixbrucker/npm@master
       with:
         args: ci
-    - name: Audit dependencies
-      uses: felixbrucker/npm@master
-      with:
-        args: audit
     - name: Install Web UI dependencies
       uses: felixbrucker/npm@master
       with:
