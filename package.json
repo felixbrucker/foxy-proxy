@@ -48,6 +48,9 @@
     "universal-analytics": "^0.4.23",
     "uuid": "^8.3.2"
   },
+  "devDependencies": {
+    "npm-check-updates": "^11.5.13"
+  },
   "bin": {
     "bhd-burst-proxy": "./main.js",
     "foxy-proxy": "./main.js"
@@ -57,9 +60,10 @@
     "start": "node main.js",
     "install-web": "cd app && npm ci",
     "build-web": "cd app && npm run build:prod",
-    "audit-web": "cd app && npm audit"
+    "audit-web": "cd app && npm audit",
+    "update": "ncu -u"
   },
   "engines": {
-    "node": "^10.12 || ^12"
+    "node": ">= 10"
   }
 }
