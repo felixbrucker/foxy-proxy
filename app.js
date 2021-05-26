@@ -41,19 +41,20 @@ program
   .option('--no-colors', 'Do not use colors in the cli output')
   .parse(process.argv);
 
-if (!program.colors) {
+const programOptions = program.opts();
+if (!programOptions.colors) {
   store.setUseColors(false);
 }
 startupMessage();
 
-if (program.config) {
-  store.setConfigFilePath(program.config);
+if (programOptions.config) {
+  store.setConfigFilePath(programOptions.config);
 }
-if (program.db) {
-  store.setDbFilePath(program.db);
+if (programOptions.db) {
+  store.setDbFilePath(programOptions.db);
 }
 let dashboard = null;
-if (program.live) {
+if (programOptions.live) {
   store.setUseLiveDashboard(true);
   dashboard = new Dashboard();
   dashboard.start();
@@ -68,7 +69,6 @@ if (dashboard && config.config.dashboardLogLines) {
 Sentry.init({
   dsn: 'https://2d4461f632f64ecc99e24c7d88dc1cea@sentry.io/1402474',
   release: `Foxy-Proxy@${version}`,
-  attachStacktrace: true,
   integrations: [
     new Integrations.Dedupe(),
     new Integrations.ExtraErrorData(),
