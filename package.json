@@ -43,7 +43,7 @@
     "sequelize": "^6.3.5",
     "socket.io": "^4.1.2",
     "socket.io-client": "^4.1.2",
-    "sqlite3": "^5.0.0",
+    "sqlite3": "^5.0.2",
     "superagent": "^6.1.0",
     "universal-analytics": "^0.4.23",
     "uuid": "^8.3.2"
