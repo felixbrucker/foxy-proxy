@@ -153,7 +153,7 @@ const proxyConfigs = config.proxies
   )))];
   if (coins.length > 0) {
     foxyPoolGateway.coins = coins;
-    await foxyPoolGateway.init();
+    await foxyPoolGateway.init({ allowLongPolling: config.allowLongPolling });
   }
 
   const proxies = await Promise.all(proxiesWithUpstreams.map(async (proxyConfig) => {
@@ -184,7 +184,13 @@ const proxyConfigs = config.proxies
   });
 
   const server = http.createServer(app.callback());
-  const io = IO(server);
+  const io = IO(server, {
+    cors: {
+      origin: true,
+      methods: ["GET", "POST"],
+    },
+    allowEIO3: true,
+  });
 
   if (config.transports.indexOf('socket.io') !== -1) {
     const transport = new SocketIoTransport(io, config.listenAddr);
