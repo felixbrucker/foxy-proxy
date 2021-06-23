@@ -1,3 +1,10 @@
+1.40.0 / 2021-06-23
+==================
+
+* Update socket.io to v4 and enforce websocket transports
+* Add config option `allowLongPolling` to allow the use of long polling as socket.io transport
+* Fix block info error spam and potential crashes when the block info can not be retrieved for extended periods
+
 1.39.0 / 2020-08-30
 ==================
 
