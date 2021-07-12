@@ -49,7 +49,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "npm-check-updates": "^11.8.1"
+    "npm-check-updates": "^11.8.2"
   },
   "bin": {
     "bhd-burst-proxy": "./main.js",
