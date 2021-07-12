@@ -16,7 +16,7 @@
   "bugs": "https://github.com/felixbrucker/foxy-proxy/issues",
   "license": "GPL-3.0",
   "dependencies": {
-    "@sentry/integrations": "^6.8.0",
+    "@sentry/integrations": "^6.9.0",
     "@sentry/node": "^6.8.0",
     "async": "^3.2.0",
     "bignumber.js": "^9.0.1",
